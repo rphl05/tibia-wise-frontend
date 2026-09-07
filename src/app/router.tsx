@@ -1,0 +1,56 @@
+import { lazy, Suspense } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import { RequireAuth } from '@/app/guards/RequireAuth'
+import { RequireGuest } from '@/app/guards/RequireGuest'
+import { ROUTES } from '@/config/routes'
+import { AppLayout } from '@/layouts/AppLayout'
+import { AuthLayout } from '@/layouts/AuthLayout'
+import { PublicLayout } from '@/layouts/PublicLayout'
+import { SystemLayout } from '@/layouts/SystemLayout'
+
+const HomePage = lazy(() => import('@/pages/public/HomePage'))
+const LoginPage = lazy(() => import('@/pages/auth/LoginPage'))
+const RegisterPage = lazy(() => import('@/pages/auth/RegisterPage'))
+const DashboardPage = lazy(() => import('@/pages/app/DashboardPage'))
+const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
+
+const router = createBrowserRouter([
+  {
+    element: <PublicLayout />,
+    children: [{ path: ROUTES.home, element: <HomePage /> }],
+  },
+  {
+    element: <RequireGuest />,
+    children: [
+      {
+        element: <AuthLayout />,
+        children: [
+          { path: ROUTES.login, element: <LoginPage /> },
+          { path: ROUTES.register, element: <RegisterPage /> },
+        ],
+      },
+    ],
+  },
+  {
+    element: <RequireAuth />,
+    children: [
+      {
+        element: <AppLayout />,
+        children: [{ path: ROUTES.dashboard, element: <DashboardPage /> }],
+      },
+    ],
+  },
+  {
+    element: <SystemLayout />,
+    children: [{ path: '*', element: <NotFoundPage /> }],
+  },
+])
+
+export function AppRouter() {
+  return (
+    <Suspense fallback={null}>
+      <RouterProvider router={router} />
+    </Suspense>
+  )
+}

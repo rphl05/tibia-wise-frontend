@@ -1,0 +1,123 @@
+/* ------------------------------------
+   Tibia Wise — Design Tokens v1
+   Fonte: Tibia_Wise_Design_System_v1
+   ------------------------------------ */
+
+:root {
+  /* Cores base (Dark Theme) */
+  --color-bg-primary: #07111c;
+  --color-bg-secondary: #0d1b2a;
+
+  --color-surface: #101f2f;
+  --color-surface-highlight: #13263a;
+
+  --color-primary: #1688ff;
+  --color-primary-light: #00bfff;
+  --color-primary-hover: #0b74e0;
+
+  --color-gold: #f5a623;
+  --color-gold-light: #ffc857;
+
+  --color-border: #1e2a3a;
+
+  --color-text-primary: #f5f7fa;
+  --color-text-secondary: #a8b3c2;
+  --color-text-tertiary: #6b7785;
+
+  --color-success: #39d353;
+  --color-error: #ff5c5c;
+  --color-warning: #ffbf20;
+  --color-info: #1688ff;
+  --color-accent: #9a6bff;
+
+  /* Aliases semânticos — componentes devem consumir estes tokens */
+  --bg-page: var(--color-bg-primary);
+  --bg-surface: var(--color-surface);
+  --bg-surface-hover: var(--color-surface-highlight);
+
+  --text-primary: var(--color-text-primary);
+  --text-secondary: var(--color-text-secondary);
+  --text-muted: var(--color-text-tertiary);
+
+  --border-default: var(--color-border);
+
+  --action-primary: var(--color-primary);
+  --action-primary-hover: var(--color-primary-hover);
+
+  --status-success: var(--color-success);
+  --status-error: var(--color-error);
+  --status-warning: var(--color-warning);
+  --status-info: var(--color-info);
+
+  /* Gradientes */
+  --gradient-blue: linear-gradient(135deg, #1688ff 0%, #00bfff 100%);
+  --gradient-gold: linear-gradient(135deg, #f5a623 0%, #ffc857 100%);
+  --gradient-bg: linear-gradient(180deg, #07111c 0%, #0d1b2a 100%);
+
+  /* Espaçamento (base 4px) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 8px;
+  --radius-xl: 12px;
+  --radius-2xl: 16px;
+
+  /* Tipografia */
+  --font-family:
+    'Roboto', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    sans-serif;
+
+  --font-size-h1: 32px;
+  --font-size-h2: 24px;
+  --font-size-h3: 20px;
+  --font-size-h4: 16px;
+  --font-size-body: 14px;
+  --font-size-small: 12px;
+
+  /* Layout */
+  --sidebar-width: 260px;
+  --topbar-height: 72px;
+  --content-max-width: 1600px;
+
+  /* Elevação */
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.35);
+  --shadow-overlay: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+[data-theme='light'] {
+  --bg-page: #f4f7fa;
+  --bg-surface: #ffffff;
+  --bg-surface-hover: #eef4fa;
+
+  --text-primary: #102033;
+  --text-secondary: #526274;
+  --text-muted: #788696;
+
+  --border-default: #d9e1ea;
+
+  --action-primary: #1688ff;
+  --action-primary-hover: #0b74e0;
+
+  --status-success: #249b3e;
+  --status-error: #d94141;
+  --status-warning: #b87800;
+  --status-info: #1688ff;
+
+  --color-surface: #ffffff;
+  --color-surface-highlight: #eef4fa;
+  --color-border: #d9e1ea;
+
+  --shadow-card: 0 1px 3px rgba(16, 32, 51, 0.08);
+  --shadow-overlay: 0 8px 24px rgba(16, 32, 51, 0.15);
+}

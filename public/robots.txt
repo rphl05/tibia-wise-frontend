@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /dashboard
+Disallow: /my-hunts
+Disallow: /characters
+Disallow: /statistics
+Disallow: /recommendations
+Disallow: /settings
+Disallow: /profile
+Disallow: /notifications
+Disallow: /api

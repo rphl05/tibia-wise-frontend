@@ -1,0 +1,35 @@
+{
+  "appName": "Tibia Wise",
+  "actions": {
+    "login": "Entrar",
+    "logout": "Sair",
+    "register": "Criar conta",
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Excluir",
+    "back": "Voltar",
+    "retry": "Tentar novamente",
+    "newHunt": "Nova Hunt",
+    "importHunt": "Importar Hunt",
+    "search": "Buscar hunts, lugares, jogadores..."
+  },
+  "nav": {
+    "dashboard": "Dashboard",
+    "myHunts": "Minhas Hunts",
+    "importHunt": "Importar Hunt",
+    "recommendations": "Recomendações",
+    "tutorials": "Tutoriais",
+    "support": "Suporte",
+    "settings": "Configurações",
+    "premium": "Premium"
+  },
+  "errors": {
+    "generic": "Algo deu errado. Tente novamente em alguns instantes.",
+    "notFound": {
+      "title": "Página não encontrada",
+      "description": "A página que você procura não existe ou foi movida."
+    }
+  },
+  "loading": "Carregando..."
+}
