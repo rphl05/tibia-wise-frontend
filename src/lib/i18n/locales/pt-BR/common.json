@@ -31,5 +31,14 @@
       "description": "A página que você procura não existe ou foi movida."
     }
   },
+  "form": {
+    "showPassword": "Mostrar senha",
+    "hidePassword": "Ocultar senha"
+  },
+  "pagination": {
+    "label": "Paginação",
+    "previous": "Página anterior",
+    "next": "Próxima página"
+  },
   "loading": "Carregando..."
 }

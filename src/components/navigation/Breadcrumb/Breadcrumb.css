@@ -1,0 +1,29 @@
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-1);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--font-size-small);
+}
+
+.breadcrumb__separator {
+  display: inline-flex;
+  color: var(--text-muted);
+}
+
+.breadcrumb__link {
+  color: var(--text-secondary);
+}
+
+.breadcrumb__link:hover {
+  color: var(--action-primary);
+  text-decoration: none;
+}
+
+.breadcrumb__current {
+  color: var(--text-primary);
+  font-weight: 500;
+}
