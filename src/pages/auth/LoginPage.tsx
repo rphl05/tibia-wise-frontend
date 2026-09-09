@@ -1,8 +1,12 @@
+import { LoginForm } from '@/features/auth/components/LoginForm'
+import './AuthPage.css'
+
 export default function LoginPage() {
   return (
-    <section>
-      <h1>Entrar</h1>
-      <p>Página de login — formulário será implementado na fase de Autenticação.</p>
-    </section>
+    <div className="auth-page">
+      <div className="auth-page__card">
+        <LoginForm />
+      </div>
+    </div>
   )
 }

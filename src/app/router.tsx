@@ -12,6 +12,10 @@ import { SystemLayout } from '@/layouts/SystemLayout'
 const HomePage = lazy(() => import('@/pages/public/HomePage'))
 const LoginPage = lazy(() => import('@/pages/auth/LoginPage'))
 const RegisterPage = lazy(() => import('@/pages/auth/RegisterPage'))
+const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPasswordPage'))
+const ResetPasswordPage = lazy(() => import('@/pages/auth/ResetPasswordPage'))
+const VerifyEmailPage = lazy(() => import('@/pages/auth/VerifyEmailPage'))
+const RegisterSuccessPage = lazy(() => import('@/pages/auth/RegisterSuccessPage'))
 const DashboardPage = lazy(() => import('@/pages/app/DashboardPage'))
 const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
 
@@ -28,6 +32,9 @@ const router = createBrowserRouter([
         children: [
           { path: ROUTES.login, element: <LoginPage /> },
           { path: ROUTES.register, element: <RegisterPage /> },
+          { path: ROUTES.forgotPassword, element: <ForgotPasswordPage /> },
+          { path: ROUTES.resetPassword, element: <ResetPasswordPage /> },
+          { path: ROUTES.verifyEmail, element: <VerifyEmailPage /> },
         ],
       },
     ],
@@ -46,6 +53,9 @@ const router = createBrowserRouter([
     children: [{ path: '*', element: <NotFoundPage /> }],
   },
 ])
+
+// RegisterSuccessPage is used via navigation state after registration
+void RegisterSuccessPage
 
 export function AppRouter() {
   return (

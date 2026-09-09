@@ -1,0 +1,116 @@
+.auth-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: calc(100dvh - var(--topbar-height));
+  padding: var(--space-6) var(--space-4);
+}
+
+.auth-page__card {
+  width: 100%;
+  max-width: 420px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  box-shadow: var(--shadow-card);
+}
+
+.auth-page__link {
+  display: block;
+  margin-top: var(--space-4);
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.auth-form--centered {
+  align-items: center;
+  text-align: center;
+}
+
+.auth-form__title {
+  font-size: var(--font-size-h2);
+  font-weight: 700;
+  text-align: center;
+  margin: 0;
+}
+
+.auth-form__subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.auth-form__error {
+  padding: var(--space-3);
+  background: color-mix(in srgb, var(--status-error) 12%, transparent);
+  border: 1px solid var(--status-error);
+  border-radius: var(--radius-md);
+  color: var(--status-error);
+  font-size: var(--font-size-small);
+  text-align: center;
+}
+
+.auth-form__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.auth-form__link {
+  font-size: var(--font-size-small);
+  color: var(--action-primary);
+  text-decoration: none;
+}
+
+.auth-form__link:hover {
+  text-decoration: underline;
+}
+
+.auth-form__terms {
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
+  text-align: center;
+  line-height: 1.6;
+}
+
+.auth-form__terms a {
+  color: var(--action-primary);
+}
+
+.auth-form__footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
+  margin-top: var(--space-2);
+}
+
+.auth-form__footer a {
+  color: var(--action-primary);
+  font-weight: 500;
+}
+
+.auth-form__email {
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
+  text-align: center;
+  font-family: monospace;
+}
+
+.auth-success__email {
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
+  text-align: center;
+  font-family: monospace;
+  background: var(--bg-page);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  margin: var(--space-3) 0;
+}
