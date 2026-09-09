@@ -14,6 +14,8 @@ export const ROUTES = {
 
   characters: '/characters',
   characterDetails: (id: string) => `/characters/${id}`,
+  characterNew: '/characters/new',
+  characterEdit: (id: string) => `/characters/${id}/edit`,
 
   statistics: '/statistics',
   recommendations: '/recommendations',

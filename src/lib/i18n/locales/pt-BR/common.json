@@ -190,6 +190,51 @@
       "codeLength": "Código de 6 dígitos"
     }
   },
+  "characters": {
+    "title": "Meus Personagens",
+    "addTitle": "Adicionar Personagem",
+    "editTitle": "Editar Personagem",
+    "name": "Nome",
+    "namePlaceholder": "Nome do personagem",
+    "level": "Level",
+    "levelPlaceholder": "Ex.: 150",
+    "magicLevel": "Magic Level",
+    "magicLevelPlaceholder": "Ex.: 50",
+    "world": "Mundo",
+    "vocation": "Vocação",
+    "skills": "Skills",
+    "skills.fist": "Fist Fighting",
+    "skills.club": "Club Fighting",
+    "skills.sword": "Sword Fighting",
+    "skills.axe": "Axe Fighting",
+    "skills.distance": "Distance Fighting",
+    "skills.shielding": "Shielding",
+    "skills.fishing": "Fishing",
+    "isPrivate": "Tornar privado",
+    "private": "Privado",
+    "public": "Público",
+    "view": "Ver",
+    "edit": "Editar",
+    "refresh": "Atualizar dados",
+    "create": "Adicionar",
+    "save": "Salvar",
+    "actions": "Ações",
+    "confirmDelete": "Tem certeza que deseja excluir este personagem? Esta ação não pode ser desfeita.",
+    "addButton": "Adicionar Personagem",
+    "empty": "Você ainda não tem personagens.",
+    "emptyDescription": "Adicione seu primeiro personagem para começar a analisar suas hunts.",
+    "validation": {
+      "nameRequired": "Informe o nome do personagem",
+      "nameMax": "Máximo 100 caracteres",
+      "namePattern": "Apenas letras, números, espaço, vírgula ou hífen",
+      "levelMin": "Mínimo 1",
+      "levelMax": "Máximo 3000",
+      "loadFailed": "Falha ao carregar personagem."
+    },
+    "errors": {
+      "loadFailed": "Falha ao carregar personagem."
+    }
+  },
   "form": {
     "showPassword": "Mostrar senha",
     "hidePassword": "Ocultar senha"

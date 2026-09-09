@@ -70,15 +70,17 @@ export function Dropdown({ trigger, children, align = 'right', 'aria-label': ari
 export interface DropdownItemProps extends HTMLAttributes<HTMLButtonElement> {
   icon?: ReactNode
   danger?: boolean
+  disabled?: boolean
   children: ReactNode
 }
 
-export function DropdownItem({ icon, danger, children, ...rest }: DropdownItemProps) {
+export function DropdownItem({ icon, danger, disabled, children, ...rest }: DropdownItemProps) {
   return (
     <button
       type="button"
       role="menuitem"
-      className={clsx('dropdown__item', danger && 'dropdown__item--danger')}
+      className={clsx('dropdown__item', danger && 'dropdown__item--danger', disabled && 'dropdown__item--disabled')}
+      disabled={disabled}
       {...rest}
     >
       {icon && <span aria-hidden>{icon}</span>}

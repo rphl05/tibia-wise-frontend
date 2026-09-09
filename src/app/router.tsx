@@ -17,6 +17,9 @@ const ResetPasswordPage = lazy(() => import('@/pages/auth/ResetPasswordPage'))
 const VerifyEmailPage = lazy(() => import('@/pages/auth/VerifyEmailPage'))
 const RegisterSuccessPage = lazy(() => import('@/pages/auth/RegisterSuccessPage'))
 const DashboardPage = lazy(() => import('@/pages/app/DashboardPage'))
+const CharactersListPage = lazy(() => import('@/pages/app/CharactersListPage'))
+const CharacterDetailsPage = lazy(() => import('@/pages/app/CharacterDetailsPage'))
+const CharacterFormPage = lazy(() => import('@/pages/app/CharacterFormPage'))
 const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
 
 const router = createBrowserRouter([
@@ -44,7 +47,13 @@ const router = createBrowserRouter([
     children: [
       {
         element: <AppLayout />,
-        children: [{ path: ROUTES.dashboard, element: <DashboardPage /> }],
+        children: [
+          { path: ROUTES.dashboard, element: <DashboardPage /> },
+          { path: ROUTES.characters, element: <CharactersListPage /> },
+          { path: ROUTES.characterDetails(':id'), element: <CharacterDetailsPage /> },
+          { path: ROUTES.characterNew, element: <CharacterFormPage /> },
+          { path: ROUTES.characterEdit(':id'), element: <CharacterFormPage /> },
+        ],
       },
     ],
   },

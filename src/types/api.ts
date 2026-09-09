@@ -42,6 +42,16 @@ export interface Character {
   updated_at: string
 }
 
+export interface CharacterDetail extends Character {
+  fist_fighting: number | null
+  club_fighting: number | null
+  sword_fighting: number | null
+  axe_fighting: number | null
+  distance_fighting: number | null
+  shielding: number | null
+  fishing: number | null
+}
+
 export interface HuntSummary {
   id: string
   public_id: string

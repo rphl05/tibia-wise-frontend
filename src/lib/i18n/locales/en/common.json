@@ -190,6 +190,51 @@
       "codeLength": "6-digit code"
     }
   },
+  "characters": {
+    "title": "My Characters",
+    "addTitle": "Add Character",
+    "editTitle": "Edit Character",
+    "name": "Name",
+    "namePlaceholder": "Character name",
+    "level": "Level",
+    "levelPlaceholder": "Ex.: 150",
+    "magicLevel": "Magic Level",
+    "magicLevelPlaceholder": "Ex.: 50",
+    "world": "World",
+    "vocation": "Vocation",
+    "skills": "Skills",
+    "skills.fist": "Fist Fighting",
+    "skills.club": "Club Fighting",
+    "skills.sword": "Sword Fighting",
+    "skills.axe": "Axe Fighting",
+    "skills.distance": "Distance Fighting",
+    "skills.shielding": "Shielding",
+    "skills.fishing": "Fishing",
+    "isPrivate": "Make private",
+    "private": "Private",
+    "public": "Public",
+    "view": "View",
+    "edit": "Edit",
+    "refresh": "Refresh data",
+    "create": "Add",
+    "save": "Save",
+    "actions": "Actions",
+    "confirmDelete": "Are you sure you want to delete this character? This action cannot be undone.",
+    "addButton": "Add Character",
+    "empty": "You don't have any characters yet.",
+    "emptyDescription": "Add your first character to start analyzing your hunts.",
+    "validation": {
+      "nameRequired": "Enter character name",
+      "nameMax": "Maximum 100 characters",
+      "namePattern": "Only letters, numbers, space, comma or hyphen",
+      "levelMin": "Minimum 1",
+      "levelMax": "Maximum 3000",
+      "loadFailed": "Failed to load character."
+    },
+    "errors": {
+      "loadFailed": "Failed to load character."
+    }
+  },
   "form": {
     "showPassword": "Show password",
     "hidePassword": "Hide password"
