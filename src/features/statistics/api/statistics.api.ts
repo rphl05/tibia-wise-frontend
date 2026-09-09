@@ -145,7 +145,7 @@ export const statisticsApi = {
     return apiClient<StatisticsEvolutionPoint[]>(`/statistics/profit-evolution${qs ? `?${qs}` : ''}`)
   },
 
-  getPeriodComparison: (params?: { period?: '7d' | '30d' | '90d' }) => {
+  getPeriodComparison: (params?: { period?: '7d' | '30d' | '90d' | 'all' }) => {
     const search = new URLSearchParams()
     if (params?.period) search.append('period', params.period)
     const qs = search.toString()
