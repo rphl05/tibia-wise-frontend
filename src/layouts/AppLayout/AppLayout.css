@@ -1,0 +1,41 @@
+.app-layout__content {
+  margin-left: var(--sidebar-width);
+  margin-top: var(--topbar-height);
+  min-height: calc(100dvh - var(--topbar-height));
+}
+
+.app-layout__container {
+  width: 100%;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding: var(--space-6);
+}
+
+.app-layout__backdrop {
+  display: none;
+}
+
+@media (max-width: 1023px) {
+  .app-layout__content {
+    margin-left: 0;
+  }
+
+  .app-layout__backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 105;
+  }
+}
+
+@media (max-width: 767px) {
+  .app-layout__container {
+    padding: var(--space-4);
+  }
+
+  /* espaço para a bottom nav */
+  .app-layout__content {
+    padding-bottom: 64px;
+  }
+}

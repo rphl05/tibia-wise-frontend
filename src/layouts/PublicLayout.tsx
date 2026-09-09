@@ -1,17 +1,17 @@
 import { Outlet } from 'react-router-dom'
 
-/**
- * Layout de páginas públicas (sem Sidebar da aplicação).
- * O PublicHeader e o Footer serão implementados na fase do Design System.
- */
+import { Footer } from './Footer/Footer'
+import { PublicHeader } from './PublicLayout/PublicHeader'
+
+/** Layout de páginas públicas: header simples + conteúdo + footer. */
 export function PublicLayout() {
   return (
     <div>
-      {/* TODO: PublicHeader */}
+      <PublicHeader />
       <main>
         <Outlet />
       </main>
-      {/* TODO: Footer */}
+      <Footer />
     </div>
   )
 }

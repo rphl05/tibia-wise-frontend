@@ -31,6 +31,42 @@
       "description": "A página que você procura não existe ou foi movida."
     }
   },
+  "layout": {
+    "mainNav": "Navegação principal",
+    "openMenu": "Abrir menu",
+    "activeCharacter": "Personagem ativo",
+    "noCharacter": "Nenhum personagem selecionado"
+  },
+  "theme": {
+    "label": "Tema",
+    "dark": "Escuro",
+    "light": "Claro",
+    "system": "Sistema"
+  },
+  "language": {
+    "label": "Idioma"
+  },
+  "notifications": {
+    "label": "Notificações"
+  },
+  "userMenu": {
+    "label": "Menu do usuário",
+    "profile": "Meu perfil",
+    "characters": "Meus personagens"
+  },
+  "footer": {
+    "tagline": "Analytics para suas hunting sessions do Tibia.",
+    "product": "Produto",
+    "help": "Ajuda",
+    "legal": "Legal",
+    "characters": "Personagens",
+    "statistics": "Estatísticas",
+    "rankings": "Rankings",
+    "faq": "FAQ",
+    "terms": "Termos de Uso",
+    "privacy": "Política de Privacidade",
+    "rights": "Todos os direitos reservados."
+  },
   "form": {
     "showPassword": "Mostrar senha",
     "hidePassword": "Ocultar senha"
