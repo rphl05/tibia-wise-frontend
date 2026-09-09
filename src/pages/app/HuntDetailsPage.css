@@ -1,0 +1,101 @@
+.hunt-details-page {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.hunt-details-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+  flex-wrap: wrap;
+}
+
+.hunt-details-page__header h1 {
+  font-size: var(--font-size-h2);
+}
+
+.hunt-details-page__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.hunt-details-page__stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+
+.hunt-details-page__stat {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  padding: var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+}
+
+.hunt-details-page__stat .label {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-tertiary);
+}
+
+.hunt-details-page__stat .value {
+  font-size: var(--font-size-h4);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.hunt-details-page__section {
+  margin-bottom: var(--space-8);
+}
+
+.hunt-details-page__section h2 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--space-4);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--border-default);
+}
+
+.hunt-details-page__loot,
+.hunt-details-page__expenses,
+.hunt-details-page__creatures {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.hunt-details-page__loot-item,
+.hunt-details-page__expense-item,
+.hunt-details-page__creature-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  padding: var(--space-3);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-md);
+}
+
+.hunt-details-page__loot-item dt,
+.hunt-details-page__expense-item dt,
+.hunt-details-page__creature-item dt {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.hunt-details-page__loot-item dd,
+.hunt-details-page__expense-item dd,
+.hunt-details-page__creature-item dd {
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
+  margin: 0;
+}

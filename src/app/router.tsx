@@ -20,6 +20,9 @@ const DashboardPage = lazy(() => import('@/pages/app/DashboardPage'))
 const CharactersListPage = lazy(() => import('@/pages/app/CharactersListPage'))
 const CharacterDetailsPage = lazy(() => import('@/pages/app/CharacterDetailsPage'))
 const CharacterFormPage = lazy(() => import('@/pages/app/CharacterFormPage'))
+const ImportHuntPage = lazy(() => import('@/pages/app/ImportHuntPage'))
+const MyHuntsPage = lazy(() => import('@/pages/app/MyHuntsPage'))
+const HuntDetailsPage = lazy(() => import('@/pages/app/HuntDetailsPage'))
 const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
 
 const router = createBrowserRouter([
@@ -53,6 +56,9 @@ const router = createBrowserRouter([
           { path: ROUTES.characterDetails(':id'), element: <CharacterDetailsPage /> },
           { path: ROUTES.characterNew, element: <CharacterFormPage /> },
           { path: ROUTES.characterEdit(':id'), element: <CharacterFormPage /> },
+          { path: ROUTES.importHunt, element: <ImportHuntPage /> },
+          { path: ROUTES.myHunts, element: <MyHuntsPage /> },
+          { path: ROUTES.huntDetails(':id'), element: <HuntDetailsPage /> },
         ],
       },
     ],

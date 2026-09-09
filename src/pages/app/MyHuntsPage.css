@@ -1,0 +1,30 @@
+.my-hunts-page {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.my-hunts-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.my-hunts-page__header h1 {
+  font-size: var(--font-size-h2);
+}
+
+.my-hunts-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-4);
+}
+
+@media (max-width: 767px) {
+  .my-hunts-page__grid {
+    grid-template-columns: 1fr;
+  }
+}
