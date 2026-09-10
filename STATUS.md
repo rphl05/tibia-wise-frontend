@@ -75,7 +75,7 @@
 - [x] Charts (Recharts com cores semânticas: XP=azul, Profit=verde, Supplies=roxo, Loot=dourado, Damage=vermelho)
 
 ### Content (News, Tutorials, FAQ, Support)
-- [ ] NewsListPage + NewsDetailsPage (SEO, OG tags, structured data Article)
+- [x] NewsListPage + NewsDetailsPage (SEO, OG tags, structured data Article)
 - [ ] TutorialsPage (categorias: primeiros passos, análise, recursos)
 - [ ] FAQPage (accordion, busca, categorias)
 - [ ] SupportPage (form + categorias, FAQ search)
