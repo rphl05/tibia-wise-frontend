@@ -1,0 +1,54 @@
+.settings-page {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+}
+
+.settings-page__header {
+  margin-bottom: var(--space-8);
+}
+
+.settings-page__header h1 {
+  font-size: var(--font-size-h1);
+  color: var(--text-primary);
+}
+
+.settings-page__section {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  margin-bottom: var(--space-6);
+}
+
+.settings-page__section h2 {
+  font-size: var(--font-size-h3);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.settings-page__setting {
+  margin-bottom: var(--space-4);
+}
+
+.settings-page__setting > label {
+  display: block;
+  font-size: var(--font-size-body);
+  font-weight: 500;
+  color: var(--text-primary);
+  margin-bottom: var(--space-2);
+}
+
+.settings-page__setting-options {
+  display: flex;
+  gap: var(--space-4);
+}
+
+.settings-page__setting-options label {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  font-size: var(--font-size-body);
+  color: var(--text-secondary);
+}

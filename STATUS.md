@@ -78,13 +78,14 @@
 - [x] NewsListPage + NewsDetailsPage (SEO, OG tags, structured data Article)
 - [x] TutorialsPage (categorias: primeiros passos, análise, recursos)
 - [x] FAQPage (accordion, busca, categorias)
-- [x] SupportPage (form + categorias, FAQ search)
+- [ ] SupportPage (form + categorias, FAQ search)
 
 ### Account (Profile, Notifications, Settings, Premium)
 - [x] ProfilePage (avatar, display_name, email, username, country, birth_date, characters summary)
 - [ ] NotificationsPage (lista com paginação, mark read/unread, mark all read)
 - [ ] SettingsPage (tabs: Profile, Account, Security, Privacy, Preferences)
   - Preferences: default_character_id, default_language, default_theme
+- [ ] PremiumPage (hero, benefits, plan comparison, FAQ, subscription status)
 - [ ] PremiumPage (hero, benefits, plan comparison, FAQ, subscription status)
 
 ### Rankings
