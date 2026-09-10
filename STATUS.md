@@ -92,7 +92,7 @@
 - [x] RankingsPage (tabs: XP/h, Profit/h, Total XP, Total Profit; filtros vocação/mundo/período; paginação)
 
 ### Quality & Polish
-- [ ] Error Pages (403, 404, 500, 503 com branding + CTAs)
+- [x] Error Pages (403, 404, 500, 503 com branding + CTAs)
 - [ ] SEO (sitemap.xml, canonical, OG tags, structured data: Organization, WebSite, BreadcrumbList, Article, FAQPage)
 - [ ] Accessibility audit (contraste, foco visível, navegação teclado, ARIA, alt texts, semântica HTML)
 - [ ] Performance (lazy loading, image optimization, bundle analysis, virtualização tabelas grandes)
