@@ -81,9 +81,9 @@
 - [ ] SupportPage (form + categorias, FAQ search)
 
 ### Account (Profile, Notifications, Settings, Premium)
-- [ ] ProfilePage (avatar, display_name, email, username, country, birth_date, characters summary)
+- [x] ProfilePage (avatar, display_name, email, username, country, birth_date, characters summary)
 - [ ] NotificationsPage (lista com paginação, mark read/unread, mark all read)
-- [ ] SettingsPage (tabs: Profile, Account, Security, Privacy, Notifications, Preferences)
+- [ ] SettingsPage (tabs: Profile, Account, Security, Privacy, Preferences)
   - Preferences: default_character_id, default_language, default_theme
 - [ ] PremiumPage (hero, benefits, plan comparison, FAQ, subscription status)
 
