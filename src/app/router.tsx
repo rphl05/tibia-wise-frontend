@@ -26,6 +26,7 @@ const HuntDetailsPage = lazy(() => import('@/pages/app/HuntDetailsPage'))
 const StatisticsPage = lazy(() => import('@/pages/app/StatisticsPage'))
 const RecommendationsPage = lazy(() => import('@/pages/app/RecommendationsPage'))
 const NewsListPage = lazy(() => import('@/pages/app/NewsListPage'))
+const SupportPage = lazy(() => import('@/pages/app/SupportPage'))
 const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
 
 const router = createBrowserRouter([
@@ -65,6 +66,7 @@ const router = createBrowserRouter([
           { path: ROUTES.statistics, element: <StatisticsPage /> },
           { path: ROUTES.recommendations, element: <RecommendationsPage /> },
           { path: ROUTES.news, element: <NewsListPage /> },
+          { path: ROUTES.support, element: <SupportPage /> },
         ],
       },
     ],
