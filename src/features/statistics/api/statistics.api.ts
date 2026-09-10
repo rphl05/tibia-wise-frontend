@@ -71,6 +71,21 @@ export interface HuntComparisonItem {
   profit_per_hour: string
 }
 
+export interface RankingEntry {
+  rank: number
+  character_name: string
+  vocation_id: number
+  world: string
+  level: number
+  value: string
+}
+
+export interface RankingResponse {
+  items: RankingEntry[]
+  totalPages: number
+  currentPage: number
+}
+
 export const statisticsApi = {
   getStatistics: (params?: StatisticsParams) => {
     const search = new URLSearchParams()
@@ -167,5 +182,24 @@ export const statisticsApi = {
     if (params?.period) search.append('period', params.period)
     const qs = search.toString()
     return apiClient<HuntComparisonItem[]>(`/statistics/hunt-comparison${qs ? `?${qs}` : ''}`)
+  },
+
+  getRanking: (params?: {
+    type: 'xpPerHour' | 'profitPerHour' | 'totalXp' | 'totalProfit'
+    period?: '7d' | '30d' | '90d' | 'all'
+    vocation?: number
+    world?: string
+    page?: number
+    pageSize?: number
+  }) => {
+    const search = new URLSearchParams()
+    if (params?.type) search.append('type', params.type)
+    if (params?.period) search.append('period', params.period)
+    if (params?.vocation) search.append('vocation', String(params.vocation))
+    if (params?.world) search.append('world', params.world)
+    if (params?.page) search.append('page', String(params.page))
+    if (params?.pageSize) search.append('pageSize', String(params.pageSize))
+    const qs = search.toString()
+    return apiClient<RankingResponse>(`/statistics/ranking${qs ? `?${qs}` : ''}`)
   },
 }

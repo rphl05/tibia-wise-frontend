@@ -30,6 +30,7 @@ const SupportPage = lazy(() => import('@/pages/app/SupportPage'))
 const ProfilePage = lazy(() => import('@/pages/app/ProfilePage'))
 const SettingsPage = lazy(() => import('@/pages/app/SettingsPage'))
 const PremiumPage = lazy(() => import('@/pages/app/PremiumPage'))
+const RankingsPage = lazy(() => import('@/pages/app/RankingsPage'))
 const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
 
 const router = createBrowserRouter([
@@ -73,6 +74,7 @@ const router = createBrowserRouter([
           { path: ROUTES.profile, element: <ProfilePage /> },
           { path: ROUTES.settings, element: <SettingsPage /> },
           { path: ROUTES.premium, element: <PremiumPage /> },
+          { path: ROUTES.rankings, element: <RankingsPage /> },
         ],
       },
     ],
