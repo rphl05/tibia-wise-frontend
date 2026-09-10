@@ -24,6 +24,7 @@ const ImportHuntPage = lazy(() => import('@/pages/app/ImportHuntPage'))
 const MyHuntsPage = lazy(() => import('@/pages/app/MyHuntsPage'))
 const HuntDetailsPage = lazy(() => import('@/pages/app/HuntDetailsPage'))
 const StatisticsPage = lazy(() => import('@/pages/app/StatisticsPage'))
+const RecommendationsPage = lazy(() => import('@/pages/app/RecommendationsPage'))
 const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
 
 const router = createBrowserRouter([
@@ -61,6 +62,7 @@ const router = createBrowserRouter([
           { path: ROUTES.myHunts, element: <MyHuntsPage /> },
           { path: ROUTES.huntDetails(':id'), element: <HuntDetailsPage /> },
           { path: ROUTES.statistics, element: <StatisticsPage /> },
+          { path: ROUTES.recommendations, element: <RecommendationsPage /> },
         ],
       },
     ],
