@@ -85,7 +85,7 @@
 - [ ] NotificationsPage (lista com paginação, mark read/unread, mark all read)
 - [x] SettingsPage (tabs: Profile, Account, Security, Privacy, Notifications, Preferences)
   - Preferences: default_character_id, default_language, default_theme
-- [ ] PremiumPage (hero, benefits, plan comparison, FAQ, subscription status)
+- [x] PremiumPage (hero, benefits, plan comparison, FAQ, subscription status)
 - [ ] PremiumPage (hero, benefits, plan comparison, FAQ, subscription status)
 
 ### Rankings
