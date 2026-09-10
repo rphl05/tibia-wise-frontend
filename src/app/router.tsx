@@ -32,6 +32,9 @@ const SettingsPage = lazy(() => import('@/pages/app/SettingsPage'))
 const PremiumPage = lazy(() => import('@/pages/app/PremiumPage'))
 const RankingsPage = lazy(() => import('@/pages/app/RankingsPage'))
 const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
+const ForbiddenPage = lazy(() => import('@/pages/system/ForbiddenPage'))
+const ServerErrorPage = lazy(() => import('@/pages/system/ServerErrorPage'))
+const MaintenancePage = lazy(() => import('@/pages/system/MaintenancePage'))
 
 const router = createBrowserRouter([
   {
@@ -81,7 +84,13 @@ const router = createBrowserRouter([
   },
   {
     element: <SystemLayout />,
-    children: [{ path: '*', element: <NotFoundPage /> }],
+    children: [
+      { path: ROUTES.forbidden, element: <ForbiddenPage /> },
+      { path: ROUTES.notFound, element: <NotFoundPage /> },
+      { path: ROUTES.serverError, element: <ServerErrorPage /> },
+      { path: ROUTES.maintenance, element: <MaintenancePage /> },
+      { path: '*', element: <NotFoundPage /> },
+    ],
   },
 ])
 
