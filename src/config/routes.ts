@@ -19,10 +19,9 @@ export const ROUTES = {
 
   statistics: '/statistics',
   recommendations: '/recommendations',
-  rankings: '/rankings',
-
   news: '/news',
   newsDetails: (id: string) => `/news/${id}`,
+  rankings: '/rankings',
   tutorials: '/tutorials',
   faq: '/faq',
   support: '/support',

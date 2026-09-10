@@ -1,0 +1,121 @@
+.news-page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.news-page__header {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.news-page__header h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+.news-page__filters {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.news-page__filter-active {
+  color: var(--action-primary);
+  font-weight: 500;
+}
+
+.news-page__filter-active a {
+  color: var(--action-primary);
+}
+
+.news-page__filter a {
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.news-page__filter a:hover {
+  color: var(--action-primary);
+}
+
+.news-page__main {
+  display: grid;
+  gap: 2rem;
+}
+
+.news-page__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.news-page__news-item {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.news-page__news-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.news-page__news-item h2 {
+  font-size: 1.25rem;
+  margin: 0.75rem 1rem;
+}
+
+.news-page__news-item h2 a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.news-page__news-item h2 a:hover {
+  color: var(--action-primary);
+}
+
+.news-page__news-item p {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  margin: 0 1rem 0.5rem 1rem;
+}
+
+.news-page__meta {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 1rem 1rem 1rem;
+  border-top: 1px solid var(--border-default);
+}
+
+.news-page__date {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.news-page__author {
+  font-size: 0.75rem;
+  color: var(--text-tertiary);
+}
+
+.news-page__load-more {
+  display: flex;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.news-page__load-more button {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: background 0.2s;
+}
+
+.news-page__load-more button:hover {
+  background: var(--bg-surface-hover);
