@@ -78,7 +78,7 @@
 - [x] NewsListPage + NewsDetailsPage (SEO, OG tags, structured data Article)
 - [x] TutorialsPage (categorias: primeiros passos, análise, recursos)
 - [x] FAQPage (accordion, busca, categorias)
-- [ ] SupportPage (form + categorias, FAQ search)
+- [x] SupportPage (form + categorias, FAQ search)
 
 ### Account (Profile, Notifications, Settings, Premium)
 - [x] ProfilePage (avatar, display_name, email, username, country, birth_date, characters summary)
