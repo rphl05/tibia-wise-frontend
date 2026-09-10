@@ -77,7 +77,7 @@
 ### Content (News, Tutorials, FAQ, Support)
 - [x] NewsListPage + NewsDetailsPage (SEO, OG tags, structured data Article)
 - [x] TutorialsPage (categorias: primeiros passos, análise, recursos)
-- [ ] FAQPage (accordion, busca, categorias)
+- [x] FAQPage (accordion, busca, categorias)
 - [ ] SupportPage (form + categorias, FAQ search)
 
 ### Account (Profile, Notifications, Settings, Premium)
