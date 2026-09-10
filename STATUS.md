@@ -72,7 +72,7 @@
 - [x] DashboardPage (welcome, StatCards, XP/h chart, última hunt, últimas hunts, news preview, recommendations preview)
 - [x] StatisticsPage (KPIs, evolution chart, period comparison, XP/profit analysis, hunting place performance)
 - [x] RecommendationsPage (cards com hunting place, XP/h estimado, profit estimado, compatibilidade, razão, CTA)
-- [ ] Charts (Recharts com cores semânticas: XP=azul, Profit=verde, Supplies=roxo, Loot=dourado, Damage=vermelho)
+- [x] Charts (Recharts com cores semânticas: XP=azul, Profit=verde, Supplies=roxo, Loot=dourado, Damage=vermelho)
 
 ### Content (News, Tutorials, FAQ, Support)
 - [ ] NewsListPage + NewsDetailsPage (SEO, OG tags, structured data Article)
