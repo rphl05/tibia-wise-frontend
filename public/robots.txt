@@ -1,12 +1,43 @@
+# Robots.txt for Tibia Wise
 User-agent: *
 Allow: /
 
-Disallow: /dashboard
-Disallow: /my-hunts
-Disallow: /characters
-Disallow: /statistics
-Disallow: /recommendations
-Disallow: /settings
-Disallow: /profile
-Disallow: /notifications
-Disallow: /api
+# Sitemap
+Sitemap: https://tibiawise.com/sitemap.xml
+
+# Disallow private/admin areas
+Disallow: /dashboard/
+Disallow: /profile/
+Disallow: /settings/
+Disallow: /notifications/
+Disallow: /premium/
+Disallow: /characters/
+Disallow: /hunts/
+Disallow: /rankings/
+Disallow: /statistics/
+Disallow: /recommendations/
+Disallow: /notifications/
+Disallow: /support/
+Disallow: /faq/
+Disallow: /tutorials/
+Disallow: /news/
+
+# Allow public pages
+Allow: /$
+Allow: /login
+Allow: /register
+Allow: /forgot-password
+Allow: /reset-password
+Allow: /verify-email
+Allow: /news/
+Allow: /tutorials/
+Allow: /faq/
+Allow: /support/
+Allow: /premium
+Allow: /rankings
+Allow: /statistics
+Allow: /recommendations
+Allow: /news
+
+# Crawl-delay
+Crawl-delay: 10

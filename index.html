@@ -7,17 +7,57 @@
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="description" content="Tibia Wise — Análise de hunting sessions do Tibia: XP/h, profit, estatísticas e recomendações." />
+    <meta name="description" content="Tibia Wise — Análise de hunting sessions do Tibia: XP/h, profit, estatísticas e recomendações personalizadas." />
+    <meta name="theme-color" content="#1688ff" />
     <title>Tibia Wise — Analytics para suas Hunts</title>
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tibiawise.com/" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://tibiawise.com/" />
+    <meta property="og:title" content="Tibia Wise — Analytics para suas Hunts" />
+    <meta property="og:description" content="Análise de hunting sessions do Tibia: XP/h, profit, estatísticas e recomendações personalizadas." />
+    <meta property="og:image" content="https://tibiawise.com/assets/images/og-default.webp" />
+    <meta property="og:site_name" content="Tibia Wise" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://tibiawise.com/" />
+    <meta name="twitter:title" content="Tibia Wise — Analytics para suas Hunts" />
+    <meta name="twitter:description" content="Análise de hunting sessions do Tibia: XP/h, profit, estatísticas e recomendações personalizadas." />
+    <meta name="twitter:image" content="https://tibiawise.com/assets/images/og-default.webp" />
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Tibia Wise",
+      "url": "https://tibiawise.com/",
+      "description": "Análise de hunting sessions do Tibia: XP/h, profit, estatísticas e recomendações personalizadas.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://tibiawise.com/search?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap"
       rel="stylesheet"
     />
+
     <script>
-      // Aplica o tema antes do primeiro paint para evitar flash.
-      ;(function () {
+      (function () {
         try {
           var stored = localStorage.getItem('tw-theme') || 'dark'
           var theme =
