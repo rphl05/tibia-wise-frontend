@@ -89,7 +89,7 @@
 - [ ] PremiumPage (hero, benefits, plan comparison, FAQ, subscription status)
 
 ### Rankings
-- [ ] RankingsPage (tabs: XP/h, Profit/h, Total XP, Total Profit; filtros vocação/mundo/período; paginação)
+- [x] RankingsPage (tabs: XP/h, Profit/h, Total XP, Total Profit; filtros vocação/mundo/período; paginação)
 
 ### Quality & Polish
 - [ ] Error Pages (403, 404, 500, 503 com branding + CTAs)
