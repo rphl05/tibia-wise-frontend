@@ -4,6 +4,8 @@ import { Outlet } from 'react-router-dom'
 import { MobileNav } from './AppLayout/MobileNav'
 import { Sidebar } from './AppLayout/Sidebar'
 import { Topbar } from './AppLayout/Topbar'
+import { SkipLink } from '@/components/a11y/SkipLink'
+
 import './AppLayout/AppLayout.css'
 
 /**
@@ -15,6 +17,7 @@ export function AppLayout() {
 
   return (
     <div className="app-layout">
+      <SkipLink />
       <Topbar onMenuClick={() => setSidebarOpen(true)} />
 
       <Sidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
@@ -27,7 +30,7 @@ export function AppLayout() {
         />
       )}
 
-      <main className="app-layout__content">
+      <main className="app-layout__content" id="main-content">
         <div className="app-layout__container">
           <Outlet />
         </div>

@@ -1,0 +1,52 @@
+.lazy-image {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: var(--bg-surface);
+}
+
+.lazy-image__placeholder {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-surface);
+  color: var(--text-tertiary);
+  font-size: var(--font-size-small);
+  transition: opacity 0.3s ease;
+}
+
+.lazy-image__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-image__img--loaded {
+  opacity: 1;
+}
+
+.lazy-image__img--error {
+  opacity: 0;
+}
+
+.lazy-image__error {
+  position: absolute;
+  bottom: var(--space-3);
+  left: 50%;
+  transform: translateX(-50%);
+  padding: var(--space-2) var(--space-3);
+  background: var(--status-error);
+  color: #fff;
+  font-size: var(--font-size-small);
+  border-radius: var(--radius-md);
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(4px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
