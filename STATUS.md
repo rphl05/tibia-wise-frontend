@@ -94,8 +94,8 @@
 ### Quality & Polish
 - [x] Error Pages (403, 404, 500, 503 com branding + CTAs)
 - [x] SEO (sitemap.xml, canonical, OG tags, structured data: Organization, WebSite, BreadcrumbList, Article, FAQPage)
-- [ ] Accessibility audit (contraste, foco visível, navegação teclado, ARIA, alt texts, semântica HTML)
-- [ ] Performance (lazy loading, image optimization, bundle analysis, virtualização tabelas grandes)
+- [x] Accessibility audit (contraste, foco visível, navegação teclado, ARIA, alt texts, semântica HTML)
+- [x] Performance (lazy loading, image optimization, bundle analysis, virtualização tabelas grandes)
 - [ ] Testes (Vitest + RTL unit/component, Playwright E2E: register→login→add character→import hunt→dashboard)
 
 ---
