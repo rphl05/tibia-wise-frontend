@@ -31,6 +31,7 @@ const ProfilePage = lazy(() => import('@/pages/app/ProfilePage'))
 const SettingsPage = lazy(() => import('@/pages/app/SettingsPage'))
 const PremiumPage = lazy(() => import('@/pages/app/PremiumPage'))
 const RankingsPage = lazy(() => import('@/pages/app/RankingsPage'))
+const NotificationsPage = lazy(() => import('@/pages/app/NotificationsPage'))
 const NotFoundPage = lazy(() => import('@/pages/system/NotFoundPage'))
 const ForbiddenPage = lazy(() => import('@/pages/system/ForbiddenPage'))
 const ServerErrorPage = lazy(() => import('@/pages/system/ServerErrorPage'))
@@ -78,6 +79,7 @@ const router = createBrowserRouter([
           { path: ROUTES.settings, element: <SettingsPage /> },
           { path: ROUTES.premium, element: <PremiumPage /> },
           { path: ROUTES.rankings, element: <RankingsPage /> },
+          { path: ROUTES.notifications, element: <NotificationsPage /> },
         ],
       },
     ],
