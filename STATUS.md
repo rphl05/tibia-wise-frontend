@@ -82,7 +82,7 @@
 
 ### Account (Profile, Notifications, Settings, Premium)
 - [x] ProfilePage (avatar, display_name, email, username, country, birth_date, characters summary)
-- [ ] NotificationsPage (lista com paginação, mark read/unread, mark all read)
+- [x] NotificationsPage (lista com paginação, mark read/unread, mark all read)
 - [x] SettingsPage (tabs: Profile, Account, Security, Privacy, Notifications, Preferences)
   - Preferences: default_character_id, default_language, default_theme
 - [x] PremiumPage (hero, benefits, plan comparison, FAQ, subscription status)
