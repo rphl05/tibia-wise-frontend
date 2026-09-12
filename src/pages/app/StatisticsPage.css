@@ -1,0 +1,218 @@
+.statistics-page {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-6);
+}
+
+.statistics-page__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+  flex-wrap: wrap;
+}
+
+.statistics-page__header h1 {
+  font-size: var(--font-size-h2);
+}
+
+.statistics-page__period-selector {
+  min-width: 180px;
+}
+
+.statistics-page__header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.statistics-page__skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.statistics-page__tab {
+  margin-top: var(--space-6);
+}
+
+.statistics-page__kpis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.statistics-page__period-info {
+  padding: var(--space-4);
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  color: var(--text-secondary);
+  text-align: center;
+}
+
+.statistics-page__evolution {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+.statistics-page__chart {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.statistics-page__chart h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--space-4);
+}
+
+.statistics-page__chart-skeleton {
+  min-height: 300px;
+}
+
+.statistics-page__comparison {
+  margin-top: var(--space-4);
+}
+
+.statistics-page__comparison-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: var(--space-4);
+}
+
+.statistics-page__comparison-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.statistics-page__comparison-card h3 {
+  font-size: var(--font-size-h3);
+  margin-bottom: var(--space-4);
+}
+
+.statistics-page__comparison-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.statistics-page__comparison-row .label {
+  display: block;
+  font-size: var(--font-size-small);
+  color: var(--text-tertiary);
+  margin-bottom: var(--space-1);
+}
+
+.statistics-page__comparison-row .value {
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.statistics-page__change {
+  font-size: var(--font-size-h3);
+  font-weight: 700;
+  text-align: right;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border-default);
+}
+
+.statistics-page__change.positive {
+  color: var(--status-success);
+}
+
+.statistics-page__change.negative {
+  color: var(--status-error);
+}
+
+.statistics-page__analysis {
+  margin-top: var(--space-4);
+}
+
+.statistics-page__analysis-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: var(--space-4);
+}
+
+.statistics-page__places {
+  margin-top: var(--space-4);
+}
+
+.statistics-page__places-table {
+  overflow-x: auto;
+}
+
+.statistics-page__places-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.statistics-page__places-table th,
+.statistics-page__places-table td {
+  padding: var(--space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.statistics-page__places-table th {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.statistics-page__hunts-comparison {
+  margin-top: var(--space-4);
+}
+
+.statistics-page__hunts-table {
+  overflow-x: auto;
+}
+
+.statistics-page__hunts-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.statistics-page__hunts-table th,
+.statistics-page__hunts-table td {
+  padding: var(--space-3);
+  text-align: left;
+  border-bottom: 1px solid var(--border-default);
+}
+
+.statistics-page__hunts-table th {
+  font-size: var(--font-size-small);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--text-secondary);
+}
+
+.statistics-page__hunts-table td.positive {
+  color: var(--status-success);
+}
+
+.statistics-page__hunts-table td.negative {
+  color: var(--status-error);
+}
+
+@media (max-width: 767px) {
+  .statistics-page__evolution {
+    grid-template-columns: 1fr;
+  }
+
+  .statistics-page__comparison-cards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -96,7 +96,7 @@
 - [x] SEO (sitemap.xml, canonical, OG tags, structured data: Organization, WebSite, BreadcrumbList, Article, FAQPage)
 - [x] Accessibility audit (contraste, foco visível, navegação teclado, ARIA, alt texts, semântica HTML)
 - [x] Performance (lazy loading, image optimization, bundle analysis, virtualização tabelas grandes)
-- [ ] Testes (Vitest + RTL unit/component, Playwright E2E: register→login→add character→import hunt→dashboard)
+- [x] Testes (Vitest + RTL unit/component, Playwright E2E: register→login→add character→import hunt→dashboard)
 
 ---
 
