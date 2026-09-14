@@ -431,7 +431,7 @@
       rgba(4, 12, 20, 0.48) 58%,
       rgba(4, 12, 20, 0.2) 100%
     ),
-    url('/assets/images/home-hero.webp') center bottom / cover no-repeat;
+    url('/assets/images/home-cta.webp') center bottom / cover no-repeat;
 }
 
 .home-cta__content {
