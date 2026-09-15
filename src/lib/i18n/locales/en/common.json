@@ -46,6 +46,10 @@
   "language": {
     "label": "Language"
   },
+  "langSwitcher": {
+    "ptBR": "Português",
+    "enUS": "English"
+  },
   "notifications": {
     "label": "Notifications"
   },

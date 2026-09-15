@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { useTranslation } from 'react-i18next'
 
 import { Button } from '@/components/ui/Button/Button'
+import { LanguageSwitcher } from '@/components/LanguageSwitcher'
 import { ROUTES } from '@/config/routes'
 import './PublicHeader.css'
 
@@ -30,6 +31,7 @@ export function PublicHeader() {
         </nav>
 
         <div className="public-header__actions">
+          <LanguageSwitcher />
           <Button variant="ghost" onClick={() => (window.location.href = ROUTES.login)}>
             {t('actions.login')}
           </Button>

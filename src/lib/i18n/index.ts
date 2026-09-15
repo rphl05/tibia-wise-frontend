@@ -10,21 +10,22 @@ export type SupportedLanguage = (typeof SUPPORTED_LANGUAGES)[number]
 
 export const LANGUAGE_STORAGE_KEY = 'tw-language'
 
+const resources = {
+  'pt-BR': { translation: ptCommon },
+  en: { translation: enCommon },
+} as const
+
 i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    resources: {
-      'pt-BR': { common: ptCommon },
-      en: { common: enCommon },
-    },
-    defaultNS: 'common',
+    resources,
+    lng: 'pt-BR', // default idiom bra cache/localStorage or navigator
     fallbackLng: 'pt-BR',
-    supportedLngs: [...SUPPORTED_LANGUAGES],
-    nonExplicitSupportedLngs: true,
+    supportedLngs: ['pt-BR', 'en'],
     interpolation: { escapeValue: false },
     detection: {
-      order: ['localStorage', 'navigator'],
+      order: ['localStorage'],
       lookupLocalStorage: LANGUAGE_STORAGE_KEY,
       caches: ['localStorage'],
     },
