@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useLocation, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
@@ -9,11 +9,14 @@ import { Input } from '@/components/ui/FormFields/Input'
 import { PasswordInput } from '@/components/ui/FormFields/PasswordInput'
 import { useAuthErrorMap } from '../api/errorMap'
 import { useLoginSchema } from '../schemas/authSchemas'
-import { authApi } from '../api/auth.api'
+import { useAuth } from '../AuthProvider'
+import { ROUTES } from '@/config/routes'
 
 export function LoginForm() {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const location = useLocation()
+  const { login } = useAuth()
   const mapErrors = useAuthErrorMap()
   const schema = useLoginSchema()
 
@@ -24,11 +27,13 @@ export function LoginForm() {
     setError,
   } = useForm({ resolver: zodResolver(schema) })
 
+  const from = location.state?.from ?? ROUTES.dashboard
+
   const onSubmit = useCallback(
     handleSubmit(async (data) => {
       try {
-        await authApi.login(data)
-        navigate('/dashboard', { replace: true })
+        await login(data.identifier, data.password)
+        navigate(from, { replace: true })
       } catch (err) {
         const mapped = mapErrors(err)
         Object.entries(mapped).forEach(([field, message]) => {
@@ -36,7 +41,7 @@ export function LoginForm() {
         })
       }
     }),
-    [handleSubmit, navigate, mapErrors, setError],
+    [handleSubmit, login, navigate, from, mapErrors, setError],
   )
 
   return (
