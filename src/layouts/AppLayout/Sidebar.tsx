@@ -8,6 +8,7 @@ import {
   Swords,
   Compass,
   Users,
+  FileText,
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { clsx } from 'clsx'
@@ -40,6 +41,8 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
     { to: ROUTES.importHunt, label: t('nav.importHunt'), icon: Import },
     { to: ROUTES.characters, label: t('nav.characters'), icon: Users },
     { to: ROUTES.recommendations, label: t('nav.recommendations'), icon: Compass },
+    { to: ROUTES.news, label: t('nav.news'), icon: FileText },
+    { to: ROUTES.faq, label: t('nav.faq'), icon: HelpCircle },
   ]
 
   const helpNav: NavItem[] = [
