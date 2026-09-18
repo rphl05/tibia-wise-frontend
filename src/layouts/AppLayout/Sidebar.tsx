@@ -42,7 +42,6 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
     { to: ROUTES.characters, label: t('nav.characters'), icon: Users },
     { to: ROUTES.recommendations, label: t('nav.recommendations'), icon: Compass },
     { to: ROUTES.news, label: t('nav.news'), icon: FileText },
-    { to: ROUTES.faq, label: t('nav.faq'), icon: HelpCircle },
   ]
 
   const helpNav: NavItem[] = [
