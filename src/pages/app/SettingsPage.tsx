@@ -1,167 +1,198 @@
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-import { useAuth } from '@/features/auth/AuthProvider'
+import { Button } from '@/components/ui/Button/Button'
+import { Checkbox } from '@/components/ui/FormFields/Checkbox'
+import { Input } from '@/components/ui/FormFields/Input'
+import { Select } from '@/components/ui/FormFields/Select'
 import { Tabs } from '@/components/navigation/Tabs/Tabs'
+import { useAuth } from '@/features/auth/AuthProvider'
+
 import './SettingsPage.css'
 
-const SettingsPage = () => {
+type TabId = 'profile' | 'account' | 'privacy' | 'notifications' | 'preferences'
+
+const TABS: { id: TabId; label: string }[] = [
+  { id: 'profile', label: 'Perfil' },
+  { id: 'account', label: 'Conta' },
+  { id: 'privacy', label: 'Privacidade' },
+  { id: 'notifications', label: 'Notificações' },
+  { id: 'preferences', label: 'Preferências' },
+] as const
+
+export default function SettingsPage() {
   const { t } = useTranslation()
   const { user } = useAuth()
-  const [activeTab, setActiveTab] = useState('profile')
+  const [activeTab, setActiveTab] = useState<TabId>('profile')
+  const [emailNotifications, setEmailNotifications] = useState(true)
 
   return (
     <div className="settings-page">
       <header className="settings-page__header">
-        <h1>{t('settings.title', 'Configurações')}</h1>
-        <p>{t('settings.subtitle', 'Gerencie suas configurações de conta e preferências')}</p>
+        <h1>{t('settings.title')}</h1>
       </header>
 
-      <main className="settings-page__main">
-        <Tabs
-          tabs={[
-            { id: 'profile', label: t('settings.tabs.profile', 'Perfil') },
-            { id: 'account', label: t('settings.tabs.account', 'Conta') },
-            { id: 'privacy', label: t('settings.tabs.privacy', 'Privacidade') },
-            { id: 'notifications', label: t('settings.tabs.notifications', 'Notificações') },
-            { id: 'preferences', label: t('settings.tabs.preferences', 'Preferências') },
-          ]}
-          active={activeTab}
-          onChange={setActiveTab}
-          aria-label={t('settings.navAria', 'Navegação entre seções')}
-        />
+      <Tabs
+        tabs={TABS.map((tab) => ({ id: tab.id, label: tab.label }))}
+        active={activeTab}
+        onChange={(id) => setActiveTab(id as TabId)}
+        aria-label={t('settings.navAria', 'Navegação entre seções')}
+      />
 
+      <main className="settings-page__main">
         {activeTab === 'profile' && (
-          <section className="settings-page__section">
-            <h2>{t('settings.profile', 'Perfil')}</h2>
+          <section className="settings-page__section" aria-labelledby="profile-title">
+            <h2 id="profile-title">{t('settings.profile')}</h2>
             <p className="settings-page__section-description">
-              {t('settings.profileDescription', 'Edite seu perfil e informações públicas.')}
+              {t('settings.profileDescription')}
             </p>
             <div className="settings-page__form-grid">
               <div className="settings-page__field">
-                <label>{t('settings.profileName', 'Nome do usuário')}</label>
-                <input type="text" defaultValue={user?.display_name || ''} />
-                <small>{t('settings.nameHint', 'Nome exibido publicamente.')}</small>
+                <Input
+                  label={t('settings.profileName')}
+                  defaultValue={user?.display_name ?? ''}
+                  hint={t('settings.nameHint')}
+                />
               </div>
               <div className="settings-page__field">
-                <label>{t('settings.usernameLabel', 'Nome de usuário')}</label>
-                <input type="text" defaultValue={user?.username || ''} disabled />
-                <small>{t('settings.usernameHint', 'Letras, números, _ e -; mínimo 4 caracteres.')}</small>
+                <Input
+                  label={t('settings.usernameLabel')}
+                  defaultValue={user?.username ?? ''}
+                  disabled
+                  hint={t('settings.usernameHint')}
+                />
               </div>
-              <div className="settings-page__field">
-                <label>{t('settings.bio', 'Bio')}</label>
-                <textarea rows={3} placeholder={t('settings.bioPlaceholder', 'Conte um pouco sobre você...')}>
-                  {t('settings.bioDefault', '')}
-                </textarea>
+              <div className="settings-page__field settings-page__field--full">
+                <label className="field__label">{t('settings.bio')}</label>
+                <textarea
+                  className="field__textarea"
+                  rows={3}
+                  placeholder={t('settings.bioPlaceholder')}
+                  aria-describedby="bio-hint"
+                />
+                <small id="bio-hint" className="field__hint">
+                  {t('settings.bioHint', 'Conte um pouco sobre você (opcional).')}
+                </small>
               </div>
+            </div>
+            <div className="settings-page__actions">
+              <Button variant="secondary">
+                {t('actions.cancel')}
+              </Button>
+              <Button variant="primary">
+                {t('actions.save')}
+              </Button>
             </div>
           </section>
         )}
 
         {activeTab === 'account' && (
-          <section className="settings-page__section">
-            <h2>{t('settings.account', 'Conta')}</h2>
+          <section className="settings-page__section" aria-labelledby="account-title">
+            <h2 id="account-title">{t('settings.account')}</h2>
             <p className="settings-page__section-description">
-              {t('settings.accountDescription', 'Gerencie suas configurações de conta.')}
+              {t('settings.accountDescription')}
             </p>
             <div className="settings-page__form-grid">
               <div className="settings-page__field">
-                <label>{t('settings.email', 'E-mail')}</label>
-                <input type="email" defaultValue={user?.email || ''} disabled />
-                <small>{t('settings.emailHint', 'Seu e-mail é usado para login e recuperação.')}</small>
+                <Input
+                  label={t('settings.email')}
+                  type="email"
+                  defaultValue={user?.email ?? ''}
+                  disabled
+                  hint={t('settings.emailHint')}
+                />
               </div>
               <div className="settings-page__field">
-                <label>{t('settings.country', 'País')}</label>
-                <input type="text" defaultValue={user?.country_code || ''} disabled />
+                <Input
+                  label={t('settings.country')}
+                  defaultValue={user?.country_code ?? ''}
+                  disabled
+                />
               </div>
               <div className="settings-page__field">
-                <label>{t('settings.memberSince', 'Membro desde')}</label>
-                <input type="text" value={user?.created_at ? new Date(user.created_at).toLocaleDateString() : ''} disabled />
+                <Input
+                  label={t('settings.memberSince')}
+                  value={
+                    user?.created_at
+                      ? new Date(user.created_at).toLocaleDateString('pt-BR')
+                      : '-'
+                  }
+                  disabled
+                />
               </div>
             </div>
           </section>
         )}
 
         {activeTab === 'privacy' && (
-          <section className="settings-page__section">
-            <h2>{t('settings.privacy', 'Privacidade')}</h2>
+          <section className="settings-page__section" aria-labelledby="privacy-title">
+            <h2 id="privacy-title">{t('settings.privacy')}</h2>
             <p className="settings-page__section-description">
-              {t('settings.privacyDescription', 'Defina a visibilidade das suas informações')}
+              {t('settings.privacyDescription')}
             </p>
-            <div className="settings-page__form-grid">
-              <div className="settings-page__field">
-                <label>{t('settings.visibility', 'Visibilidade de Perfil')}</label>
-                <select defaultValue="PUBLIC">
-                  <option value="PUBLIC">{t('settings.public', 'Público')}</option>
-                  <option value="PRIVATE">{t('settings.private', 'Privado')}</option>
-                </select>
-                <small>{t('settings.visibilityHint', 'Controle quem pode ver seu perfil.')}</small>
-              </div>
-              <div className="settings-page__field">
-                <label>{t('settings.showCharacters', 'Mostrar personagens')}</label>
-                <select defaultValue="ALL">
-                  <option value="NONE">{t('settings.none', 'Nenhum')}</option>
-                  <option value="VERIFIED">{t('settings.verifiedOnly', 'Só personagens verificados')}</option>
-                  <option value="ALL">{t('settings.all', 'Todos')}</option>
-                </select>
-              </div>
+            <div className="settings-page__field">
+              <Select
+                label={t('settings.profileVisibility')}
+                defaultValue="PUBLIC"
+              >
+                <option value="PUBLIC">{t('settings.public')}</option>
+                <option value="PRIVATE">{t('settings.private')}</option>
+              </Select>
+              <small className="settings-page__hint">
+                {t('settings.visibilityHint')}
+              </small>
             </div>
           </section>
         )}
 
         {activeTab === 'notifications' && (
-          <section className="settings-page__section">
-            <h2>{t('settings.notifications', 'Notificações')}</h2>
+          <section className="settings-page__section" aria-labelledby="notifications-title">
+            <h2 id="notifications-title">{t('settings.notifications')}</h2>
             <p className="settings-page__section-description">
-              {t('settings.notificationsDescription', 'Configure preferências de notificações.')}
+              {t('settings.notificationsDescription')}
             </p>
             <div className="settings-page__form-grid">
               <div className="settings-page__field">
-                <label>{t('settings.emailNotifications', 'Notificações por e-mail')}</label>
-                <label className="settings-page__checkbox">
-                  <input type="checkbox" defaultChecked={true} />
-                  {t('settings.receiveEmail', 'Receber notificações por e-mail')}
-                </label>
-              </div>
-              <div className="settings-page__field">
-                <label>{t('settings.pushNotifications', 'Notificações push')}</label>
-                <label className="settings-page__checkbox">
-                  <input type="checkbox" defaultChecked={false} disabled />
-                  {t('settings.receivePush', 'Receber notificações push')}
-                </label>
+                <Checkbox
+                  label={t('settings.emailAlerts', 'Alertas por e-mail')}
+                  checked={emailNotifications}
+                  onChange={() => setEmailNotifications(!emailNotifications)}
+                />
               </div>
             </div>
           </section>
         )}
 
         {activeTab === 'preferences' && (
-          <section className="settings-page__section">
-            <h2>{t('settings.preferences', 'Preferências')}</h2>
+          <section className="settings-page__section" aria-labelledby="preferences-title">
+            <h2 id="preferences-title">{t('settings.preferences')}</h2>
             <p className="settings-page__section-description">
-              {t('settings.preferencesDescription', 'Configure suas preferências do sistema.')}
+              {t('settings.preferencesDescription')}
             </p>
             <div className="settings-page__form-grid">
               <div className="settings-page__field">
-                <label>{t('settings.defaultCharacter', 'Personagem padrão')}</label>
-                <select defaultValue={user?.default_character_id ?? ''}>
-                  <option value={''}>{t('settings.selectDefault', 'Selecione')}</option>
-                </select>
-                <small>{t('settings.defaultCharacterHint', 'Personagem usado como padrão.')}</small>
+                <Select
+                  label={t('settings.defaultCharacter')}
+                  defaultValue=""
+                >
+                  <option value="">{t('settings.selectDefault')}</option>
+                </Select>
+                <small className="settings-page__hint">
+                  {t('settings.defaultCharacterHint')}
+                </small>
               </div>
               <div className="settings-page__field">
-                <label>{t('settings.language', 'Idioma')}</label>
-                <select defaultValue="pt-BR">
-                  <option value="pt-BR">{t('settings.langPt', 'Português')}</option>
-                  <option value="en">{t('settings.langEn', 'English')}</option>
-                </select>
+                <Select label={t('settings.language')}>
+                  <option value="pt-BR">{t('settings.langPt')}</option>
+                  <option value="en">{t('settings.langEn')}</option>
+                </Select>
               </div>
               <div className="settings-page__field">
-                <label>{t('settings.theme', 'Tema')}</label>
-                <select defaultValue="system">
-                  <option value="system">{t('settings.system', 'Sistema')}</option>
-                  <option value="light">{t('settings.light', 'Claro')}</option>
-                  <option value="dark">{t('settings.dark', 'Escuro')}</option>
-                </select>
+                <Select label={t('settings.theme')}>
+                  <option value="system">{t('settings.system')}</option>
+                  <option value="light">{t('settings.light')}</option>
+                  <option value="dark">{t('settings.dark')}</option>
+                </Select>
               </div>
             </div>
           </section>
@@ -170,5 +201,3 @@ const SettingsPage = () => {
     </div>
   )
 }
-
-export default SettingsPage
