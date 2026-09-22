@@ -238,6 +238,25 @@
     },
     "errors": {
       "loadFailed": "Failed to load character."
+    },
+    "wizard": {
+      "nameDescription": "Type your character's exact name in Tibia. We'll generate a code so you can prove it's yours.",
+      "continue": "Continue",
+      "createFailed": "Could not create the character.",
+      "verifyDescription": "{{name}} was created. Now you need to verify this character is yours.",
+      "step1": "Copy the code below.",
+      "step2": "In Tibia, open your character page (Manage Character) and paste the code into the description field (Comment).",
+      "step3": "Come back here and click \"Verify character\".",
+      "copyCode": "Copy code",
+      "tokenCopied": "Code copied!",
+      "copyFailed": "Could not copy. Select the code manually.",
+      "verifyButton": "Verify character",
+      "verifyFailed": "Could not verify. Make sure the code is in your character's description and try again.",
+      "successTitle": "Character verified!",
+      "successBody": "Your character was added successfully.",
+      "successBodyWithLevel": "Your character was added with level {{level}}, fetched automatically from the Tibia website.",
+      "viewCharacters": "View my characters",
+      "editSkills": "Edit skills"
     }
   },
   "hunts": {
@@ -380,6 +399,103 @@
     "ctaBenefit1": "Free to start",
     "ctaBenefit2": "Hunt import",
     "ctaBenefit3": "Statistics & recommendations"
+  },
+  "settings": {
+    "title": "Settings",
+    "navAria": "Settings sections navigation",
+    "tabs": {
+      "profile": "Profile",
+      "account": "Account",
+      "privacy": "Privacy",
+      "notifications": "Notifications",
+      "preferences": "Preferences"
+    },
+    "feedback": {
+      "saved": "Settings saved successfully.",
+      "saveError": "We couldn't save your changes."
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "Information shown on your profile.",
+      "displayName": "Display name",
+      "displayNameHint": "Name that will be publicly displayed on Tibia Wise.",
+      "username": "Username",
+      "usernameHint": "Between 4 and 30 characters. Letters, numbers, \"_\" and \"-\".",
+      "usernameCooldown": "You can change your username again in {{days}} day(s).",
+      "usernameInvalid": "Invalid username. Use 4 to 30 characters, with letters, numbers, \"_\" or \"-\".",
+      "usernameTaken": "This username is already in use.",
+      "country": "Country",
+      "countryPlaceholder": "Select a country",
+      "cancel": "Cancel",
+      "save": "Save changes"
+    },
+    "account": {
+      "title": "Account",
+      "description": "Your account data and security.",
+      "infoTitle": "Account information",
+      "email": "E-mail",
+      "emailHint": "E-mail cannot be changed here.",
+      "country": "Country",
+      "memberSince": "Member since",
+      "securityTitle": "Security",
+      "changePasswordUnavailableTitle": "Password change unavailable",
+      "changePasswordUnavailable": "Changing your password with current-password confirmation is not available yet. Today you can reset your password through the \"Forgot my password\" flow on the login screen.",
+      "sessionsTitle": "Active sessions",
+      "sessionsDescription": "Manage where your account is signed in.",
+      "sessionsEmpty": "No active sessions found.",
+      "sessionsError": "We couldn't load your sessions.",
+      "sessionBrowser": "Browser",
+      "sessionOS": "Operating system",
+      "sessionLastActivity": "Last activity",
+      "sessionLocation": "Approximate location",
+      "unknownDevice": "Unknown device",
+      "revokeSession": "Sign out session",
+      "revokeSessionTitle": "Sign out session",
+      "revokeSessionBody": "Are you sure you want to sign out this session? The device will be disconnected.",
+      "revokeSessionSuccess": "Session ended.",
+      "revokeAll": "Sign out all sessions",
+      "revokeAllHint": "Signs out all sessions, including this one. You will be disconnected.",
+      "revokeAllTitle": "Sign out all sessions",
+      "revokeAllBody": "All sessions will be ended, including the current one, and you will be disconnected. Continue?",
+      "dangerTitle": "Danger zone",
+      "closeAccount": "Close my account",
+      "closeAccountUnavailableTitle": "Account closure unavailable",
+      "closeAccountUnavailable": "Closing your account with password confirmation is not available yet. To close your account, please contact support."
+    },
+    "privacy": {
+      "title": "Privacy",
+      "description": "Control what other people can see.",
+      "profileSection": "Profile",
+      "showProfile": "Public profile",
+      "showProfileHint": "When enabled, other players can view your profile.",
+      "showStatistics": "Public statistics",
+      "showStatisticsHint": "When enabled, your statistics are visible on your public profile.",
+      "charactersSection": "Characters",
+      "charactersHint": "Only verified characters appear here.",
+      "noVerifiedCharacters": "No verified characters available.",
+      "viewMyCharacters": "View my characters",
+      "characterPrivate": "Private character",
+      "characterPrivateHint": "When enabled, this character is not publicly visible."
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Choose how and when you want to be notified.",
+      "unavailableTitle": "Notification preferences unavailable",
+      "unavailable": "Notification preferences cannot be managed yet. When available, you will be able to control e-mail alerts here."
+    },
+    "preferences": {
+      "title": "Preferences",
+      "description": "Customize your Tibia Wise experience.",
+      "theme": "Theme",
+      "themeHint": "Choose dark, light, or follow the system.",
+      "language": "Language",
+      "languageHint": "Interface language.",
+      "defaultCharacter": "Default character",
+      "defaultCharacterHint": "The selected character will be used by default on the Dashboard, statistics and recommendations.",
+      "noDefaultCharacter": "No verified characters available.",
+      "addCharacter": "View my characters",
+      "noCharacter": "None"
+    }
   },
   "loading": "Loading..."
 }

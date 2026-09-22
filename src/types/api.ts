@@ -28,6 +28,31 @@ export interface Me {
   username_changed_at: string | null
 }
 
+export interface UpdateMeDto {
+  display_name?: string
+  username?: string
+  country_code?: string | null
+  birth_date?: string | null
+  show_profile?: boolean
+  show_statistics?: boolean
+  default_character_id?: number | null
+  default_language?: LanguagePreference
+  default_theme?: ThemePreference
+}
+
+export interface SessionInfo {
+  id: string
+  user_agent: string | null
+  operating_system: string | null
+  browser: string | null
+  ip_address: string | null
+  approximate_location: string | null
+  created_at: string
+  last_activity_at: string
+  expires_at: string
+  revoked_at: string | null
+}
+
 export interface Character {
   id: string
   name: string

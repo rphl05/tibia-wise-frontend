@@ -238,6 +238,25 @@
     },
     "errors": {
       "loadFailed": "Falha ao carregar personagem."
+    },
+    "wizard": {
+      "nameDescription": "Digite o nome exato do seu personagem no Tibia. Vamos gerar um código para você provar que ele é seu.",
+      "continue": "Continuar",
+      "createFailed": "Não foi possível criar o personagem.",
+      "verifyDescription": "{{name}} foi criado. Agora você precisa verificar que este personagem é seu.",
+      "step1": "Copie o código abaixo.",
+      "step2": "No Tibia, abra a página do seu personagem (Manage Character) e cole o código no campo de descrição (Comment).",
+      "step3": "Volte aqui e clique em \"Verificar personagem\".",
+      "copyCode": "Copiar código",
+      "tokenCopied": "Código copiado!",
+      "copyFailed": "Não foi possível copiar. Selecione o código manualmente.",
+      "verifyButton": "Verificar personagem",
+      "verifyFailed": "Não foi possível verificar. Confirme que o código está na descrição do personagem e tente novamente.",
+      "successTitle": "Personagem verificado!",
+      "successBody": "Seu personagem foi adicionado com sucesso.",
+      "successBodyWithLevel": "Seu personagem foi adicionado com level {{level}}, obtido automaticamente do site do Tibia.",
+      "viewCharacters": "Ver meus personagens",
+      "editSkills": "Editar skills"
     }
   },
   "hunts": {
@@ -380,6 +399,103 @@
     "ctaBenefit1": "Grátis para começar",
     "ctaBenefit2": "Importação de hunts",
     "ctaBenefit3": "Estatísticas e recomendações"
+  },
+  "settings": {
+    "title": "Configurações",
+    "navAria": "Navegação entre seções de configurações",
+    "tabs": {
+      "profile": "Perfil",
+      "account": "Conta",
+      "privacy": "Privacidade",
+      "notifications": "Notificações",
+      "preferences": "Preferências"
+    },
+    "feedback": {
+      "saved": "Configurações salvas com sucesso.",
+      "saveError": "Não foi possível salvar suas alterações."
+    },
+    "profile": {
+      "title": "Perfil",
+      "description": "Informações visíveis no seu perfil.",
+      "displayName": "Nome exibido",
+      "displayNameHint": "Nome que será exibido publicamente no Tibia Wise.",
+      "username": "Nome de usuário",
+      "usernameHint": "Entre 4 e 30 caracteres. Letras, números, \"_\" e \"-\".",
+      "usernameCooldown": "Você poderá alterar seu nome de usuário novamente em {{days}} dia(s).",
+      "usernameInvalid": "Nome de usuário inválido. Use de 4 a 30 caracteres, com letras, números, \"_\" ou \"-\".",
+      "usernameTaken": "Este nome de usuário já está em uso.",
+      "country": "País",
+      "countryPlaceholder": "Selecione um país",
+      "cancel": "Cancelar",
+      "save": "Salvar alterações"
+    },
+    "account": {
+      "title": "Conta",
+      "description": "Dados e segurança da sua conta.",
+      "infoTitle": "Informações da conta",
+      "email": "E-mail",
+      "emailHint": "O e-mail não pode ser alterado por aqui.",
+      "country": "País",
+      "memberSince": "Membro desde",
+      "securityTitle": "Segurança",
+      "changePasswordUnavailableTitle": "Alteração de senha indisponível",
+      "changePasswordUnavailable": "A alteração de senha com confirmação da senha atual ainda não está disponível. Hoje é possível redefinir a senha pelo fluxo \"Esqueci minha senha\" na tela de login.",
+      "sessionsTitle": "Sessões ativas",
+      "sessionsDescription": "Gerencie onde sua conta está conectada.",
+      "sessionsEmpty": "Nenhuma sessão ativa encontrada.",
+      "sessionsError": "Não foi possível carregar suas sessões.",
+      "sessionBrowser": "Navegador",
+      "sessionOS": "Sistema operacional",
+      "sessionLastActivity": "Última atividade",
+      "sessionLocation": "Localização aproximada",
+      "unknownDevice": "Dispositivo desconhecido",
+      "revokeSession": "Encerrar sessão",
+      "revokeSessionTitle": "Encerrar sessão",
+      "revokeSessionBody": "Tem certeza de que deseja encerrar esta sessão? O dispositivo será desconectado.",
+      "revokeSessionSuccess": "Sessão encerrada.",
+      "revokeAll": "Encerrar todas as sessões",
+      "revokeAllHint": "Encerra todas as sessões, incluindo esta. Você será desconectado.",
+      "revokeAllTitle": "Encerrar todas as sessões",
+      "revokeAllBody": "Todas as sessões serão encerradas, incluindo a atual, e você será desconectado. Deseja continuar?",
+      "dangerTitle": "Zona de perigo",
+      "closeAccount": "Fechar minha conta",
+      "closeAccountUnavailableTitle": "Fechamento de conta indisponível",
+      "closeAccountUnavailable": "O fechamento de conta com confirmação de senha ainda não está disponível. Para encerrar sua conta, entre em contato com o suporte."
+    },
+    "privacy": {
+      "title": "Privacidade",
+      "description": "Controle o que outras pessoas podem ver.",
+      "profileSection": "Perfil",
+      "showProfile": "Perfil público",
+      "showProfileHint": "Quando ativado, outros jogadores podem visualizar seu perfil.",
+      "showStatistics": "Estatísticas públicas",
+      "showStatisticsHint": "Quando ativado, suas estatísticas ficam visíveis no perfil público.",
+      "charactersSection": "Personagens",
+      "charactersHint": "Somente personagens verificados aparecem aqui.",
+      "noVerifiedCharacters": "Nenhum personagem verificado disponível.",
+      "viewMyCharacters": "Ver meus personagens",
+      "characterPrivate": "Personagem privado",
+      "characterPrivateHint": "Quando ativado, este personagem não aparece publicamente."
+    },
+    "notifications": {
+      "title": "Notificações",
+      "description": "Escolha como e quando você quer ser avisado.",
+      "unavailableTitle": "Preferências de notificação indisponíveis",
+      "unavailable": "Ainda não é possível gerenciar preferências de notificação. Quando disponível, você poderá controlar avisos por e-mail aqui."
+    },
+    "preferences": {
+      "title": "Preferências",
+      "description": "Personalize sua experiência no Tibia Wise.",
+      "theme": "Tema",
+      "themeHint": "Escolha entre tema escuro, claro ou seguir o sistema.",
+      "language": "Idioma",
+      "languageHint": "Idioma da interface.",
+      "defaultCharacter": "Personagem padrão",
+      "defaultCharacterHint": "O personagem selecionado será usado como padrão no Dashboard, estatísticas e recomendações.",
+      "noDefaultCharacter": "Nenhum personagem verificado disponível.",
+      "addCharacter": "Ver meus personagens",
+      "noCharacter": "Nenhum"
+    }
   },
   "loading": "Carregando..."
 }
