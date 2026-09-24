@@ -1,0 +1,19 @@
+.legal-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+}
+
+.legal-page h1 {
+  font-size: var(--font-size-h1);
+  color: var(--text-primary);
+  margin-bottom: var(--space-4);
+}
+
+.legal-page__placeholder {
+  color: var(--text-secondary);
+  background: var(--bg-surface);
+  border: 1px dashed var(--border-default);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}

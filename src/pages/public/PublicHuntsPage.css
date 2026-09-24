@@ -1,0 +1,43 @@
+.public-hunts-page {
+  max-width: var(--content-max-width);
+  margin: 0 auto;
+  padding: var(--space-8) var(--space-6);
+}
+
+.public-hunts-page__header {
+  margin-bottom: var(--space-6);
+}
+
+.public-hunts-page__header h1 {
+  font-size: var(--font-size-h1);
+  color: var(--text-primary);
+}
+
+.public-hunts-page__header p {
+  color: var(--text-secondary);
+}
+
+.public-hunts-page__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--space-4);
+}
+
+.public-hunts-page__pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+
+.public-hunts-page__page {
+  color: var(--text-secondary);
+  font-size: var(--font-size-body);
+}
+
+@media (max-width: 640px) {
+  .public-hunts-page {
+    padding: var(--space-6) var(--space-4);
+  }
+}

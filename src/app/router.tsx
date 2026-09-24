@@ -10,6 +10,11 @@ import { PublicLayout } from '@/layouts/PublicLayout'
 import { SystemLayout } from '@/layouts/SystemLayout'
 
 const HomePage = lazy(() => import('@/pages/public/HomePage'))
+const PublicHuntsPage = lazy(() => import('@/pages/public/PublicHuntsPage'))
+const LegalPage = lazy(() => import('@/pages/public/LegalPage'))
+const FAQPage = lazy(() => import('@/pages/app/FAQPage'))
+const NewsListPage = lazy(() => import('@/pages/app/NewsListPage'))
+const SupportPage = lazy(() => import('@/pages/app/SupportPage'))
 const LoginPage = lazy(() => import('@/pages/auth/LoginPage'))
 const RegisterPage = lazy(() => import('@/pages/auth/RegisterPage'))
 const ForgotPasswordPage = lazy(() => import('@/pages/auth/ForgotPasswordPage'))
@@ -25,8 +30,6 @@ const MyHuntsPage = lazy(() => import('@/pages/app/MyHuntsPage'))
 const HuntDetailsPage = lazy(() => import('@/pages/app/HuntDetailsPage'))
 const StatisticsPage = lazy(() => import('@/pages/app/StatisticsPage'))
 const RecommendationsPage = lazy(() => import('@/pages/app/RecommendationsPage'))
-const NewsListPage = lazy(() => import('@/pages/app/NewsListPage'))
-const SupportPage = lazy(() => import('@/pages/app/SupportPage'))
 const ProfilePage = lazy(() => import('@/pages/app/ProfilePage'))
 const SettingsPage = lazy(() => import('@/pages/app/SettingsPage'))
 const PremiumPage = lazy(() => import('@/pages/app/PremiumPage'))
@@ -40,7 +43,15 @@ const MaintenancePage = lazy(() => import('@/pages/system/MaintenancePage'))
 const router = createBrowserRouter([
   {
     element: <PublicLayout />,
-    children: [{ path: ROUTES.home, element: <HomePage /> }],
+    children: [
+      { path: ROUTES.home, element: <HomePage /> },
+      { path: ROUTES.hunts, element: <PublicHuntsPage /> },
+      { path: ROUTES.news, element: <NewsListPage /> },
+      { path: ROUTES.faq, element: <FAQPage /> },
+      { path: ROUTES.support, element: <SupportPage /> },
+      { path: ROUTES.terms, element: <LegalPage kind="terms" /> },
+      { path: ROUTES.privacy, element: <LegalPage kind="privacy" /> },
+    ],
   },
   {
     element: <RequireGuest />,
@@ -73,8 +84,6 @@ const router = createBrowserRouter([
           { path: ROUTES.huntDetails(':id'), element: <HuntDetailsPage /> },
           { path: ROUTES.statistics, element: <StatisticsPage /> },
           { path: ROUTES.recommendations, element: <RecommendationsPage /> },
-          { path: ROUTES.news, element: <NewsListPage /> },
-          { path: ROUTES.support, element: <SupportPage /> },
           { path: ROUTES.profile, element: <ProfilePage /> },
           { path: ROUTES.settings, element: <SettingsPage /> },
           { path: ROUTES.premium, element: <PremiumPage /> },

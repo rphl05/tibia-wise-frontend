@@ -9,27 +9,27 @@ export function Footer() {
 
   const columns = [
     {
-      title: t('footer.product', 'Produto'),
+      title: t('footer.product'),
       links: [
-        { to: ROUTES.hunts, label: t('nav.myHunts') },
-        { to: ROUTES.characters, label: t('footer.characters', 'Characters') },
-        { to: ROUTES.statistics, label: t('footer.statistics', 'Statistics') },
-        { to: ROUTES.rankings, label: t('footer.rankings', 'Rankings') },
+        { to: ROUTES.hunts, label: t('nav.hunts') },
+        { to: ROUTES.characters, label: t('footer.characters') },
+        { to: ROUTES.statistics, label: t('footer.statistics') },
+        { to: ROUTES.rankings, label: t('footer.rankings') },
       ],
     },
     {
-      title: t('footer.help', 'Ajuda'),
+      title: t('footer.help'),
       links: [
         { to: ROUTES.tutorials, label: t('nav.tutorials') },
-        { to: ROUTES.faq, label: t('footer.faq', 'FAQ') },
+        { to: ROUTES.faq, label: t('footer.faq') },
         { to: ROUTES.support, label: t('nav.support') },
       ],
     },
     {
-      title: t('footer.legal', 'Legal'),
+      title: t('footer.legal'),
       links: [
-        { to: ROUTES.terms, label: t('footer.terms', 'Termos de Uso') },
-        { to: ROUTES.privacy, label: t('footer.privacy', 'Política de Privacidade') },
+        { to: ROUTES.terms, label: t('footer.terms') },
+        { to: ROUTES.privacy, label: t('footer.privacy') },
       ],
     },
   ]
@@ -44,7 +44,7 @@ export function Footer() {
             className="footer__logo"
           />
           <p className="footer__tagline">
-            {t('footer.tagline', 'Analytics para suas hunting sessions do Tibia.')}
+            {t('footer.tagline')}
           </p>
         </div>
 
@@ -66,7 +66,7 @@ export function Footer() {
 
       <div className="footer__bottom">
         <p className="footer__copyright">
-          © {new Date().getFullYear()} Tibia Wise. {t('footer.rights', 'Todos os direitos reservados.')}
+          © {new Date().getFullYear()} Tibia Wise. {t('footer.rights')}
         </p>
       </div>
     </footer>
