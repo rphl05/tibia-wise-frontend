@@ -13,6 +13,8 @@ import { huntsApi } from '../api/hunts.api'
 import './HuntCard.css'
 
 interface HuntCardProps {
+  /** Exibe o menu de ações (detalhes/excluir). Padrão: true. */
+  showActions?: boolean
   hunt: {
     id: string
     public_id: string
@@ -28,7 +30,7 @@ interface HuntCardProps {
   }
 }
 
-export function HuntCard({ hunt }: HuntCardProps) {
+export function HuntCard({ hunt, showActions = true }: HuntCardProps) {
   const { t } = useTranslation()
   const queryClient = useQueryClient()
 
@@ -38,7 +40,7 @@ export function HuntCard({ hunt }: HuntCardProps) {
   })
 
   const handleDelete = async () => {
-    if (!confirm(t('hunts.confirmDelete', 'Excluir esta hunt?'))) return
+    if (!confirm(t('hunts.confirmDelete'))) return
     await deleteMutation.mutateAsync()
   }
 
@@ -78,6 +80,7 @@ export function HuntCard({ hunt }: HuntCardProps) {
         </div>
       </dl>
 
+      {showActions && (
       <footer className="hunt-card__footer">
         <Dropdown
           trigger={({ onClick, 'aria-expanded': expanded, 'aria-haspopup': haspopup }) => (
@@ -101,6 +104,7 @@ export function HuntCard({ hunt }: HuntCardProps) {
           </DropdownItem>
         </Dropdown>
       </footer>
+      )}
     </Card>
     </Link>
   )

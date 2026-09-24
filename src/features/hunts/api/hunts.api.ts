@@ -17,9 +17,7 @@ export interface CreateHuntDto {
   name?: string
   notes?: string
   visibility?: 'PUBLIC' | 'PRIVATE'
-  is_double_xp?: boolean
   is_fast_respawn?: boolean
-  duration_seconds?: number
 }
 
 export interface UpdateHuntDto {

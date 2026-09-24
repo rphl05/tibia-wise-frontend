@@ -8,7 +8,6 @@ import { useCallback, useState } from 'react'
 import { Button } from '@/components/ui/Button/Button'
 import { Input } from '@/components/ui/FormFields/Input'
 import { Textarea } from '@/components/ui/FormFields/Textarea'
-import { Select } from '@/components/ui/FormFields/Select'
 import { Checkbox } from '@/components/ui/FormFields/Checkbox'
 import { Alert } from '@/components/feedback/Alert/Alert'
 import { charactersApi } from '@/features/characters/api/characters.api'
@@ -56,15 +55,18 @@ export function HuntImportForm({ onSuccess }: HuntImportFormProps) {
     handleSubmit(async (data) => {
       setImportError(null)
       try {
-        await huntsApi.import(data)
+        await huntsApi.import({
+          raw_content: data.raw_content,
+          character_id: data.character_id,
+          name: data.name || undefined,
+          notes: data.notes || undefined,
+          is_fast_respawn: data.is_fast_respawn ?? false,
+          visibility: data.is_public ? 'PUBLIC' : 'PRIVATE',
+        })
         setStep('success')
         onSuccess?.()
-      } catch (err) {
-        setImportError(
-          t('hunts.import.importFailed', {
-            defaultValue: 'Não foi possível importar a Hunt. Verifique o conteúdo e tente novamente.',
-          }),
-        )
+      } catch {
+        setImportError(t('hunts.import.importFailed'))
       }
     }),
     [handleSubmit, onSuccess, t],
@@ -128,17 +130,11 @@ export function HuntImportForm({ onSuccess }: HuntImportFormProps) {
         </p>
       )}
 
-      <div className="hunt-import-form__row">
-        <Select
-          {...register('character_id', { valueAsNumber: true })}
-          label={t('hunts.import.character')}
-          placeholder={t('hunts.import.selectCharacter')}
-          error={errors.character_id?.message}
-          disabled
-        >
-          {selectedCharacter && <option value={selectedCharacter.id}>{selectedCharacter.name}</option>}
-        </Select>
-      </div>
+      {selectedCharacter && (
+        <p className="hunt-import-form__character">
+          <strong>{t('hunts.import.character')}:</strong> {selectedCharacter.name}
+        </p>
+      )}
 
       <Input
         {...register('name')}
@@ -156,29 +152,12 @@ export function HuntImportForm({ onSuccess }: HuntImportFormProps) {
       />
 
       <div className="hunt-import-form__options">
-        <Checkbox {...register('is_double_xp')} label={t('hunts.import.doubleXp')} />
         <Checkbox {...register('is_fast_respawn')} label={t('hunts.import.fastRespawn')} />
-      </div>
-
-      <div className="hunt-import-form__row">
-        <Input
-          {...register('duration_seconds', { valueAsNumber: true })}
-          label={t('hunts.import.duration')}
-          type="number"
-          min={1}
-          max={86400}
-          placeholder={t('hunts.import.durationPlaceholder')}
+        <Checkbox
+          {...register('is_public')}
+          label={t('hunts.import.makePublic')}
         />
       </div>
-
-      <Select
-        {...register('visibility')}
-        label={t('hunts.import.visibility')}
-        placeholder={t('hunts.import.selectVisibility')}
-      >
-        <option value="PRIVATE">{t('hunts.private')}</option>
-        <option value="PUBLIC">{t('hunts.public')}</option>
-      </Select>
 
       <div className="hunt-import-form__actions">
         <Button type="button" variant="ghost" onClick={() => setStep('character')}>{t('actions.back')}</Button>

@@ -13,10 +13,9 @@ export function useImportHuntSchema() {
     hunting_place_id: z.number().int().positive().optional(),
     name: z.string().max(120).optional(),
     notes: z.string().max(1000).optional(),
-    visibility: z.enum(['PUBLIC', 'PRIVATE']).default('PRIVATE'),
-    is_double_xp: z.boolean().optional(),
     is_fast_respawn: z.boolean().optional(),
-    duration_seconds: z.number().int().min(1).max(86400).optional(),
+    /** Checkbox "Tornar esta Hunt pública" — mapeado para visibility no submit. */
+    is_public: z.boolean().optional(),
   })
 }
 
