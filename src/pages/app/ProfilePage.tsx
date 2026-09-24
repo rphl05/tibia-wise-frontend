@@ -11,29 +11,29 @@ const ProfilePage = () => {
   return (
     <div className="profile-page">
       <header className="profile-page__header">
-        <h1>{t('profile.title', 'Meu Perfil')}</h1>
+        <h1>{t('profile.title')}</h1>
       </header>
 
       <main className="profile-page__content">
         <div className="profile-page__form">
           <div className="profile-page__form-group">
-            <label>{t('profile.name', 'Nome')}</label>
+            <label>{t('profile.name')}</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder={t('profile.namePlaceholder', 'Seu nome')}
+              placeholder={t('profile.namePlaceholder')}
               className="profile-page__input"
             />
           </div>
 
           <div className="profile-page__form-group">
-            <label>{t('profile.email', 'E-mail')}</label>
+            <label>{t('profile.email')}</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              placeholder={t('profile.emailPlaceholder', 'seu@email.com')}
+              placeholder={t('profile.emailPlaceholder')}
               className="profile-page__input"
             />
           </div>
@@ -43,10 +43,10 @@ const ProfilePage = () => {
             className="profile-page__save-btn"
             onClick={() => {
               // TODO: save profile data
-              alert(t('profile.saved', 'Perfil salvo!'))
+              alert(t('profile.saved'))
             }}
           >
-            {t('profile.save', 'Salvar')}
+            {t('profile.save')}
           </button>
         </div>
       </main>

@@ -17,43 +17,43 @@ const SupportPage = () => {
   const faqs = [
     {
       category: 'general',
-      question: t('support.general.q1', 'Como recuperar minha conta?'),
-      answer: t('support.general.a1', 'Use o link "Esqueci minha senha" na página de login. Você receberá um e-mail com instruções.'),
+      question: t('support.general.q1'),
+      answer: t('support.general.a1'),
     },
     {
       category: 'general',
-      question: t('support.general.q2', 'Onde encontro as estatísticas das minhas hunts?'),
-      answer: t('support.general.a2', 'Acesse a página de Estatísticas no menu principal após fazer login.'),
+      question: t('support.general.q2'),
+      answer: t('support.general.a2'),
     },
     {
       category: 'billing',
-      question: t('support.billing.q1', 'Como cancelar minha assinatura?'),
-      answer: t('support.billing.a1', 'Você pode cancelar nas configurações da conta. O cancelamento entra em vigor no fim do período atual.'),
+      question: t('support.billing.q1'),
+      answer: t('support.billing.a1'),
     },
     {
       category: 'billing',
-      question: t('support.billing.q2', 'Quais métodos de pagamento são aceitos?'),
-      answer: t('support.billing.a2', 'Aceitamos cartões de crédito (Visa, Mastercard, Amex), Pix e PayPal.'),
+      question: t('support.billing.q2'),
+      answer: t('support.billing.a2'),
     },
     {
       category: 'technical',
-      question: t('support.technical.q1', 'O site está lento ou apresentando erros?'),
-      answer: t('support.technical.a1', 'Tente limpar o cache do navegador, desativar extensões e recarregar a página. Se persistir, entre em contato.'),
+      question: t('support.technical.q1'),
+      answer: t('support.technical.a1'),
     },
     {
       category: 'technical',
-      question: t('support.technical.q2', 'Como exporto meus dados?'),
-      answer: t('support.technical.a2', 'Configurações > Privacidade > Exportar Dados disponibiliza seus dados em CSV.'),
+      question: t('support.technical.q2'),
+      answer: t('support.technical.a2'),
     },
     {
       category: 'account',
-      question: t('support.account.q1', 'Como altero meu e-mail?'),
-      answer: t('support.account.a1', 'Vá em Configurações > Perfil para atualizar seu e-mail.'),
+      question: t('support.account.q1'),
+      answer: t('support.account.a1'),
     },
     {
       category: 'account',
-      question: t('support.account.q2', 'Como excluo minha conta?'),
-      answer: t('support.account.a2', 'Configurações > Privacidade > Excluir Conta. Essa ação é irreversível.'),
+      question: t('support.account.q2'),
+      answer: t('support.account.a2'),
     },
   ]
 
@@ -79,13 +79,13 @@ const SupportPage = () => {
   return (
     <div className="support-page">
       <header className="support-page__header">
-        <h1>{t('support.title', 'Central de Suporte')}</h1>
-        <p>{t('support.subtitle', 'Encontre respostas ou entre em contato conosco')}</p>
+        <h1>{t('support.title')}</h1>
+        <p>{t('support.subtitle')}</p>
 
         <div className="support-page__search">
           <input
             type="text"
-            placeholder={t('support.searchPlaceholder', 'Buscar no suporte...')}
+            placeholder={t('support.searchPlaceholder')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="support-page__search-input"
@@ -116,7 +116,7 @@ const SupportPage = () => {
 
         {searchQuery && filteredFaqs.length > 0 && (
           <section className="support-page__results">
-            <h3>{t('support.results', 'Resultados da busca')}</h3>
+            <h3>{t('support.results')}</h3>
             <ul>
               {filteredFaqs.map((faq) => (
                 <li key={faq.question}>
@@ -131,18 +131,18 @@ const SupportPage = () => {
         )}
 
         <section className="support-page__contact">
-          <h3>{t('support.contactTitle', 'Não encontrou o que procurava?')}</h3>
-          <p>{t('support.contactDesc', 'Envie uma mensagem e nossa equipe responderá em breve.')}</p>
+          <h3>{t('support.contactTitle')}</h3>
+          <p>{t('support.contactDesc')}</p>
 
           {submitted ? (
             <div className="support-page__success">
-              <h3>{t('support.successTitle', 'Mensagem enviada!')}</h3>
-              <p>{t('support.successDesc', 'Obrigado pelo contato. Responderemos em até 24 horas úteis.')}</p>
+              <h3>{t('support.successTitle')}</h3>
+              <p>{t('support.successDesc')}</p>
             </div>
           ) : (
             <form className="support-page__form" onSubmit={handleSubmit}>
               <div className="support-page__form-group">
-                <label htmlFor="support-name">{t('support.formName', 'Nome')}</label>
+                <label htmlFor="support-name">{t('support.formName')}</label>
                 <input
                   id="support-name"
                   name="name"
@@ -153,7 +153,7 @@ const SupportPage = () => {
                 />
               </div>
               <div className="support-page__form-group">
-                <label htmlFor="support-email">{t('support.formEmail', 'E-mail')}</label>
+                <label htmlFor="support-email">{t('support.formEmail')}</label>
                 <input
                   id="support-email"
                   name="email"
@@ -164,21 +164,21 @@ const SupportPage = () => {
                 />
               </div>
               <div className="support-page__form-group">
-                <label htmlFor="support-category">{t('support.formCategory', 'Categoria')}</label>
+                <label htmlFor="support-category">{t('support.formCategory')}</label>
                 <select
                   id="support-category"
                   name="category"
                   value={formData.category}
                   onChange={handleChange}
                 >
-                  <option value="general">{t('support.category.general', 'General')}</option>
-                  <option value="billing">{t('support.category.billing', 'Billing')}</option>
-                  <option value="technical">{t('support.category.technical', 'Technical')}</option>
-                  <option value="account">{t('support.category.account', 'Account')}</option>
+                  <option value="general">{t('support.category.general')}</option>
+                  <option value="billing">{t('support.category.billing')}</option>
+                  <option value="technical">{t('support.category.technical')}</option>
+                  <option value="account">{t('support.category.account')}</option>
                 </select>
               </div>
               <div className="support-page__form-group">
-                <label htmlFor="support-message">{t('support.formMessage', 'Mensagem')}</label>
+                <label htmlFor="support-message">{t('support.formMessage')}</label>
                 <textarea
                   id="support-message"
                   name="message"
@@ -189,7 +189,7 @@ const SupportPage = () => {
                 />
               </div>
               <button type="submit" className="support-page__submit">
-                {t('support.formSubmit', 'Enviar mensagem')}
+                {t('support.formSubmit')}
               </button>
             </form>
           )}

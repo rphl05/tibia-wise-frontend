@@ -17,6 +17,9 @@
   "nav": {
     "dashboard": "Dashboard",
     "myHunts": "My Hunts",
+    "hunts": "Hunts",
+    "news": "News",
+    "faq": "FAQ",
     "importHunt": "Import Hunt",
     "recommendations": "Recommendations",
     "tutorials": "Tutorials",
@@ -52,7 +55,34 @@
     "enUS": "English"
   },
   "notifications": {
-    "label": "Notifications"
+    "label": "Notifications",
+    "general": {
+      "q1": "New hunt available",
+      "q1Desc": "A new hunt was added to the system.",
+      "q2": "Maintenance update",
+      "q2Desc": "The system will undergo maintenance from 02:00 to 04:00."
+    },
+    "hunts": {
+      "q1": "New hunt available",
+      "q1Desc": "A new hunt is now available for you to hunt.",
+      "q2": "Hunt completed",
+      "q2Desc": "Your recent hunt was finished successfully."
+    },
+    "system": {
+      "q1": "Scheduled maintenance",
+      "q1Desc": "The system will undergo maintenance from 02:00 to 04:00.",
+      "q2": "Data backup",
+      "q2Desc": "System data backup is performed weekly."
+    },
+    "title": "Notifications",
+    "subtitle": "Stay up to date with news",
+    "searchPlaceholder": "Search notifications...",
+    "results": "Search results",
+    "category": {
+      "general": "Geral",
+      "hunts": "Hunts",
+      "system": "Sistema"
+    }
   },
   "userMenu": {
     "label": "User menu",
@@ -182,7 +212,6 @@
       "invalidUsername": "4-30 chars: letters, numbers, _ or -",
       "displayNameRequired": "Enter a display name",
       "displayNameMax": "Maximum 80 characters",
-      "passwordRequired": "Enter your password",
       "passwordMin": "At least 8 characters",
       "passwordUppercase": "At least 1 uppercase letter",
       "passwordNumber": "At least 1 number",
@@ -208,13 +237,6 @@
     "world": "World",
     "vocation": "Vocation",
     "skills": "Skills",
-    "skills.fist": "Fist Fighting",
-    "skills.club": "Club Fighting",
-    "skills.sword": "Sword Fighting",
-    "skills.axe": "Axe Fighting",
-    "skills.distance": "Distance Fighting",
-    "skills.shielding": "Shielding",
-    "skills.fishing": "Fishing",
     "isPrivate": "Make private",
     "private": "Private",
     "public": "Public",
@@ -237,7 +259,8 @@
       "loadFailed": "Failed to load character."
     },
     "errors": {
-      "loadFailed": "Failed to load character."
+      "loadFailed": "Failed to load character.",
+      "saveFailed": "Could not save the character."
     },
     "wizard": {
       "nameDescription": "Type your character's exact name in Tibia. We'll generate a code so you can prove it's yours.",
@@ -257,7 +280,18 @@
       "successBodyWithLevel": "Your character was added with level {{level}}, fetched automatically from the Tibia website.",
       "viewCharacters": "View my characters",
       "editSkills": "Edit skills"
-    }
+    },
+    "skillsLabels": {
+      "fist": "Fist Fighting",
+      "club": "Club Fighting",
+      "sword": "Sword Fighting",
+      "axe": "Axe Fighting",
+      "distance": "Distance Fighting",
+      "shielding": "Shielding",
+      "fishing": "Fishing"
+    },
+    "notFound": "Character not found.",
+    "levelAutoHint": "The official level is fetched automatically from the Tibia website."
   },
   "hunts": {
     "title": "My Hunts",
@@ -279,12 +313,11 @@
       "step1": "1. Select Character",
       "step2": "2. Hunt Data",
       "step3": "3. Confirm Import",
-      "selectCharacterDesc": "Select the character that made the hunt to continue.",
+      "selectCharacterDesc": "Select character",
       "contentLabel": "Party Hunt Analyser Content",
-      "contentPlaceholder": "Paste the text copied from Party Hunt Analyser...",
+      "contentPlaceholder": "Paste Party Hunt Analyser result here...",
       "selectCharacter": "Select character",
       "character": "Character",
-      "selectCharacterDesc": "Select character",
       "selectCharacterDesc2": "Select character",
       "nameLabel": "Hunt Name (optional)",
       "namePlaceholder": "Ex.: Glooth Bandits 2h",
@@ -295,23 +328,42 @@
       "duration": "Duration (seconds)",
       "durationPlaceholder": "Ex.: 7200",
       "visibility": "Visibility",
-      "selectVisibility": "Select visibility",
-      "contentLabel2": "Hunt Content",
-      "contentPlaceholder": "Paste Party Hunt Analyser result here...",
-      "maxChars": "20,000",
       "selectVisibility": "Select",
+      "contentLabel2": "Hunt Content",
+      "maxChars": "20,000",
       "next": "Next",
       "import": "Import Hunt",
       "success": "Hunt imported successfully!",
       "successDesc": "Your hunt has been processed and is available in your statistics.",
       "newImport": "New Import",
-      "viewHunt": "View Hunt"
+      "viewHunt": "View Hunt",
+      "title": "Import Hunt",
+      "makePublic": "Make this Hunt public",
+      "importFailed": "Could not import the hunt. Check the content and try again."
     },
     "validation": {
       "contentMin": "Content too short (min. 10 characters)",
       "contentMax": "Content too long (max. 20,000 characters)",
       "characterRequired": "Select a character"
-    }
+    },
+    "publicTitle": "Explore Hunts",
+    "publicDescription": "See public hunts shared by the community.",
+    "publicEmptyDescription": "There are no public hunts to show yet.",
+    "empty": "You don't have any hunts yet.",
+    "emptyDescription": "Import your first hunt to start analyzing your performance.",
+    "unnamed": "Unnamed hunt",
+    "actions": "Actions",
+    "confirmDelete": "Delete this hunt?",
+    "errors": {
+      "loadFailed": "Could not load hunts."
+    },
+    "notFound": "Hunt not found.",
+    "creatures": "Creatures",
+    "loot": "Loot",
+    "supplies": "Supplies",
+    "noCreatures": "No creatures recorded.",
+    "noLoot": "No loot recorded.",
+    "noSupplies": "No supplies recorded."
   },
   "statistics": {
     "title": "Statistics",
@@ -346,7 +398,36 @@
     "noData": "Insufficient data",
     "notEnoughData": "At least 5 hunts are required to generate statistics.",
     "loading": "Loading statistics...",
-    "error": "Failed to load statistics."
+    "error": "Failed to load statistics.",
+    "noNews": "No news available.",
+    "technology": "Technology",
+    "guides": "Guides",
+    "promotions": "Promotions",
+    "byAuthor": "Tibia Wise Team",
+    "loadMore": "Load more",
+    "errorDesc": "Could not load dashboard data.",
+    "lastHunt": "Last Hunt",
+    "noRecentHunts": "No recent hunts.",
+    "noRecommendations": "No recommendations available.",
+    "noEnoughData": "Not enough data to generate recommendations.",
+    "byPlace": "By Place",
+    "byVoc": "By Vocation",
+    "recVocDescription": "Per-vocation visualization under development.",
+    "avgProfitPerHunt": "Average profit per hunt",
+    "avgXpPerHunt": "Average XP per hunt",
+    "bestHuntProfit": "Best hunt (profit)",
+    "bestHuntXp": "Best hunt (XP)",
+    "bestProfitPerHour": "Best profit/h",
+    "bestXpPerHour": "Best XP/h",
+    "currentPeriod": "Current period",
+    "previousPeriod": "Previous period",
+    "date": "Date",
+    "hunt": "Hunt",
+    "huntCount": "Total hunts",
+    "huntingPlace": "Hunting place",
+    "periodLabel": "Period",
+    "totalProfit": "Total profit",
+    "totalXp": "Total XP"
   },
   "form": {
     "showPassword": "Show password",
@@ -355,7 +436,8 @@
   "pagination": {
     "label": "Pagination",
     "previous": "Previous page",
-    "next": "Next page"
+    "next": "Next page",
+    "page": "Page {{page}}"
   },
   "home": {
     "eyebrow": "Your data, better decisions",
@@ -497,5 +579,195 @@
       "noCharacter": "None"
     }
   },
-  "loading": "Loading..."
+  "loading": "Loading...",
+  "legal": {
+    "terms": {
+      "title": "Terms of Use"
+    },
+    "privacy": {
+      "title": "Privacy Policy"
+    },
+    "placeholder": "Content will be added later."
+  },
+  "faqs": {
+    "general": {
+      "q1": "How does Tibia Wise work?",
+      "a1": "Tibia Wise is a platform that helps Tibia players track their hunt statistics, characters and hunting recommendations.",
+      "q2": "Do I need to create an account?",
+      "a2": "No, you can view public statistics without an account. To save your data, you need to register an account."
+    },
+    "account": {
+      "q1": "How do I change my e-mail?",
+      "a1": "You can change your e-mail in your account settings, in the profile section.",
+      "q2": "How do I recover my password?",
+      "a2": "Use the \"Forgot my password\" link on the login page. You will receive an e-mail with instructions."
+    },
+    "technical": {
+      "q1": "Why are the charts not loading?",
+      "a1": "This may be caused by ad-blocker filters or network issues. Try reloading the page or temporarily disabling the ad-blocker.",
+      "q2": "How do I clear the browser cache?",
+      "a2": "In your browser settings, go to Privacy and clear browsing data, select \"Cookies and other site data\" and click Clear data."
+    },
+    "premium": {
+      "q1": "How does the premium plan work?",
+      "a1": "The premium plan offers advanced statistics, unlimited charts, personalized recommendations and priority support.",
+      "q2": "Can I cancel anytime?",
+      "a2": "Yes, you can cancel your premium plan anytime in the subscription settings."
+    },
+    "title": "Frequently Asked Questions",
+    "subtitle": "Find answers to the most common questions",
+    "searchPlaceholder": "Search questions...",
+    "search": "Search",
+    "results": "Resultados da busca"
+  },
+  "support": {
+    "general": {
+      "q1": "How do I recover my account?",
+      "a1": "Use the \"Forgot my password\" link on the login page. You will receive an e-mail with instructions.",
+      "q2": "Where can I find my hunts statistics?",
+      "a2": "Go to the Statistics page in the main menu after logging in."
+    },
+    "billing": {
+      "q1": "How do I cancel my subscription?",
+      "a1": "You can cancel it in your account settings. The cancellation takes effect at the end of the current period.",
+      "q2": "Which payment methods are accepted?",
+      "a2": "We accept credit cards (Visa, Mastercard, Amex), Pix and PayPal."
+    },
+    "technical": {
+      "q1": "Is the site slow or showing errors?",
+      "a1": "Try clearing your browser cache, disabling extensions and reloading the page. If it persists, contact us.",
+      "q2": "How do I export my data?",
+      "a2": "Settings > Privacy > Export Data provides your data in CSV."
+    },
+    "account": {
+      "q1": "How do I change my e-mail?",
+      "a1": "Go to Settings > Profile to update your e-mail.",
+      "q2": "How do I delete my account?",
+      "a2": "Settings > Privacy > Delete Account. This action is irreversible."
+    },
+    "title": "Support Center",
+    "subtitle": "Find answers or contact us",
+    "searchPlaceholder": "Search support...",
+    "results": "Search results",
+    "contactTitle": "Didn't find what you were looking for?",
+    "contactDesc": "Send a message and our team will reply soon.",
+    "successTitle": "Message sent!",
+    "successDesc": "Thanks for reaching out. We will reply within 24 business hours.",
+    "formName": "Name",
+    "formEmail": "E-mail",
+    "formCategory": "Category",
+    "category": {
+      "general": "General",
+      "billing": "Billing",
+      "technical": "Technical",
+      "account": "Account"
+    },
+    "formMessage": "Message",
+    "formSubmit": "Send message"
+  },
+  "premium": {
+    "title": "Premium",
+    "subtitle": "Unlock exclusive features",
+    "heroTitle": "Tibia Wise Premium",
+    "heroDescription": "Unlimited access to advanced statistics, personalized recommendations and priority support.",
+    "cta": "Subscribe Now",
+    "benefitsTitle": "Premium Benefits",
+    "benefit1": {
+      "title": "Advanced Statistics",
+      "desc": "Full access to evolution charts, period comparison and XP/profit analysis."
+    },
+    "benefit2": {
+      "title": "Personalized Recommendations",
+      "desc": "Hunting recommendations based on your level, vocation and history."
+    },
+    "benefit3": {
+      "title": "Priority Notifications",
+      "desc": "Get real-time alerts for events, maintenance and new hunts."
+    },
+    "benefit4": {
+      "title": "Priority Support",
+      "desc": "Priority service with guaranteed response time within 4 hours."
+    },
+    "benefit5": {
+      "title": "Unlimited Export",
+      "desc": "Export your hunt data without limits in CSV, JSON or PDF."
+    },
+    "benefit6": {
+      "title": "Early Access",
+      "desc": "Early access to new beta features and functionality."
+    },
+    "plansTitle": "Available Plans",
+    "planMonthly": {
+      "title": "Monthly",
+      "price": "$ 19.90",
+      "period": "/month",
+      "feature1": "Full access to all statistics",
+      "feature2": "Personalized recommendations",
+      "feature3": "Priority support",
+      "cta": "Subscribe Monthly"
+    },
+    "planYearly": {
+      "badge": "Most Popular",
+      "title": "Yearly",
+      "price": "$ 199.00",
+      "period": "/year",
+      "feature1": "All monthly benefits",
+      "feature2": "2 months free (17% savings)",
+      "feature3": "Dedicated VIP support",
+      "cta": "Subscribe Yearly"
+    },
+    "faqTitle": "Frequently Asked Questions",
+    "faq1": {
+      "q": "Can I cancel anytime?",
+      "a": "Yes, you can cancel anytime in your account settings. The cancellation takes effect at the end of the current period."
+    },
+    "faq2": {
+      "q": "What happens if I cancel?",
+      "a": "You keep the benefits until the end of the paid period. After that, your account returns to the free plan."
+    },
+    "faq3": {
+      "q": "Can I change plans?",
+      "a": "Yes, you can upgrade or downgrade anytime in your subscription settings."
+    }
+  },
+  "rankings": {
+    "title": "Rankings",
+    "noData": "No data",
+    "noDataDesc": "No ranking data available for the selected filters.",
+    "period": "Período",
+    "vocation": "Vocation",
+    "all": "All",
+    "world": "World",
+    "rank": "#",
+    "character": "Character",
+    "level": "Level"
+  },
+  "vocations": {
+    "knight": "Knight",
+    "paladin": "Paladin",
+    "sorcerer": "Sorcerer",
+    "druid": "Druid"
+  },
+  "profile": {
+    "title": "My Profile",
+    "name": "Name",
+    "namePlaceholder": "Your name",
+    "email": "E-mail",
+    "emailPlaceholder": "you@email.com",
+    "saved": "Profile saved!",
+    "save": "Save"
+  },
+  "tutorials": {
+    "title": "Tutorials",
+    "subtitle": "Learn Tibia Wise from basics to advanced"
+  },
+  "news": {
+    "noNews": "No news available."
+  },
+  "a11y": {
+    "skipLink": "Skip to main content"
+  },
+  "seo": {
+    "defaultDescription": "Tibia hunting session analytics: XP/h, profit, statistics and personalized recommendations."
+  }
 }

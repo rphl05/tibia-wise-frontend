@@ -39,7 +39,7 @@ export default function NewsListPage() {
     return (
       <div className="news-page">
         <h1>{t('statistics.latestNews')}</h1>
-        <p>{t('statistics.noNews', 'Nenhuma notícia disponível.')}</p>
+        <p>{t('statistics.noNews')}</p>
       </div>
     )
   }
@@ -50,9 +50,9 @@ export default function NewsListPage() {
         <h1>{t('statistics.latestNews')}</h1>
         <nav className="news-page__filters">
           <a href="/app/news" className="news-page__filter-active">{t('statistics.latestNews')}</a>
-          <a href="/app/news/categoria/tecnologia">{t('statistics.technology', 'Tecnologia')}</a>
-          <a href="/app/news/categoria/guides">{t('statistics.guides', 'Guias')}</a>
-          <a href="/app/news/categoria/promos">{t('statistics.promotions', 'Promoções')}</a>
+          <a href="/app/news/categoria/tecnologia">{t('statistics.technology')}</a>
+          <a href="/app/news/categoria/guides">{t('statistics.guides')}</a>
+          <a href="/app/news/categoria/promos">{t('statistics.promotions')}</a>
         </nav>
       </header>
 
@@ -66,14 +66,14 @@ export default function NewsListPage() {
               <p className="news-page__summary">{newsItem.summary}</p>
               <div className="news-page__meta">
                 <span className="news-page__date">{formatDate(newsItem.created_at)}</span>
-                <span className="news-page__author">{t('statistics.byAuthor', 'Equipe Tibia Wise')}</span>
+                <span className="news-page__author">{t('statistics.byAuthor')}</span>
               </div>
             </article>
           ))}
 
           {news.latest_news.length > NEWS_PER_PAGE ? (
             <div className="news-page__load-more">
-              <button>{t('statistics.loadMore', 'Carregar mais')}</button>
+              <button>{t('statistics.loadMore')}</button>
             </div>
           ) : null}
         </section>

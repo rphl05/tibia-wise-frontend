@@ -17,7 +17,7 @@ export function SkipLink() {
         window.location.hash = 'main-content'
       }}
     >
-      {t('a11y.skipLink', 'Pular para o conteúdo principal')}
+      {t('a11y.skipLink')}
     </Link>
   )
 }

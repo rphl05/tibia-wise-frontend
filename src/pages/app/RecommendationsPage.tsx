@@ -39,8 +39,8 @@ export default function RecommendationsPage() {
       <div className="recommendations-page">
         <h1>{t('statistics.recommendations')}</h1>
         <EmptyState
-          title={t('statistics.error', 'Erro')}
-          description={t('statistics.errorDesc', 'Não foi possível carregar')}
+          title={t('statistics.error')}
+          description={t('statistics.errorDesc')}
         />
       </div>
     )
@@ -106,29 +106,29 @@ export default function RecommendationsPage() {
             </div>
           ) : (
             <EmptyState
-              title={t('statistics.noRecommendations', 'Nenhuma recomendação disponível.')}
-              description={t('statistics.noEnoughData', 'Dados insuficientes para gerar recomendações.')}
+              title={t('statistics.noRecommendations')}
+              description={t('statistics.noEnoughData')}
             />
           )}
         </div>
 
         <div className="recommendations-page__tab">
-          <h3>{t('statistics.byPlace', 'Por Local')}</h3>
+          <h3>{t('statistics.byPlace')}</h3>
           {placeCards ? (
             <div className="recommendations-page__places-grid">
               {placeCards}
             </div>
           ) : (
             <EmptyState
-              title={t('statistics.noData', 'Sem dados')}
-              description={t('statistics.noEnoughData', 'Dados insuficientes para gerar recomendações por local.')}
+              title={t('statistics.noData')}
+              description={t('statistics.noEnoughData')}
             />
           )}
         </div>
 
         <div className="recommendations-page__tab">
-          <h3>{t('statistics.byVoc', 'Por Vocação')}</h3>
-          <p>{t('statistics.recVocDescription', 'Visualização por vocação em desenvolvimento.')}</p>
+          <h3>{t('statistics.byVoc')}</h3>
+          <p>{t('statistics.recVocDescription')}</p>
         </div>
       </section>
     </div>

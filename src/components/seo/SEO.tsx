@@ -34,7 +34,7 @@ export function SEO({
 
   const siteUrl = 'https://tibiawise.com'
   const fullTitle = title ? `${title} | Tibia Wise` : 'Tibia Wise — Analytics para suas Hunts'
-  const fullDescription = description || t('seo.defaultDescription', 'Análise de hunting sessions do Tibia: XP/h, profit, estatísticas e recomendações personalizadas.')
+  const fullDescription = description || t('seo.defaultDescription')
   const fullCanonical = canonical ? `${siteUrl}${canonical}` : 'https://tibiawise.com/'
   const fullOgImage = ogImage.startsWith('http') ? ogImage : `${siteUrl}${ogImage}`
 

@@ -53,7 +53,7 @@ export default function RankingsPage() {
   if (isLoading) {
     return (
       <div className="rankings-page">
-        <h1>{t('rankings.title', 'Rankings')}</h1>
+        <h1>{t('rankings.title')}</h1>
         <div className="rankings-page__skeleton">
           <Skeleton width="100%" height={48} />
           <Skeleton width="100%" height={48} />
@@ -66,10 +66,10 @@ export default function RankingsPage() {
   if (error || !ranking || !ranking.items.length) {
     return (
       <div className="rankings-page">
-        <h1>{t('rankings.title', 'Rankings')}</h1>
+        <h1>{t('rankings.title')}</h1>
         <EmptyState
-          title={t('rankings.noData', 'Sem dados')}
-          description={t('rankings.noDataDesc', 'Nenhum dado de ranking disponível para os filtros selecionados.')}
+          title={t('rankings.noData')}
+          description={t('rankings.noDataDesc')}
         />
       </div>
     )
@@ -78,7 +78,7 @@ export default function RankingsPage() {
   return (
     <div className="rankings-page">
       <header className="rankings-page__header">
-        <h1>{t('rankings.title', 'Rankings')}</h1>
+        <h1>{t('rankings.title')}</h1>
         <Tabs
           tabs={TABS}
           active={activeTab}
@@ -89,7 +89,7 @@ export default function RankingsPage() {
 
       <section className="rankings-page__filters">
         <Select
-          label={t('rankings.period', 'Período')}
+          label={t('rankings.period')}
           value={period}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setPeriod(e.target.value as '7d' | '30d' | '90d' | 'all')}
         >
@@ -98,25 +98,25 @@ export default function RankingsPage() {
           ))}
         </Select>
         <Select
-          label={t('rankings.vocation', 'Vocação')}
+          label={t('rankings.vocation')}
           value={vocation}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => {
             const val = e.target.value
             setVocation(val === 'all' ? 'all' : parseInt(val, 10))
           }}
         >
-          <option value="all">{t('rankings.all', 'Todas')}</option>
-          <option value={1}>{t('vocations.knight', 'Knight')}</option>
-          <option value={2}>{t('vocations.paladin', 'Paladin')}</option>
-          <option value={3}>{t('vocations.sorcerer', 'Sorcerer')}</option>
-          <option value={4}>{t('vocations.druid', 'Druid')}</option>
+          <option value="all">{t('rankings.all')}</option>
+          <option value={1}>{t('vocations.knight')}</option>
+          <option value={2}>{t('vocations.paladin')}</option>
+          <option value={3}>{t('vocations.sorcerer')}</option>
+          <option value={4}>{t('vocations.druid')}</option>
         </Select>
         <Select
-          label={t('rankings.world', 'Mundo')}
+          label={t('rankings.world')}
           value={world}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setWorld(e.target.value)}
         >
-          <option value="all">{t('rankings.all', 'Todos')}</option>
+          <option value="all">{t('rankings.all')}</option>
           {/* Worlds would come from API */}
         </Select>
       </section>
@@ -125,11 +125,11 @@ export default function RankingsPage() {
         <Table>
           <thead>
             <tr>
-              <th>{t('rankings.rank', '#')}</th>
-              <th>{t('rankings.character', 'Personagem')}</th>
-              <th>{t('rankings.vocation', 'Vocação')}</th>
-              <th>{t('rankings.world', 'Mundo')}</th>
-              <th>{t('rankings.level', 'Level')}</th>
+              <th>{t('rankings.rank')}</th>
+              <th>{t('rankings.character')}</th>
+              <th>{t('rankings.vocation')}</th>
+              <th>{t('rankings.world')}</th>
+              <th>{t('rankings.level')}</th>
               <th>{t(`rankings.${TAB_LABELS[activeTab]}`)}</th>
             </tr>
           </thead>

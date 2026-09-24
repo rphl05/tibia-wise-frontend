@@ -58,8 +58,8 @@ export default function DashboardPage() {
     return (
       <div className="dashboard-page">
         <EmptyState
-          title={t('statistics.error', 'Erro ao carregar dashboard')}
-          description={t('statistics.errorDesc', 'Não foi possível carregar os dados do dashboard.')}
+          title={t('statistics.error')}
+          description={t('statistics.errorDesc')}
           actionLabel={t('actions.retry')}
           onAction={() => window.location.reload()}
         />
@@ -104,7 +104,7 @@ export default function DashboardPage() {
           {xpEvolution && xpEvolution.length > 0 && !xpLoading ? (
             <ResponsiveContainer width="100%" height={300}>
               <LineChart data={xpEvolution}>
-                <CartesianGrid strokeDasharray="3 3" stroke={t('colors.border') || 'var(--border-default)'} />
+                <CartesianGrid strokeDasharray="3 3" stroke="var(--border-default)" />
                 <XAxis
                   dataKey="period"
                   tick={{ fontSize: 12, fill: 'var(--text-secondary)' }}
@@ -155,7 +155,7 @@ export default function DashboardPage() {
       <section className="dashboard-page__sections" aria-label={t('statistics.recentHunts')}>
         <div className="dashboard-page__section">
           <Card className="dashboard-page__last-hunt">
-            <h3>{t('statistics.lastHunt', 'Última Hunt')}</h3>
+            <h3>{t('statistics.lastHunt')}</h3>
             {dashboard.recent_hunts && dashboard.recent_hunts.length > 0 ? (
               <HuntCard
                 hunt={{
@@ -173,7 +173,7 @@ export default function DashboardPage() {
                 }}
               />
             ) : (
-              <p className="dashboard-page__empty">{t('statistics.noRecentHunts', 'Nenhuma hunt recente.')}</p>
+              <p className="dashboard-page__empty">{t('statistics.noRecentHunts')}</p>
             )}
           </Card>
         </div>
@@ -205,7 +205,7 @@ export default function DashboardPage() {
                 ))}
               </div>
             ) : (
-              <p className="dashboard-page__empty">{t('statistics.noRecentHunts', 'Nenhuma hunt recente.')}</p>
+              <p className="dashboard-page__empty">{t('statistics.noRecentHunts')}</p>
             )}
           </Card>
         </div>
@@ -238,7 +238,7 @@ export default function DashboardPage() {
                 ))}
               </div>
             ) : (
-              <p className="dashboard-page__empty">{t('statistics.noRecommendations', 'Nenhuma recomendação disponível.')}</p>
+              <p className="dashboard-page__empty">{t('statistics.noRecommendations')}</p>
             )}
           </Card>
         </div>
@@ -261,7 +261,7 @@ export default function DashboardPage() {
               ))}
             </div>
           ) : (
-            <p className="dashboard-page__empty">{t('news.noNews', 'Nenhuma notícia disponível.')}</p>
+            <p className="dashboard-page__empty">{t('news.noNews')}</p>
           )}
         </Card>
       </section>

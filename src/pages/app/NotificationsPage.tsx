@@ -8,22 +8,22 @@ const NotificationsPage = () => {
 
   // Extract all translations to variables first (avoids TS1128 in tsc -b)
   // General
-  const gQ1 = t('notifications.general.q1', 'Nova hunt disponível')
-  const gQ1d = t('notifications.general.q1.d', 'Uma nova hunt foi adicionada ao sistema.')
-  const gQ2 = t('notifications.general.q2', 'Atualização de manutenção')
-  const gQ2d = t('notifications.general.q2.d', 'O sistema passará por manutenção das 02:00 às 04:00.')
+  const gQ1 = t('notifications.general.q1')
+  const gQ1d = t('notifications.general.q1Desc')
+  const gQ2 = t('notifications.general.q2')
+  const gQ2d = t('notifications.general.q2Desc')
 
   // Hunts
-  const hQ1 = t('notifications.hunts.q1', 'Nova hunt disponível')
-  const hQ1d = t('notifications.hunts.q1.d', 'Uma nova hunt ficou disponível para você caçar.')
-  const hQ2 = t('notifications.hunts.q2', 'Hunt concluída')
-  const hQ2d = t('notifications.hunts.q2.d', 'Sua hunt recentemente foi finalizada com sucesso.')
+  const hQ1 = t('notifications.hunts.q1')
+  const hQ1d = t('notifications.hunts.q1Desc')
+  const hQ2 = t('notifications.hunts.q2')
+  const hQ2d = t('notifications.hunts.q2Desc')
 
   // System
-  const sQ1 = t('notifications.system.q1', 'Manutenção programada')
-  const sQ1d = t('notifications.system.q1.d', 'O sistema passará por manutenção das 02:00 às 04:00.')
-  const sQ2 = t('notifications.system.q2', 'Backup de dados')
-  const sQ2d = t('notifications.system.q2.d', 'Backup dos dados do sistema será realizado semanalmente.')
+  const sQ1 = t('notifications.system.q1')
+  const sQ1d = t('notifications.system.q1Desc')
+  const sQ2 = t('notifications.system.q2')
+  const sQ2d = t('notifications.system.q2Desc')
 
   const notifications = [
     { id: '1', category: 'general', title: gQ1, description: gQ1d },
@@ -48,13 +48,13 @@ const NotificationsPage = () => {
   return (
     <div className="notifications-page">
       <header className="notifications-page__header">
-        <h1>{t('notifications.title', 'Notificações')}</h1>
-        <p>{t('notifications.subtitle', 'Mantenha-se atualizado sobre novidades')}</p>
+        <h1>{t('notifications.title')}</h1>
+        <p>{t('notifications.subtitle')}</p>
 
         <div className="notifications-page__search">
           <input
             type="text"
-            placeholder={t('notifications.searchPlaceholder', 'Buscar notificações...')}
+            placeholder={t('notifications.searchPlaceholder')}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             className="notifications-page__search-input"
@@ -85,7 +85,7 @@ const NotificationsPage = () => {
 
         {searchQuery && filteredNotifications.length > 0 && (
           <section className="notifications-page__results">
-            <h3>{t('notifications.results', 'Resultados da busca')}</h3>
+            <h3>{t('notifications.results')}</h3>
             <ul>
               {filteredNotifications.map((item) => (
                 <li key={item.id}>

@@ -36,7 +36,7 @@ export default function HuntDetailsPage() {
       <div className="hunt-details-page">
         <EmptyState
           title={t('errors.notFound.title')}
-          description={t('hunts.notFound', 'Hunt não encontrada.')}
+          description={t('hunts.notFound')}
           actionLabel={t('actions.back')}
           onAction={() => window.history.back()}
         />

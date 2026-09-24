@@ -12,8 +12,8 @@ const TutorialsPage = () => {
   return (
     <div className="tutorials-page">
       <header className="tutorials-page__header">
-        <h1>{t('tutorials.title', 'Tutoriais')}</h1>
-        <p>{t('tutorials.subtitle', 'Aprenda Tibia Wise do básico ao avançado')}</p>
+        <h1>{t('tutorials.title')}</h1>
+        <p>{t('tutorials.subtitle')}</p>
       </header>
 
       <main className="tutorials-page__main">
