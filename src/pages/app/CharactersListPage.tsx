@@ -1,9 +1,11 @@
+import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { Link, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 
 import { charactersApi } from '@/features/characters/api/characters.api'
 import { CharacterCard, CharacterCardSkeleton } from '@/features/characters/components/CharacterCard'
+import { EditCharacterModal } from '@/features/characters/components/EditCharacterModal'
 import { EmptyState } from '@/components/feedback/EmptyState/EmptyState'
 import { Button } from '@/components/ui/Button/Button'
 
@@ -12,6 +14,7 @@ import './CharactersListPage.css'
 export default function CharactersListPage() {
   const { t } = useTranslation()
   const navigate = useNavigate()
+  const [editingId, setEditingId] = useState<string | null>(null)
 
   const { data: characters, isLoading, error } = useQuery({
     queryKey: ['characters'],
@@ -62,7 +65,7 @@ export default function CharactersListPage() {
       {characters && characters.length > 0 ? (
         <div className="characters-page__grid">
           {characters.map((c) => (
-            <CharacterCard key={c.id} character={c} showActions />
+            <CharacterCard key={c.id} character={c} showActions onEdit={setEditingId} />
           ))}
         </div>
       ) : (
@@ -74,6 +77,7 @@ export default function CharactersListPage() {
           onAction={() => navigate('/characters/new')}
         />
       )}
+      <EditCharacterModal characterId={editingId} onClose={() => setEditingId(null)} />
     </div>
   )
 }

@@ -11,6 +11,7 @@ import { Alert } from '@/components/feedback/Alert/Alert'
 import { Skeleton } from '@/components/feedback/Skeleton/Skeleton'
 import { charactersApi, type CreateCharacterDto, type UpdateCharacterDto } from '../api/characters.api'
 import { useCreateCharacterSchema, useUpdateCharacterSchema } from '../schemas/characterSchemas'
+import { useIsPremium } from '@/features/subscriptions/api/subscriptions.api'
 
 import './CharacterForm.css'
 
@@ -19,9 +20,11 @@ interface CharacterFormProps {
   characterId?: string
   /** Redirecionar após sucesso. */
   redirectTo?: string
+  /** Callback após salvar; substitui o redirect quando informado. */
+  onSuccess?: () => void
 }
 
-export function CharacterForm({ characterId, redirectTo = '/characters' }: CharacterFormProps) {
+export function CharacterForm({ characterId, redirectTo = '/characters', onSuccess }: CharacterFormProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
   const params = useParams()
@@ -32,6 +35,8 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
   const updateSchema = useUpdateCharacterSchema()
   const schema = isEdit ? updateSchema : createSchema
   const defaultValues = isEdit ? {} : { is_private: false }
+  const isPremium = useIsPremium()
+  const [loadedLevel, setLoadedLevel] = useState<number | null>(null)
 
   const {
     register,
@@ -62,30 +67,38 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
           is_private: data.is_private,
         }
         Object.entries(patch).forEach(([k, v]) => v !== undefined && setValue(k as any, v))
+        setLoadedLevel(data.level ?? null)
         setLoaded(true)
       })
       .catch(() => {
         if (!cancelled) {
-          setLoadError(t('characters.errors.loadFailed', 'Falha ao carregar personagem.'))
+          setLoadError(t('characters.errors.loadFailed'))
         }
       })
     return () => { cancelled = true }
   }, [isEdit, id, charactersApi, setValue, t])
 
+  const [submitError, setSubmitError] = useState<string | null>(null)
+
   const onSubmit = useCallback(
     handleSubmit(async (data: CreateCharacterDto | UpdateCharacterDto) => {
+      setSubmitError(null)
       try {
         if (isEdit) {
-          await charactersApi.update(id!, data as UpdateCharacterDto)
+          // Level oficial não é editável manualmente — vem do site do Tibia.
+          const { level: _level, ...patch } = data as UpdateCharacterDto
+          void _level
+          await charactersApi.update(id!, patch)
+          onSuccess?.()
         } else {
           await charactersApi.create(data as CreateCharacterDto)
         }
-        navigate(redirectTo, { replace: true })
-      } catch (err) {
-        // Error mapping could be added here
+        if (!onSuccess) navigate(redirectTo, { replace: true })
+      } catch {
+        setSubmitError(t('characters.errors.saveFailed'))
       }
     }),
-    [handleSubmit, isEdit, id, charactersApi, navigate, redirectTo],
+    [handleSubmit, isEdit, id, onSuccess, navigate, redirectTo, t],
   )
 
   if (!loaded) {
@@ -121,29 +134,37 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
       <Input
         {...register('name')}
         label={t('characters.name')}
-        placeholder={t('characters.namePlaceholder', 'Nome do personagem')}
+        placeholder={t('characters.namePlaceholder')}
         error={E.name?.message}
         autoFocus
         disabled={isEdit}
       />
 
       <div className="character-form__row">
-        <Input
-          {...R('level', { valueAsNumber: true })}
-          label={t('characters.level')}
-          type="number"
-          min={1}
-          max={3000}
-          placeholder={t('characters.levelPlaceholder', 'Ex.: 150')}
-          error={E.level?.message}
-        />
+        {isEdit ? (
+          <div className="character-form__level-readonly">
+            <span className="field__label">{t('characters.level')}</span>
+            <strong>{loadedLevel ?? '—'}</strong>
+            <small className="field__hint">{t('characters.levelAutoHint')}</small>
+          </div>
+        ) : (
+          <Input
+            {...R('level', { valueAsNumber: true })}
+            label={t('characters.level')}
+            type="number"
+            min={1}
+            max={3000}
+            placeholder={t('characters.levelPlaceholder')}
+            error={E.level?.message}
+          />
+        )}
         <Input
           {...R('magic_level', { valueAsNumber: true })}
           label={t('characters.magicLevel')}
           type="number"
           min={0}
           max={200}
-          placeholder={t('characters.magicLevelPlaceholder', 'Ex.: 50')}
+          placeholder={t('characters.magicLevelPlaceholder')}
           error={E.magic_level?.message}
         />
       </div>
@@ -153,7 +174,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
         <div className="character-form__skills-grid">
           <Input
             {...R('fist_fighting', { valueAsNumber: true })}
-            label={t('characters.skills.fist')}
+            label={t('characters.skillsLabels.fist')}
             type="number"
             min={10}
             max={200}
@@ -161,7 +182,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
           />
           <Input
             {...R('club_fighting', { valueAsNumber: true })}
-            label={t('characters.skills.club')}
+            label={t('characters.skillsLabels.club')}
             type="number"
             min={10}
             max={200}
@@ -169,7 +190,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
           />
           <Input
             {...R('sword_fighting', { valueAsNumber: true })}
-            label={t('characters.skills.sword')}
+            label={t('characters.skillsLabels.sword')}
             type="number"
             min={10}
             max={200}
@@ -177,7 +198,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
           />
           <Input
             {...R('axe_fighting', { valueAsNumber: true })}
-            label={t('characters.skills.axe')}
+            label={t('characters.skillsLabels.axe')}
             type="number"
             min={10}
             max={200}
@@ -185,7 +206,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
           />
           <Input
             {...R('distance_fighting', { valueAsNumber: true })}
-            label={t('characters.skills.distance')}
+            label={t('characters.skillsLabels.distance')}
             type="number"
             min={10}
             max={200}
@@ -193,7 +214,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
           />
           <Input
             {...R('shielding', { valueAsNumber: true })}
-            label={t('characters.skills.shielding')}
+            label={t('characters.skillsLabels.shielding')}
             type="number"
             min={10}
             max={200}
@@ -201,7 +222,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
           />
           <Input
             {...R('fishing', { valueAsNumber: true })}
-            label={t('characters.skills.fishing')}
+            label={t('characters.skillsLabels.fishing')}
             type="number"
             min={10}
             max={200}
@@ -210,10 +231,14 @@ export function CharacterForm({ characterId, redirectTo = '/characters' }: Chara
         </div>
       </fieldset>
 
-      <Checkbox
-        {...R('is_private')}
-        label={t('characters.isPrivate', 'Tornar privado')}
-      />
+      {isPremium && (
+        <Checkbox
+          {...R('is_private')}
+          label={t('characters.isPrivate')}
+        />
+      )}
+
+      {submitError && <Alert type="error">{submitError}</Alert>}
 
       <div className="character-form__actions">
         <Button type="button" variant="ghost" onClick={() => navigate(redirectTo)} disabled={isSubmitting}>

@@ -53,7 +53,7 @@ export default function CharacterDetailsPage() {
       <div className="character-details-page">
         <EmptyState
           title={t('errors.notFound.title')}
-          description={t('characters.notFound', 'Personagem não encontrado.')}
+          description={t('characters.notFound')}
           actionLabel={t('actions.back')}
           onAction={() => window.history.back()}
         />
@@ -94,13 +94,13 @@ export default function CharacterDetailsPage() {
       <section className="character-details-page__section">
         <h2>{t('characters.skills')}</h2>
         <dl className="character-details-page__skills">
-<SkillRow label={t('characters.skills.fist')} value={character.fist_fighting} icon={<Shield size={16} aria-hidden />} />
-        <SkillRow label={t('characters.skills.club')} value={character.club_fighting} icon={<Shield size={16} aria-hidden />} />
-        <SkillRow label={t('characters.skills.sword')} value={character.sword_fighting} icon={<Sword size={16} aria-hidden />} />
-        <SkillRow label={t('characters.skills.axe')} value={character.axe_fighting} icon={<Shield size={16} aria-hidden />} />
-        <SkillRow label={t('characters.skills.distance')} value={character.distance_fighting} icon={<Target size={16} aria-hidden />} />
-        <SkillRow label={t('characters.skills.shielding')} value={character.shielding} icon={<Shield size={16} aria-hidden />} />
-        <SkillRow label={t('characters.skills.fishing')} value={character.fishing} icon={<Fish size={16} aria-hidden />} />
+<SkillRow label={t('characters.skillsLabels.fist')} value={character.fist_fighting} icon={<Shield size={16} aria-hidden />} />
+        <SkillRow label={t('characters.skillsLabels.club')} value={character.club_fighting} icon={<Shield size={16} aria-hidden />} />
+        <SkillRow label={t('characters.skillsLabels.sword')} value={character.sword_fighting} icon={<Sword size={16} aria-hidden />} />
+        <SkillRow label={t('characters.skillsLabels.axe')} value={character.axe_fighting} icon={<Shield size={16} aria-hidden />} />
+        <SkillRow label={t('characters.skillsLabels.distance')} value={character.distance_fighting} icon={<Target size={16} aria-hidden />} />
+        <SkillRow label={t('characters.skillsLabels.shielding')} value={character.shielding} icon={<Shield size={16} aria-hidden />} />
+        <SkillRow label={t('characters.skillsLabels.fishing')} value={character.fishing} icon={<Fish size={16} aria-hidden />} />
         <SkillRow label={t('characters.magicLevel')} value={character.magic_level} icon={<Wand size={16} aria-hidden />} />
       </dl>
       </section>

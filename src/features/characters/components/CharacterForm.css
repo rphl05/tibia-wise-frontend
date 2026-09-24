@@ -70,3 +70,13 @@
     grid-template-columns: 1fr;
   }
 }
+.character-form__level-readonly {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.character-form__level-readonly strong {
+  color: var(--text-primary);
+  font-size: var(--font-size-body);
+}

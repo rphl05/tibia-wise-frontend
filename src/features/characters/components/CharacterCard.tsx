@@ -27,6 +27,8 @@ interface CharacterCardProps {
   showActions?: boolean
   /** Variante para lista pública (sem ações). */
   variant?: 'default' | 'public'
+  /** Abre edição (ex.: em modal). Se omitido, navega para a página de edição. */
+  onEdit?: (characterId: string) => void
 }
 
 const VOCATION_MAP: Record<number, string> = {
@@ -58,6 +60,7 @@ export function CharacterCard({
   character,
   showActions = false,
   variant = 'default',
+  onEdit,
 }: CharacterCardProps) {
   const { t } = useTranslation()
   const navigate = useNavigate()
@@ -78,7 +81,7 @@ export function CharacterCard({
   })
 
   const handleDelete = useCallback(async () => {
-    if (!confirm(t('characters.confirmDelete', 'Tem certeza que deseja excluir este personagem?'))) return
+    if (!confirm(t('characters.confirmDelete'))) return
     await deleteMutation.mutateAsync()
   }, [deleteMutation, t])
 
@@ -127,7 +130,7 @@ export function CharacterCard({
           <Dropdown
             trigger={({ onClick, 'aria-expanded': expanded, 'aria-haspopup': haspopup }) => (
               <IconButton
-                aria-label={t('characters.actions', 'Ações')}
+                aria-label={t('characters.actions')}
                 onClick={onClick}
                 aria-expanded={expanded}
                 aria-haspopup={haspopup}
@@ -139,7 +142,11 @@ export function CharacterCard({
             <DropdownItem onClick={() => navigate(`/characters/${character.id}`)}>
               <Eye size={16} aria-hidden /> {t('characters.view')}
             </DropdownItem>
-            <DropdownItem onClick={() => navigate(`/characters/${character.id}/edit`)}>
+            <DropdownItem
+              onClick={() =>
+                onEdit ? onEdit(character.id) : navigate(`/characters/${character.id}/edit`)
+              }
+            >
               <Shield size={16} aria-hidden /> {t('characters.edit')}
             </DropdownItem>
             <DropdownItem onClick={handleRefresh} disabled={refreshMutation.isPending}>

@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/FormFields/Checkbox'
 import { Alert } from '@/components/feedback/Alert/Alert'
 import { useToast } from '@/components/feedback/Toast/ToastProvider'
 import { charactersApi } from '../api/characters.api'
+import { useIsPremium } from '@/features/subscriptions/api/subscriptions.api'
 import { ApiError } from '@/lib/api/errors'
 import type { Character } from '@/types/api'
 
@@ -22,6 +23,7 @@ export function AddCharacterFlow() {
   const { t } = useTranslation()
   const toast = useToast()
   const queryClient = useQueryClient()
+  const isPremium = useIsPremium()
 
   const [step, setStep] = useState<Step>('name')
   const [name, setName] = useState('')
@@ -125,12 +127,14 @@ export function AddCharacterFlow() {
             disabled={loading}
             autoComplete="off"
           />
-          <Checkbox
-            label={t('characters.isPrivate')}
-            checked={isPrivate}
-            onChange={(e) => setIsPrivate(e.target.checked)}
-            disabled={loading}
-          />
+          {isPremium && (
+            <Checkbox
+              label={t('characters.isPrivate')}
+              checked={isPrivate}
+              onChange={(e) => setIsPrivate(e.target.checked)}
+              disabled={loading}
+            />
+          )}
           <div className="character-wizard__actions">
             <Link to="/characters">
               <Button type="button" variant="ghost" disabled={loading}>

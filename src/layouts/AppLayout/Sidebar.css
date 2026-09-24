@@ -111,3 +111,24 @@
     transform: translateX(0);
   }
 }
+
+/* Destaque discreto do item Premium (dourado) */
+.sidebar__link--premium {
+  border: 1px solid color-mix(in srgb, var(--color-gold) 45%, transparent);
+  background: color-mix(in srgb, var(--color-gold) 10%, transparent);
+  color: var(--color-gold);
+}
+
+.sidebar__link--premium .sidebar__link-icon {
+  color: var(--color-gold);
+}
+
+.sidebar__link--premium:hover {
+  background: color-mix(in srgb, var(--color-gold) 16%, transparent);
+  color: var(--color-gold-light);
+}
+
+.sidebar__link--premium.sidebar__link--active {
+  background: color-mix(in srgb, var(--color-gold) 20%, transparent);
+  color: var(--color-gold-light);
+}

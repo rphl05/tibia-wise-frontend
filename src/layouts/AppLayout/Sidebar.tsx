@@ -56,12 +56,17 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
   const renderLink = (item: NavItem) => {
     const Icon = item.icon
     const active = isActive(item.to)
+    const isPremiumLink = item.to === ROUTES.premium
     return (
       <Link
         key={item.to}
         to={item.to}
         onClick={onClose}
-        className={clsx('sidebar__link', active && 'sidebar__link--active')}
+        className={clsx(
+          'sidebar__link',
+          active && 'sidebar__link--active',
+          isPremiumLink && 'sidebar__link--premium',
+        )}
         {...(active ? { 'aria-current': 'page' as const } : {})}
       >
         <Icon size={18} className="sidebar__link-icon" aria-hidden />

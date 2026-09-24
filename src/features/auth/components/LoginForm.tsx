@@ -27,7 +27,9 @@ export function LoginForm() {
     setError,
   } = useForm({ resolver: zodResolver(schema) })
 
-  const from = location.state?.from ?? ROUTES.dashboard
+  // Pós-login: o usuário entra pelas notícias; rotas protegidas tentadas antes
+  // do login continuam sendo respeitadas.
+  const from = location.state?.from ?? ROUTES.news
 
   const onSubmit = useCallback(
     handleSubmit(async (data) => {
