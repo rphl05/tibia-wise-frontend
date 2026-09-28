@@ -121,11 +121,31 @@
   flex-direction: column;
   gap: var(--space-4);
 }
-/* Hero da página do personagem: texto à esquerda, arte da vocation à direita */
+/* Hero: arte da vocation como background de toda a área superior */
 .character-details-page__hero {
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: var(--space-6);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  min-height: 360px;
+  background-size: cover;
+  background-position: center right;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--border-default);
+  padding: var(--space-8);
+  align-items: flex-start;
+}
+
+.character-details-page__hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    color-mix(in srgb, var(--bg-page) 92%, transparent) 0%,
+    color-mix(in srgb, var(--bg-page) 60%, transparent) 45%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 
 .character-details-page__title-row {
@@ -139,27 +159,25 @@
 }
 
 .character-details-page__info {
+  position: relative;
+  z-index: 1;
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
   min-width: 0;
-}
-
-.character-details-page__hero-art {
-  max-width: 260px;
-  width: 40%;
-  height: auto;
-  object-fit: contain;
-  flex-shrink: 0;
+  max-width: 60%;
 }
 
 .character-details-page__hero-fallback {
+  position: absolute;
+  right: var(--space-8);
+  top: 50%;
+  transform: translateY(-50%);
   width: 160px;
   height: 160px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: var(--bg-surface-hover);
   border: 1px dashed var(--border-default);
   border-radius: var(--radius-xl);
   color: var(--text-muted);
@@ -167,17 +185,16 @@
 
 @media (max-width: 767px) {
   .character-details-page__hero {
-    align-items: center;
-    text-align: center;
+    min-height: 280px;
+    padding: var(--space-5);
+    background-position: center;
   }
 
-  .character-details-page__hero-art {
-    width: 60%;
-    max-width: 200px;
+  .character-details-page__info {
+    max-width: 100%;
   }
 
-  .character-details-page__hero {
-    flex-direction: column;
-    align-items: center;
+  .character-details-page__hero-overlay {
+    background: color-mix(in srgb, var(--bg-page) 72%, transparent);
   }
 }

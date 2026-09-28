@@ -1,8 +1,6 @@
 import { useTranslation } from 'react-i18next'
-import { useQueryClient } from '@tanstack/react-query'
 
 import { Modal } from '@/components/overlays/Modal/Modal'
-import { useToast } from '@/components/feedback/Toast/ToastProvider'
 import { CharacterForm } from './CharacterForm'
 
 interface EditCharacterModalProps {
@@ -13,12 +11,9 @@ interface EditCharacterModalProps {
 /** Edição de personagem na própria página (modal), sem navegação. */
 export function EditCharacterModal({ characterId, onClose }: EditCharacterModalProps) {
   const { t } = useTranslation()
-  const toast = useToast()
-  const queryClient = useQueryClient()
 
   function handleSuccess() {
-    void queryClient.invalidateQueries({ queryKey: ['characters'] })
-    toast.success(t('settings.feedback.saved'))
+    // O formulário já invalida o cache e exibe o toast de sucesso.
     onClose()
   }
 

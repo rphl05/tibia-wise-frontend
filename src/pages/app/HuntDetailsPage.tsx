@@ -109,6 +109,10 @@ export default function HuntDetailsPage() {
           <span className="value">{formatDuration(hunt.duration_seconds)}</span>
         </div>
         <div className="hunt-details-page__stat">
+          <span className="label">{t('hunts.xpTotal')}</span>
+          <span className="value">{formatNumber(hunt.xp)}</span>
+        </div>
+        <div className="hunt-details-page__stat">
           <span className="label">{t('hunts.rawXp')}</span>
           <span className="value">{formatNumber(hunt.raw_xp)}</span>
         </div>

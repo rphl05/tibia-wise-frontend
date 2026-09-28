@@ -298,7 +298,8 @@
     "isDefault": "Default character",
     "setAsDefaultHint": "This character will be used as default in the Sidebar, Dashboard, Statistics and Recommendations.",
     "setAsDefaultNeedsVerification": "Verify the character (code in the Tibia character description) to set it as default.",
-    "vocationUnknown": "Vocation unavailable"
+    "vocationUnknown": "Vocation unavailable",
+    "updatedSuccess": "Character updated successfully."
   },
   "hunts": {
     "title": "My Hunts",
@@ -379,7 +380,8 @@
     "privateDescription": "This hunt is private and cannot be viewed.",
     "date": "Date",
     "rawXp": "Total Raw XP",
-    "rawXpPerHour": "Raw XP/h"
+    "rawXpPerHour": "Raw XP/h",
+    "xpTotal": "Total EXP"
   },
   "statistics": {
     "title": "Statistics",

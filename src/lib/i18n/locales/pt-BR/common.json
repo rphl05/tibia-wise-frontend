@@ -298,7 +298,8 @@
     "isDefault": "Personagem padrão",
     "setAsDefaultHint": "Este personagem será usado como padrão na Sidebar, Dashboard, Estatísticas e Recomendações.",
     "setAsDefaultNeedsVerification": "Verifique o personagem (código na descrição do Tibia) para poder defini-lo como padrão.",
-    "vocationUnknown": "Vocação indisponível"
+    "vocationUnknown": "Vocação indisponível",
+    "updatedSuccess": "Personagem atualizado com sucesso."
   },
   "hunts": {
     "title": "Minhas Hunts",
@@ -379,7 +380,8 @@
     "privateDescription": "Esta hunt é privada e não pode ser visualizada.",
     "date": "Data",
     "rawXp": "Raw XP Total",
-    "rawXpPerHour": "Raw XP/h"
+    "rawXpPerHour": "Raw XP/h",
+    "xpTotal": "EXP Total"
   },
   "statistics": {
     "title": "Estatísticas",

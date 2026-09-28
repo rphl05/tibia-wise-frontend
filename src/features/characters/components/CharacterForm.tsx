@@ -3,12 +3,14 @@ import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
 import { useCallback, useEffect, useState } from 'react'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { Button } from '@/components/ui/Button/Button'
 import { Input } from '@/components/ui/FormFields/Input'
 import { Checkbox } from '@/components/ui/FormFields/Checkbox'
 import { Alert } from '@/components/feedback/Alert/Alert'
 import { Skeleton } from '@/components/feedback/Skeleton/Skeleton'
+import { useToast } from '@/components/feedback/Toast/ToastProvider'
 import { charactersApi, type CreateCharacterDto, type UpdateCharacterDto } from '../api/characters.api'
 import { useCreateCharacterSchema, useUpdateCharacterSchema } from '../schemas/characterSchemas'
 import { useIsPremium } from '@/features/subscriptions/api/subscriptions.api'
@@ -31,6 +33,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
   const navigate = useNavigate()
   const params = useParams()
   const { user, refreshUser } = useAuth()
+  const queryClient = useQueryClient()
   const isEdit = Boolean(characterId ?? params.id)
   const id = characterId ?? params.id
 
@@ -88,6 +91,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
     return () => { cancelled = true }
   }, [isEdit, id, charactersApi, setValue, t])
 
+  const toast = useToast()
   const [submitError, setSubmitError] = useState<string | null>(null)
 
   const onSubmit = useCallback(
@@ -106,6 +110,8 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
             })
             await refreshUser()
           }
+          await queryClient.invalidateQueries({ queryKey: ['characters'] })
+          toast.success(t('characters.updatedSuccess'))
           onSuccess?.()
         } else {
           await charactersApi.create(data as CreateCharacterDto)
@@ -113,9 +119,10 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
         if (!onSuccess) navigate(redirectTo, { replace: true })
       } catch {
         setSubmitError(t('characters.errors.saveFailed'))
+        toast.error(t('characters.errors.saveFailed'))
       }
     }),
-    [handleSubmit, isEdit, id, onSuccess, navigate, redirectTo, t],
+    [handleSubmit, isEdit, id, onSuccess, navigate, redirectTo, t, toast, wantDefault, definedAsDefault, queryClient, refreshUser],
   )
 
   if (!loaded) {

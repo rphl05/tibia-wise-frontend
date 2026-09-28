@@ -79,7 +79,11 @@ export default function CharacterDetailsPage() {
 
   return (
     <div className="character-details-page">
-      <header className="character-details-page__header character-details-page__hero">
+      <header
+        className="character-details-page__header character-details-page__hero"
+        style={heroSrc ? { backgroundImage: `url(${heroSrc})` } : undefined}
+      >
+        <div className="character-details-page__hero-overlay" aria-hidden />
         <div className="character-details-page__info">
           <div className="character-details-page__title-row">
             {VocationIcon && <VocationIcon size={40} aria-hidden className="character-details-page__vocation-icon" />}
@@ -103,14 +107,7 @@ export default function CharacterDetailsPage() {
             </Badge>
           </div>
         </div>
-        {heroSrc ? (
-          <img
-            src={heroSrc}
-            alt=""
-            className="character-details-page__hero-art"
-            aria-hidden
-          />
-        ) : (
+        {!heroSrc && (
           <div className="character-details-page__hero-fallback" aria-hidden>
             {VocationIcon ? <VocationIcon size={64} /> : <Crown size={64} />}
           </div>
