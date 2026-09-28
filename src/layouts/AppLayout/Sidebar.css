@@ -132,3 +132,24 @@
   background: color-mix(in srgb, var(--color-gold) 20%, transparent);
   color: var(--color-gold-light);
 }
+
+.sidebar__character-link {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  text-decoration: none;
+}
+
+.sidebar__character-link strong {
+  color: var(--text-primary);
+  font-size: var(--font-size-body);
+}
+
+.sidebar__character-link:hover strong {
+  color: var(--action-primary);
+}
+
+.sidebar__character-meta {
+  font-size: var(--font-size-small);
+  color: var(--text-secondary);
+}

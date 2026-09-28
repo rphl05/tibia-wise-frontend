@@ -22,12 +22,13 @@ interface CharacterSelectorProps {
   triggerLabel?: string
 }
 
+// IDs conforme a tabela vocations do backend (fonte oficial do Tibia).
 const VOCATION_MAP: Record<number, string> = {
-  1: 'Sorcerer',
-  2: 'Druid',
+  2: 'Knight',
   3: 'Paladin',
-  4: 'Knight',
-  5: 'Monk',
+  4: 'Sorcerer',
+  5: 'Druid',
+  6: 'Monk',
 }
 
 export function CharacterSelector({

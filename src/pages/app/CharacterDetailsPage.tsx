@@ -10,20 +10,33 @@ import { Badge } from '@/components/ui/Badge/Badge'
 
 import './CharacterDetailsPage.css'
 
+// IDs conforme a tabela vocations do backend (fonte oficial do Tibia).
 const VOCATION_ICONS: Record<number, typeof Crown> = {
-  1: Wand,
-  2: Leaf,
+  4: Wand,
+  5: Leaf,
   3: Target,
-  4: Sword,
-  5: Crown,
+  2: Sword,
+  6: Crown,
 }
 
 const VOCATION_NAMES: Record<number, string> = {
-  1: 'Sorcerer',
-  2: 'Druid',
+  2: 'Knight',
   3: 'Paladin',
-  4: 'Knight',
-  5: 'Monk',
+  4: 'Sorcerer',
+  5: 'Druid',
+  6: 'Monk',
+}
+
+const VOCATION_HERO: Record<number, string> = {
+  2: '/assets/images/character-knight.webp',
+  3: '/assets/images/character-paladin.webp',
+  4: '/assets/images/character-sorcerer.webp',
+  5: '/assets/images/character-druid.webp',
+  6: '/assets/images/character-monk.webp',
+}
+
+function getVocationHero(vocationId: number | null | undefined): string | null {
+  return vocationId ? VOCATION_HERO[vocationId] ?? null : null
 }
 
 export default function CharacterDetailsPage() {
@@ -61,34 +74,47 @@ export default function CharacterDetailsPage() {
     )
   }
 
-  const VocationIcon = VOCATION_ICONS[character.vocation_id ?? 0] || Crown
+  const VocationIcon = VOCATION_ICONS[character.vocation_id ?? 0]
+  const heroSrc = getVocationHero(character.vocation_id)
 
   return (
     <div className="character-details-page">
-      <header className="character-details-page__header">
-        <div className="character-details-page__avatar">
-          <VocationIcon size={48} aria-hidden />
-        </div>
+      <header className="character-details-page__header character-details-page__hero">
         <div className="character-details-page__info">
-          <h1>{character.name}</h1>
+          <div className="character-details-page__title-row">
+            {VocationIcon && <VocationIcon size={40} aria-hidden className="character-details-page__vocation-icon" />}
+            <h1>{character.name}</h1>
+          </div>
           <div className="character-details-page__meta">
             <span>
               <Crown size={16} aria-hidden /> Level {character.level ?? '—'}
             </span>
             <span>
-              <Shield size={16} aria-hidden /> {VOCATION_NAMES[character.vocation_id ?? 0] ?? '—'}
+              <Shield size={16} aria-hidden /> {VOCATION_NAMES[character.vocation_id ?? 0] ?? t('characters.vocationUnknown')}
             </span>
             <span>
               <Sword size={16} aria-hidden /> {character.world ?? '—'}
             </span>
           </div>
+          <div className="character-details-page__badges">
+            {character.is_private && <Badge variant="default">{t('characters.private')}</Badge>}
+            <Badge variant={character.verified ? 'success' : 'warning'}>
+              {character.verified ? t('characters.verified') : t('characters.notVerified')}
+            </Badge>
+          </div>
         </div>
-        <div className="character-details-page__badges">
-          {character.is_private && <Badge variant="default">{t('characters.private')}</Badge>}
-          <Badge variant={character.status === 'VALID' ? 'success' : character.status === 'PENDING' ? 'warning' : 'error'}>
-            {character.status}
-          </Badge>
-        </div>
+        {heroSrc ? (
+          <img
+            src={heroSrc}
+            alt=""
+            className="character-details-page__hero-art"
+            aria-hidden
+          />
+        ) : (
+          <div className="character-details-page__hero-fallback" aria-hidden>
+            {VocationIcon ? <VocationIcon size={64} /> : <Crown size={64} />}
+          </div>
+        )}
       </header>
 
       <section className="character-details-page__section">
@@ -107,7 +133,7 @@ export default function CharacterDetailsPage() {
 
       <footer className="character-details-page__actions">
         <Link to={`/characters/${character.id}/edit`} className="btn-link">
-          Editar
+          {t('characters.edit')}
         </Link>
       </footer>
     </div>

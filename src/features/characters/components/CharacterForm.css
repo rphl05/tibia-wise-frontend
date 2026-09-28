@@ -80,3 +80,9 @@
   color: var(--text-primary);
   font-size: var(--font-size-body);
 }
+
+.character-form__default {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}

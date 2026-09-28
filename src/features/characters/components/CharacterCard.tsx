@@ -22,6 +22,7 @@ interface CharacterCardProps {
     vocation_id?: number | null
     is_private: boolean
     status: string
+    verified?: boolean
   }
   /** Mostra ações de edição/validação (lista "Meus Personagens"). */
   showActions?: boolean
@@ -31,30 +32,20 @@ interface CharacterCardProps {
   onEdit?: (characterId: string) => void
 }
 
+// IDs conforme a tabela vocations do backend (fonte oficial do Tibia).
 const VOCATION_MAP: Record<number, string> = {
-  1: 'Sorcerer',
-  2: 'Druid',
+  2: 'Knight',
   3: 'Paladin',
-  4: 'Knight',
-  5: 'Monk',
+  4: 'Sorcerer',
+  5: 'Druid',
+  6: 'Monk',
 }
 
 function getVocationName(id: number | null | undefined): string {
   return id && VOCATION_MAP[id] ? VOCATION_MAP[id] : '—'
 }
 
-function getStatusBadge(status: string) {
-  switch (status) {
-    case 'VALID':
-      return <Badge variant="success">Validado</Badge>
-    case 'PENDING':
-      return <Badge variant="warning">Pendente</Badge>
-    case 'INVALID':
-      return <Badge variant="error">Inválido</Badge>
-    default:
-      return <Badge variant="default">{status}</Badge>
-  }
-}
+
 
 export function CharacterCard({
   character,
@@ -123,7 +114,11 @@ export function CharacterCard({
           <h3 className="character-card__name">{character.name}</h3>
           <div className="character-card__badges">
             {character.is_private && <Badge variant="default">{t('characters.private')}</Badge>}
-            {getStatusBadge(character.status)}
+            {character.verified !== undefined && (
+              <Badge variant={character.verified ? 'success' : 'warning'}>
+                {character.verified ? t('characters.verified') : t('characters.notVerified')}
+              </Badge>
+            )}
           </div>
         </div>
         {showActions && (

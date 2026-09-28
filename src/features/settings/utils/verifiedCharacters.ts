@@ -10,11 +10,9 @@ import type { Character } from '@/types/api'
  * passa a funcionar automaticamente.
  */
 export function isCharacterVerified(character: Character): boolean {
-  const c = character as Character & {
-    verified?: boolean
-    verified_at?: string | null
-  }
-  return c.verified === true || typeof c.verified_at === 'string'
+  // O backend expõe `verified` (verificação com `verified_at` preenchido).
+  // Nunca inferimos verificação apenas porque o personagem existe no banco.
+  return character.verified === true
 }
 
 export function getVerifiedCharacters(characters: Character[]): Character[] {

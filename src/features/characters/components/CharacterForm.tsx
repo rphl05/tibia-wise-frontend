@@ -12,6 +12,8 @@ import { Skeleton } from '@/components/feedback/Skeleton/Skeleton'
 import { charactersApi, type CreateCharacterDto, type UpdateCharacterDto } from '../api/characters.api'
 import { useCreateCharacterSchema, useUpdateCharacterSchema } from '../schemas/characterSchemas'
 import { useIsPremium } from '@/features/subscriptions/api/subscriptions.api'
+import { useAuth } from '@/features/auth/AuthProvider'
+import { settingsApi } from '@/features/settings/api/settings.api'
 
 import './CharacterForm.css'
 
@@ -28,6 +30,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
   const { t } = useTranslation()
   const navigate = useNavigate()
   const params = useParams()
+  const { user, refreshUser } = useAuth()
   const isEdit = Boolean(characterId ?? params.id)
   const id = characterId ?? params.id
 
@@ -37,6 +40,9 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
   const defaultValues = isEdit ? {} : { is_private: false }
   const isPremium = useIsPremium()
   const [loadedLevel, setLoadedLevel] = useState<number | null>(null)
+  const [characterVerified, setCharacterVerified] = useState(false)
+  const [definedAsDefault, setDefinedAsDefault] = useState(false)
+  const [wantDefault, setWantDefault] = useState(false)
 
   const {
     register,
@@ -68,6 +74,10 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
         }
         Object.entries(patch).forEach(([k, v]) => v !== undefined && setValue(k as any, v))
         setLoadedLevel(data.level ?? null)
+        setCharacterVerified(data.verified === true)
+        const isDefault = Boolean(id && String(user?.default_character_id ?? '') === String(id))
+        setDefinedAsDefault(isDefault)
+        setWantDefault(isDefault)
         setLoaded(true)
       })
       .catch(() => {
@@ -89,6 +99,13 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
           const { level: _level, ...patch } = data as UpdateCharacterDto
           void _level
           await charactersApi.update(id!, patch)
+          // Personagem padrão: só verificados; ownership validado pelo backend.
+          if (wantDefault !== definedAsDefault) {
+            await settingsApi.updateMe({
+              default_character_id: wantDefault ? Number(id) : null,
+            })
+            await refreshUser()
+          }
           onSuccess?.()
         } else {
           await charactersApi.create(data as CreateCharacterDto)
@@ -236,6 +253,26 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
           {...R('is_private')}
           label={t('characters.isPrivate')}
         />
+      )}
+
+      {isEdit && (
+        <div className="character-form__default">
+          <Checkbox
+            label={
+              definedAsDefault
+                ? `✓ ${t('characters.isDefault')}`
+                : t('characters.setAsDefault')
+            }
+            checked={wantDefault}
+            onChange={(e) => setWantDefault(e.target.checked)}
+            disabled={isSubmitting || !characterVerified}
+          />
+          <small className="field__hint">
+            {characterVerified
+              ? t('characters.setAsDefaultHint')
+              : t('characters.setAsDefaultNeedsVerification')}
+          </small>
+        </div>
       )}
 
       {submitError && <Alert type="error">{submitError}</Alert>}

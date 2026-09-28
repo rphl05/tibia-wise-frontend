@@ -11,9 +11,12 @@ import {
   FileText,
 } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
+import { useQuery } from '@tanstack/react-query'
 import { clsx } from 'clsx'
 
 import { ROUTES } from '@/config/routes'
+import { useAuth } from '@/features/auth/AuthProvider'
+import { charactersApi } from '@/features/characters/api/characters.api'
 import './Sidebar.css'
 
 interface NavItem {
@@ -34,6 +37,15 @@ export interface SidebarProps {
 export function Sidebar({ open = false, onClose }: SidebarProps) {
   const { t } = useTranslation()
   const location = useLocation()
+  const { user } = useAuth()
+
+  const { data: characters } = useQuery({
+    queryKey: ['characters'],
+    queryFn: charactersApi.list,
+  })
+  const defaultCharacter = characters?.find(
+    (c) => c.id === String(user?.default_character_id),
+  )
 
   const mainNav: NavItem[] = [
     { to: ROUTES.dashboard, label: t('nav.dashboard'), icon: LayoutDashboard },
@@ -92,10 +104,23 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
 
         <div className="sidebar__divider" />
 
-        {/* Contexto do personagem ativo — dados reais virão da API (default_character_id) */}
         <div className="sidebar__character">
           <span className="sidebar__character-tag">{t('layout.activeCharacter')}</span>
-          <p className="sidebar__character-empty">{t('layout.noCharacter')}</p>
+          {defaultCharacter ? (
+            <Link
+              to={ROUTES.characterDetails(defaultCharacter.id)}
+              className="sidebar__character-link"
+              onClick={onClose}
+            >
+              <strong>{defaultCharacter.name}</strong>
+              <span className="sidebar__character-meta">
+                Level {defaultCharacter.level ?? '—'}
+                {defaultCharacter.world ? ` · ${defaultCharacter.world}` : ''}
+              </span>
+            </Link>
+          ) : (
+            <p className="sidebar__character-empty">{t('layout.noCharacter')}</p>
+          )}
         </div>
 
         <div className="sidebar__divider" />
