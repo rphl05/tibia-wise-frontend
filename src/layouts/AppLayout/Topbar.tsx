@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { ChevronDown, Globe, Moon, Search, Sun, Monitor, Crown, Bell, User, Plus, LogOut, Settings, Users } from 'lucide-react'
 import { useTranslation } from 'react-i18next'
 import { useRef, useEffect } from 'react'
@@ -15,11 +15,12 @@ export function Topbar({ onMenuClick }: { onMenuClick?: () => void }) {
   const { t } = useTranslation()
   const { user, logout } = useAuth()
   const { preference, setPreference } = useTheme()
+  const navigate = useNavigate()
   const searchRef = useRef<HTMLInputElement>(null)
 
   const handleLogout = async () => {
     await logout()
-    window.location.href = ROUTES.login
+    navigate(ROUTES.home, { replace: true })
   }
 
   const themeIcons = {
@@ -157,16 +158,16 @@ export function Topbar({ onMenuClick }: { onMenuClick?: () => void }) {
                 </button>
               )}
             >
-              <DropdownItem icon={<User size={16} aria-hidden />}>
+              <DropdownItem icon={<User size={16} aria-hidden />} onClick={() => navigate(ROUTES.profile)}>
                 {t('userMenu.profile')}
               </DropdownItem>
-              <DropdownItem icon={<Users size={16} aria-hidden />}>
+              <DropdownItem icon={<Users size={16} aria-hidden />} onClick={() => navigate(ROUTES.characters)}>
                 {t('userMenu.characters')}
               </DropdownItem>
-              <DropdownItem icon={<Settings size={16} aria-hidden />}>
+              <DropdownItem icon={<Settings size={16} aria-hidden />} onClick={() => navigate(ROUTES.settings)}>
                 {t('nav.settings')}
               </DropdownItem>
-              <DropdownItem icon={<Bell size={16} aria-hidden />}>
+              <DropdownItem icon={<Bell size={16} aria-hidden />} onClick={() => navigate(ROUTES.notifications)}>
                 {t('notifications.label')}
               </DropdownItem>
               <DropdownItem danger icon={<LogOut size={16} aria-hidden />} onClick={() => void handleLogout()}>

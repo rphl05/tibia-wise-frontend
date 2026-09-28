@@ -291,7 +291,14 @@
       "fishing": "Fishing"
     },
     "notFound": "Character not found.",
-    "levelAutoHint": "The official level is fetched automatically from the Tibia website."
+    "levelAutoHint": "The official level is fetched automatically from the Tibia website.",
+    "verified": "Verified",
+    "notVerified": "Not verified",
+    "setAsDefault": "Set as default character",
+    "isDefault": "Default character",
+    "setAsDefaultHint": "This character will be used as default in the Sidebar, Dashboard, Statistics and Recommendations.",
+    "setAsDefaultNeedsVerification": "Verify the character (code in the Tibia character description) to set it as default.",
+    "vocationUnknown": "Vocation unavailable"
   },
   "hunts": {
     "title": "My Hunts",
@@ -339,7 +346,9 @@
       "viewHunt": "View Hunt",
       "title": "Import Hunt",
       "makePublic": "Make this Hunt public",
-      "importFailed": "Could not import the hunt. Check the content and try again."
+      "importFailed": "Could not import the hunt. Check the content and try again.",
+      "close": "Close",
+      "importing": "Importing..."
     },
     "validation": {
       "contentMin": "Content too short (min. 10 characters)",
@@ -363,7 +372,14 @@
     "supplies": "Supplies",
     "noCreatures": "No creatures recorded.",
     "noLoot": "No loot recorded.",
-    "noSupplies": "No supplies recorded."
+    "noSupplies": "No supplies recorded.",
+    "share": "Share Hunt",
+    "linkCopied": "Hunt link copied!",
+    "privateTitle": "Private hunt",
+    "privateDescription": "This hunt is private and cannot be viewed.",
+    "date": "Date",
+    "rawXp": "Total Raw XP",
+    "rawXpPerHour": "Raw XP/h"
   },
   "statistics": {
     "title": "Statistics",

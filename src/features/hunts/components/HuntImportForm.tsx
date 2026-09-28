@@ -5,15 +5,17 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useTranslation } from 'react-i18next'
 import { useCallback, useState } from 'react'
 
+import { Link } from 'react-router-dom'
 import { Button } from '@/components/ui/Button/Button'
 import { Input } from '@/components/ui/FormFields/Input'
 import { Textarea } from '@/components/ui/FormFields/Textarea'
+import { Select } from '@/components/ui/FormFields/Select'
 import { Checkbox } from '@/components/ui/FormFields/Checkbox'
 import { Alert } from '@/components/feedback/Alert/Alert'
 import { charactersApi } from '@/features/characters/api/characters.api'
 import { useImportHuntSchema } from '../schemas/huntSchemas'
 import { huntsApi } from '../api/hunts.api'
-import { CharacterSelector } from '@/features/characters/components/CharacterSelector'
+import { ROUTES } from '@/config/routes'
 import type { Character } from '@/types/api'
 
 import './HuntImportForm.css'
@@ -77,12 +79,38 @@ export function HuntImportForm({ onSuccess }: HuntImportFormProps) {
       <div className="hunt-import">
         <h2>{t('hunts.import.step1')}</h2>
         <p className="hunt-import__description">{t('hunts.import.selectCharacterDesc')}</p>
-        <CharacterSelector
-          activeCharacter={selectedCharacter}
-          characters={characters ?? []}
-          loading={charactersLoading}
-          onSelect={handleCharacterSelect}
-        />
+        {charactersLoading ? (
+          <Select label={t('hunts.import.character')} disabled>
+            <option>{t('loading')}</option>
+          </Select>
+        ) : (characters ?? []).length === 0 ? (
+          <>
+            <Alert type="info">{t('characters.empty')}</Alert>
+            <Link to={ROUTES.characterNew}>
+              <Button variant="secondary">{t('characters.addButton')}</Button>
+            </Link>
+          </>
+        ) : (
+          <Select
+            label={t('hunts.import.character')}
+            placeholder={t('hunts.import.selectCharacter')}
+            defaultValue=""
+            onChange={(e) => {
+              const found = (characters ?? []).find((c) => c.id === e.target.value)
+              if (found) handleCharacterSelect(found)
+            }}
+            error={errors.character_id?.message}
+            autoFocus
+          >
+            {(characters ?? []).map((c) => (
+              <option key={c.id} value={c.id}>
+                {c.name}
+                {c.world ? ` — ${c.world}` : ''}
+                {c.level ? ` (Level ${c.level})` : ''}
+              </option>
+            ))}
+          </Select>
+        )}
       </div>
     )
   }
@@ -98,7 +126,7 @@ export function HuntImportForm({ onSuccess }: HuntImportFormProps) {
         <Button onClick={() => { reset(); setStep('character'); setSelectedCharacter(null); setImportError(null) }}>
           {t('hunts.import.newImport')}
         </Button>
-        {onSuccess && <Button variant="ghost" onClick={onSuccess}>{t('hunts.import.viewHunt')}</Button>}
+        {onSuccess && <Button variant="ghost" onClick={onSuccess}>{t('hunts.import.close')}</Button>}
       </div>
     )
   }
@@ -161,8 +189,8 @@ export function HuntImportForm({ onSuccess }: HuntImportFormProps) {
 
       <div className="hunt-import-form__actions">
         <Button type="button" variant="ghost" onClick={() => setStep('character')}>{t('actions.back')}</Button>
-        <Button type="submit" loading={isSubmitting}>
-          {t('hunts.import.import')}
+        <Button type="submit" loading={isSubmitting} disabled={isSubmitting}>
+          {isSubmitting ? t('hunts.import.importing') : t('hunts.import.import')}
         </Button>
       </div>
     </form>

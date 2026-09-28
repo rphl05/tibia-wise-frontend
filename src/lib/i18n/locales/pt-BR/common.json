@@ -291,7 +291,14 @@
       "fishing": "Fishing"
     },
     "notFound": "Personagem não encontrado.",
-    "levelAutoHint": "O level oficial é obtido automaticamente do site do Tibia."
+    "levelAutoHint": "O level oficial é obtido automaticamente do site do Tibia.",
+    "verified": "Verificado",
+    "notVerified": "Não verificado",
+    "setAsDefault": "Definir como personagem padrão",
+    "isDefault": "Personagem padrão",
+    "setAsDefaultHint": "Este personagem será usado como padrão na Sidebar, Dashboard, Estatísticas e Recomendações.",
+    "setAsDefaultNeedsVerification": "Verifique o personagem (código na descrição do Tibia) para poder defini-lo como padrão.",
+    "vocationUnknown": "Vocação indisponível"
   },
   "hunts": {
     "title": "Minhas Hunts",
@@ -339,7 +346,9 @@
       "viewHunt": "Ver Hunt",
       "title": "Importar Hunt",
       "makePublic": "Tornar esta Hunt pública",
-      "importFailed": "Não foi possível importar a Hunt. Verifique o conteúdo e tente novamente."
+      "importFailed": "Não foi possível importar a Hunt. Verifique o conteúdo e tente novamente.",
+      "close": "Fechar",
+      "importing": "Importando..."
     },
     "validation": {
       "contentMin": "Conteúdo muito curto (mín. 10 caracteres)",
@@ -363,7 +372,14 @@
     "supplies": "Suprimentos",
     "noCreatures": "Nenhuma criatura registrada.",
     "noLoot": "Nenhum loot registrado.",
-    "noSupplies": "Nenhum suprimento registrado."
+    "noSupplies": "Nenhum suprimento registrado.",
+    "share": "Compartilhar Hunt",
+    "linkCopied": "Link da Hunt copiado!",
+    "privateTitle": "Hunt privada",
+    "privateDescription": "Esta hunt é privada e não pode ser visualizada.",
+    "date": "Data",
+    "rawXp": "Raw XP Total",
+    "rawXpPerHour": "Raw XP/h"
   },
   "statistics": {
     "title": "Estatísticas",

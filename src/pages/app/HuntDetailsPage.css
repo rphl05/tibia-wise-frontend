@@ -99,3 +99,10 @@
   color: var(--text-secondary);
   margin: 0;
 }
+/* Espaçamento do bloco de badges/ações do cabeçalho (Público + Compartilhar) */
+.hunt-details-page__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+  flex-wrap: wrap;
+}

@@ -9,6 +9,11 @@ import { StatCard } from '@/components/ui/Card/StatCard'
 import { Skeleton } from '@/components/feedback/Skeleton/Skeleton'
 import { EmptyState } from '@/components/feedback/EmptyState/EmptyState'
 import { Select } from '@/components/ui/FormFields/Select'
+import {
+  formatNumber as sharedFormatNumber,
+  formatDuration as sharedFormatDuration,
+  formatPercent,
+} from '@/lib/format'
 
 import { statisticsApi, type StatisticsParams, type StatisticsEvolutionPoint } from '@/features/statistics/api/statistics.api'
 import {
@@ -42,19 +47,16 @@ const PERIODS: { value: StatisticsParams['period']; label: string }[] = [
   { value: 'all', label: 'Todo tempo' },
 ] as const
 
-function formatNumber(n: string): string {
-  return Number(n).toLocaleString()
+function formatNumber(n: string | number | null | undefined): string {
+  return sharedFormatNumber(n)
 }
 
-function formatDuration(seconds: number): string {
-  const h = Math.floor(seconds / 3600)
-  const m = Math.floor((seconds % 3600) / 60)
-  return h > 0 ? `${h}h ${m}min` : `${m}min`
+function formatDuration(seconds: string | number | null | undefined): string {
+  return sharedFormatDuration(seconds)
 }
 
 function formatChange(value: string): string {
-  const num = Number(value)
-  return num >= 0 ? `+${num.toFixed(1)}%` : `${num.toFixed(1)}%`
+  return formatPercent(value)
 }
 
 export default function StatisticsPage() {

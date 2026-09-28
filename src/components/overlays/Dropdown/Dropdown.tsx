@@ -59,6 +59,7 @@ export function Dropdown({ trigger, children, align = 'right', 'aria-label': ari
           className={clsx('dropdown__menu', `dropdown__menu--${align}`)}
           role="menu"
           aria-label={ariaLabel}
+          onClick={() => setOpen(false)}
         >
           {children}
         </div>

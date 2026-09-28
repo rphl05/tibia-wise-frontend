@@ -9,6 +9,7 @@ import { Badge } from '@/components/ui/Badge/Badge'
 import { Card } from '@/components/ui/Card/Card'
 import { Skeleton } from '@/components/feedback/Skeleton/Skeleton'
 import { huntsApi } from '../api/hunts.api'
+import { formatDuration, formatNumber } from '@/lib/format'
 
 import './HuntCard.css'
 
@@ -22,6 +23,7 @@ interface HuntCardProps {
     hunting_place_id: string | null
     duration_seconds: number
     xp: string
+    xp_per_hour: string | null
     loot_value: string
     balance: string
     visibility: 'PUBLIC' | 'PRIVATE'
@@ -44,13 +46,6 @@ export function HuntCard({ hunt, showActions = true }: HuntCardProps) {
     await deleteMutation.mutateAsync()
   }
 
-  const formatNumber = (n: string) => Number(n).toLocaleString()
-  const formatDuration = (s: number) => {
-    const h = Math.floor(s / 3600)
-    const m = Math.floor((s % 3600) / 60)
-    return h > 0 ? `${h}h ${m}min` : `${m}min`
-  }
-
   return (
     <Link to={`/hunts/${hunt.public_id}`} className="hunt-card-link">
       <Card className="hunt-card">
@@ -70,12 +65,12 @@ export function HuntCard({ hunt, showActions = true }: HuntCardProps) {
         </div>
         <div className="hunt-card__stat">
           <Swords size={16} aria-hidden />
-          <span>{formatNumber(hunt.xp)}/h</span>
+          <span>{formatNumber(hunt.xp_per_hour)}/h</span>
         </div>
         <div className="hunt-card__stat profit">
           <Zap size={16} aria-hidden />
           <span className={Number(hunt.balance) >= 0 ? 'positive' : 'negative'}>
-            {Number(hunt.balance) >= 0 ? '+' : ''}{formatNumber(hunt.balance)}
+            {formatNumber(hunt.balance)}
           </span>
         </div>
       </dl>

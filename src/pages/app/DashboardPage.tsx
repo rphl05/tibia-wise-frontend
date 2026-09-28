@@ -17,6 +17,7 @@ import { HuntCard } from '@/features/hunts/components/HuntCard'
 import { Skeleton } from '@/components/feedback/Skeleton/Skeleton'
 import { EmptyState } from '@/components/feedback/EmptyState/EmptyState'
 import { Card } from '@/components/ui/Card/Card'
+import { formatDuration, formatNumber } from '@/lib/format'
 
 import './DashboardPage.css'
 
@@ -65,13 +66,6 @@ export default function DashboardPage() {
         />
       </div>
     )
-  }
-
-  const formatNumber = (n: string) => Number(n).toLocaleString()
-  const formatDuration = (seconds: number) => {
-    const h = Math.floor(seconds / 3600)
-    const m = Math.floor((seconds % 3600) / 60)
-    return h > 0 ? `${h}h ${m}min` : `${m}min`
   }
 
   return (
@@ -160,11 +154,12 @@ export default function DashboardPage() {
               <HuntCard
                 hunt={{
                   id: dashboard.recent_hunts[0].id,
-                  public_id: dashboard.recent_hunts[0].id,
+                  public_id: dashboard.recent_hunts[0].public_id,
                   character_id: '',
                   hunting_place_id: '',
                   duration_seconds: dashboard.recent_hunts[0].duration_seconds,
                   xp: dashboard.recent_hunts[0].xp,
+                  xp_per_hour: dashboard.recent_hunts[0].xp_per_hour,
                   loot_value: '0',
                   balance: dashboard.recent_hunts[0].balance,
                   visibility: 'PRIVATE',
@@ -190,11 +185,12 @@ export default function DashboardPage() {
                     key={hunt.id}
                     hunt={{
                       id: hunt.id,
-                      public_id: hunt.id,
+                      public_id: hunt.public_id,
                       character_id: '',
                       hunting_place_id: '',
                       duration_seconds: hunt.duration_seconds,
                       xp: hunt.xp,
+                      xp_per_hour: hunt.xp_per_hour,
                       loot_value: '0',
                       balance: hunt.balance,
                       visibility: 'PRIVATE',

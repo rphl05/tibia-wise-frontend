@@ -63,6 +63,8 @@ export interface Character {
   vocation_id: number | null
   is_private: boolean
   status: string
+  /** true quando o backend confirmou a verificação do personagem. */
+  verified: boolean
   created_at: string
   updated_at: string
 }
@@ -84,6 +86,7 @@ export interface HuntSummary {
   hunting_place_id: string | null
   duration_seconds: number
   xp: string
+  xp_per_hour: string | null
   loot_value: string
   balance: string
   visibility: HuntVisibility
@@ -96,25 +99,28 @@ export interface HuntDetail extends HuntSummary {
   supplies_value: string
   status: string
   notes: string | null
+  /** Raw XP (sem Double XP) — vem do backend, não recalcular no frontend. */
+  raw_xp: string | null
+  raw_xp_per_hour: string | null
   loot: Array<{
     id: string
     item_id: string
     item_name: string
-    quantity: number
-    value: number
+    quantity: number | string
+    value: number | null
   }>
   expenses: Array<{
     id: string
     item_id: string | null
     description: string
-    quantity: number
-    value: number
+    quantity: number | string
+    value: number | null
   }>
   creatures: Array<{
     id: string
     creature_id: string
     creature_name: string
-    quantity: number
+    quantity: number | string
   }>
 }
 
