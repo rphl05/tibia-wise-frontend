@@ -7,9 +7,9 @@ export function useCreateCharacterSchema() {
   return z.object({
     name: z
       .string()
-      .min(1, t('characters.validation.nameRequired', 'Informe o nome do personagem'))
-      .max(100, t('characters.validation.nameMax', 'Máximo 100 caracteres'))
-      .regex(/^[a-zA-Z0-9 ',-]+$/, t('characters.validation.namePattern', 'Apenas letras, números, espaço, \',\' ou \'-\'')),
+      .min(1, t('characters.validation.nameRequired'))
+      .max(100, t('characters.validation.nameMax'))
+      .regex(/^[a-zA-Z0-9 ',-]+$/, t('characters.validation.namePattern')),
     is_private: z.boolean().optional(),
   })
 }
@@ -17,21 +17,36 @@ export function useCreateCharacterSchema() {
 export function useUpdateCharacterSchema() {
   const { t } = useTranslation()
 
+  // Skills: inteiros, mínimo 10 (ou 0 para Magic Level). Mensagens amigáveis;
+  // campo vazio é permitido (opcional) — nunca "Expected number, received NaN".
+  const skillSchema = () =>
+    z
+      .number({ error: t('characters.validation.intInvalid') })
+      .int(t('characters.validation.intInvalid'))
+      .min(10, t('characters.validation.skillMin'))
+      .max(200, t('characters.validation.skillMax'))
+      .optional()
+
   return z.object({
     level: z
-      .number()
-      .int()
-      .min(1, t('characters.validation.levelMin', 'Mínimo 1'))
-      .max(3000, t('characters.validation.levelMax', 'Máximo 3000'))
+      .number({ error: t('characters.validation.intInvalid') })
+      .int(t('characters.validation.intInvalid'))
+      .min(1, t('characters.validation.levelMin'))
+      .max(3000, t('characters.validation.levelMax'))
       .optional(),
-    magic_level: z.number().int().min(0).max(200).optional(),
-    fist_fighting: z.number().int().min(10).max(200).optional(),
-    club_fighting: z.number().int().min(10).max(200).optional(),
-    sword_fighting: z.number().int().min(10).max(200).optional(),
-    axe_fighting: z.number().int().min(10).max(200).optional(),
-    distance_fighting: z.number().int().min(10).max(200).optional(),
-    shielding: z.number().int().min(10).max(200).optional(),
-    fishing: z.number().int().min(10).max(200).optional(),
+    magic_level: z
+      .number({ error: t('characters.validation.intInvalid') })
+      .int(t('characters.validation.intInvalid'))
+      .min(0, t('characters.validation.intMinZero'))
+      .max(200, t('characters.validation.skillMax'))
+      .optional(),
+    fist_fighting: skillSchema(),
+    club_fighting: skillSchema(),
+    sword_fighting: skillSchema(),
+    axe_fighting: skillSchema(),
+    distance_fighting: skillSchema(),
+    shielding: skillSchema(),
+    fishing: skillSchema(),
     is_private: z.boolean().optional(),
   })
 }

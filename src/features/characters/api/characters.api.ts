@@ -8,14 +8,14 @@ export interface CreateCharacterDto {
 
 export interface UpdateCharacterDto {
   level?: number
-  magic_level?: number
-  fist_fighting?: number
-  club_fighting?: number
-  sword_fighting?: number
-  axe_fighting?: number
-  distance_fighting?: number
-  shielding?: number
-  fishing?: number
+  magic_level?: number | null
+  fist_fighting?: number | null
+  club_fighting?: number | null
+  sword_fighting?: number | null
+  axe_fighting?: number | null
+  distance_fighting?: number | null
+  shielding?: number | null
+  fishing?: number | null
   is_private?: boolean
 }
 

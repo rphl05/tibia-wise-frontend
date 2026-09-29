@@ -57,11 +57,11 @@
   color: var(--text-primary);
 }
 
-.hunt-card__stat .positive {
+.hunt-card__stat .profit--positive {
   color: var(--status-success);
 }
 
-.hunt-card__stat .negative {
+.hunt-card__stat .profit--negative {
   color: var(--status-error);
 }
 
@@ -82,4 +82,7 @@
 .hunt-card__menu-btn:hover {
   background: var(--bg-surface-hover);
   color: var(--text-primary);
+}
+.hunt-card__stat .profit--neutral {
+  color: var(--text-secondary);
 }

@@ -93,3 +93,8 @@ img {
   white-space: nowrap;
   border: 0;
 }
+
+/* Profit: cor como reforço — o sinal (+/-) continua no texto */
+.profit--positive { color: var(--status-success); }
+.profit--negative { color: var(--status-error); }
+.profit--neutral { color: var(--text-secondary); }

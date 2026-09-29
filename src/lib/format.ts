@@ -37,3 +37,15 @@ export function formatDate(value: string | Date | null | undefined): string {
   if (Number.isNaN(d.getTime())) return '—'
   return new Intl.DateTimeFormat(currentLocale(), { dateStyle: 'long' }).format(d)
 }
+
+/**
+ * Classe visual para Profit: positivo → success, negativo → error, zero → neutral.
+ * O sinal (+/-) sempre aparece no texto — a cor é apenas reforço (a11y).
+ */
+export function profitToneClass(value: number | string | null | undefined): string {
+  const n = typeof value === 'string' ? Number(value) : value
+  if (n === null || n === undefined || Number.isNaN(n) || !Number.isFinite(n) || n === 0) {
+    return 'profit--neutral'
+  }
+  return n > 0 ? 'profit--positive' : 'profit--negative'
+}

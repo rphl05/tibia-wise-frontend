@@ -198,3 +198,38 @@
     background: color-mix(in srgb, var(--bg-page) 72%, transparent);
   }
 }
+
+/* Hierarquia maior dos dados no Hero (lista 06) */
+.character-details-page__hero .character-details-page__info h1 {
+  font-size: clamp(32px, 4vw, 42px);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.character-details-page__title-row .character-details-page__vocation-icon {
+  width: 36px;
+  height: 36px;
+}
+
+.character-details-page__hero .character-details-page__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  font-size: var(--font-size-h4, 1.125rem);
+}
+
+.character-details-page__hero .character-details-page__meta span {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: 1.125rem;
+  color: var(--text-primary);
+}
+
+.character-details-page__hero .character-details-page__meta svg {
+  color: var(--text-secondary);
+}
+
+.character-details-page__hero .character-details-page__badges {
+  opacity: 0.9;
+}

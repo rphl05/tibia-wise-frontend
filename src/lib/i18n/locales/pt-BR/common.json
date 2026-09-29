@@ -256,7 +256,11 @@
       "namePattern": "Apenas letras, números, espaço, vírgula ou hífen",
       "levelMin": "Mínimo 1",
       "levelMax": "Máximo 3000",
-      "loadFailed": "Falha ao carregar personagem."
+      "loadFailed": "Falha ao carregar personagem.",
+      "intInvalid": "Informe um número inteiro válido.",
+      "intMinZero": "O valor mínimo é 0.",
+      "skillMin": "O valor mínimo é 10.",
+      "skillMax": "O valor máximo é 200."
     },
     "errors": {
       "loadFailed": "Falha ao carregar personagem.",
@@ -379,9 +383,10 @@
     "privateTitle": "Hunt privada",
     "privateDescription": "Esta hunt é privada e não pode ser visualizada.",
     "date": "Data",
+    "xpGain": "XP Ganho",
     "rawXp": "Raw XP Total",
     "rawXpPerHour": "Raw XP/h",
-    "xpTotal": "EXP Total"
+    "profit": "Profit"
   },
   "statistics": {
     "title": "Estatísticas",

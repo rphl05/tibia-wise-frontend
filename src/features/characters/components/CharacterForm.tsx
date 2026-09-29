@@ -57,25 +57,45 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
   const [loadError, setLoadError] = useState<string | null>(null)
   const [loaded, setLoaded] = useState(!isEdit)
 
+  // Skills/magic: chaves enviadas ao backend e snapshot inicial
+  // para enviar somente o que mudou (preservando o restante).
+  const EDITABLE_KEYS = [
+    'magic_level',
+    'fist_fighting',
+    'club_fighting',
+    'sword_fighting',
+    'axe_fighting',
+    'distance_fighting',
+    'shielding',
+    'fishing',
+  ] as const
+  type EditableKey = (typeof EDITABLE_KEYS)[number]
+  const [initialValues, setInitialValues] = useState<Record<string, number | null>>({})
+
+  /** Converte o valor do input: vazio/inválido → undefined (nunca NaN). */
+  const asOptionalInt = (v: unknown): number | undefined => {
+    if (v === '' || v === null || v === undefined) return undefined
+    const n = Number(v)
+    return Number.isNaN(n) ? undefined : n
+  }
+
+  const RInt = (name: EditableKey) => R(name, { setValueAs: asOptionalInt })
+
   useEffect(() => {
     if (!isEdit) return
     let cancelled = false
     charactersApi.get(id!)
       .then((data) => {
         if (cancelled) return
-        const patch: Partial<UpdateCharacterDto> = {
-          level: data.level ?? undefined,
-          magic_level: data.magic_level ?? undefined,
-          fist_fighting: data.fist_fighting ?? undefined,
-          club_fighting: data.club_fighting ?? undefined,
-          sword_fighting: data.sword_fighting ?? undefined,
-          axe_fighting: data.axe_fighting ?? undefined,
-          distance_fighting: data.distance_fighting ?? undefined,
-          shielding: data.shielding ?? undefined,
-          fishing: data.fishing ?? undefined,
-          is_private: data.is_private,
-        }
-        Object.entries(patch).forEach(([k, v]) => v !== undefined && setValue(k as any, v))
+        const init: Record<string, number | null> = {}
+        ;(EDITABLE_KEYS as readonly EditableKey[]).forEach((k) => {
+          const v = (data as unknown as Record<string, number | null>)[k] ?? null
+          init[k] = v
+          if (v !== null) setValue(k, v)
+        })
+        setValue('is_private', data.is_private)
+        setInitialValues(init)
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         setLoadedLevel(data.level ?? null)
         setCharacterVerified(data.verified === true)
         const isDefault = Boolean(id && String(user?.default_character_id ?? '') === String(id))
@@ -100,9 +120,20 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
       try {
         if (isEdit) {
           // Level oficial não é editável manualmente — vem do site do Tibia.
-          const { level: _level, ...patch } = data as UpdateCharacterDto
-          void _level
-          await charactersApi.update(id!, patch)
+          // Envia somente campos alterados; skill esvaziado vira null (limpa no backend).
+          const patch: UpdateCharacterDto = {}
+          ;(EDITABLE_KEYS as readonly EditableKey[]).forEach((k) => {
+            const current = (data as Record<string, number | undefined>)[k]
+            const prev = initialValues[k] ?? null
+            const normalized = current ?? null
+            if (normalized !== prev) patch[k] = normalized
+          })
+          if ((data as UpdateCharacterDto).is_private !== undefined) {
+            patch.is_private = (data as UpdateCharacterDto).is_private
+          }
+          if (Object.keys(patch).length > 0) {
+            await charactersApi.update(id!, patch)
+          }
           // Personagem padrão: só verificados; ownership validado pelo backend.
           if (wantDefault !== definedAsDefault) {
             await settingsApi.updateMe({
@@ -122,7 +153,7 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
         toast.error(t('characters.errors.saveFailed'))
       }
     }),
-    [handleSubmit, isEdit, id, onSuccess, navigate, redirectTo, t, toast, wantDefault, definedAsDefault, queryClient, refreshUser],
+    [handleSubmit, isEdit, id, onSuccess, navigate, redirectTo, t, toast, wantDefault, definedAsDefault, queryClient, refreshUser, initialValues],
   )
 
   if (!loaded) {
@@ -183,9 +214,11 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
           />
         )}
         <Input
-          {...R('magic_level', { valueAsNumber: true })}
+          {...RInt('magic_level')}
           label={t('characters.magicLevel')}
           type="number"
+          inputMode="numeric"
+          step={1}
           min={0}
           max={200}
           placeholder={t('characters.magicLevelPlaceholder')}
@@ -197,57 +230,71 @@ export function CharacterForm({ characterId, redirectTo = '/characters', onSucce
         <legend>{t('characters.skills')}</legend>
         <div className="character-form__skills-grid">
           <Input
-            {...R('fist_fighting', { valueAsNumber: true })}
+            {...RInt('fist_fighting')}
             label={t('characters.skillsLabels.fist')}
             type="number"
+            inputMode="numeric"
+            step={1}
             min={10}
             max={200}
             error={E.fist_fighting?.message}
           />
           <Input
-            {...R('club_fighting', { valueAsNumber: true })}
+            {...RInt('club_fighting')}
             label={t('characters.skillsLabels.club')}
             type="number"
+            inputMode="numeric"
+            step={1}
             min={10}
             max={200}
             error={E.club_fighting?.message}
           />
           <Input
-            {...R('sword_fighting', { valueAsNumber: true })}
+            {...RInt('sword_fighting')}
             label={t('characters.skillsLabels.sword')}
             type="number"
+            inputMode="numeric"
+            step={1}
             min={10}
             max={200}
             error={E.sword_fighting?.message}
           />
           <Input
-            {...R('axe_fighting', { valueAsNumber: true })}
+            {...RInt('axe_fighting')}
             label={t('characters.skillsLabels.axe')}
             type="number"
+            inputMode="numeric"
+            step={1}
             min={10}
             max={200}
             error={E.axe_fighting?.message}
           />
           <Input
-            {...R('distance_fighting', { valueAsNumber: true })}
+            {...RInt('distance_fighting')}
             label={t('characters.skillsLabels.distance')}
             type="number"
+            inputMode="numeric"
+            step={1}
             min={10}
             max={200}
             error={E.distance_fighting?.message}
           />
           <Input
-            {...R('shielding', { valueAsNumber: true })}
+            {...RInt('shielding')}
             label={t('characters.skillsLabels.shielding')}
             type="number"
+            inputMode="numeric"
+            step={1}
             min={10}
             max={200}
             error={E.shielding?.message}
           />
           <Input
-            {...R('fishing', { valueAsNumber: true })}
+            {...RInt('fishing')}
             label={t('characters.skillsLabels.fishing')}
             type="number"
+            inputMode="numeric"
+            step={1}
             min={10}
             max={200}
             error={E.fishing?.message}

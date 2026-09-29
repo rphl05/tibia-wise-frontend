@@ -9,7 +9,7 @@ import { Badge } from '@/components/ui/Badge/Badge'
 import { Card } from '@/components/ui/Card/Card'
 import { Skeleton } from '@/components/feedback/Skeleton/Skeleton'
 import { huntsApi } from '../api/hunts.api'
-import { formatDuration, formatNumber } from '@/lib/format'
+import { formatDuration, formatNumber, formatSignedNumber, profitToneClass } from '@/lib/format'
 
 import './HuntCard.css'
 
@@ -69,8 +69,8 @@ export function HuntCard({ hunt, showActions = true }: HuntCardProps) {
         </div>
         <div className="hunt-card__stat profit">
           <Zap size={16} aria-hidden />
-          <span className={Number(hunt.balance) >= 0 ? 'positive' : 'negative'}>
-            {formatNumber(hunt.balance)}
+          <span className={profitToneClass(hunt.balance)}>
+            {formatSignedNumber(hunt.balance)}
           </span>
         </div>
       </dl>

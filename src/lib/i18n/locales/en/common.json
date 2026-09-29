@@ -256,7 +256,11 @@
       "namePattern": "Only letters, numbers, space, comma or hyphen",
       "levelMin": "Minimum 1",
       "levelMax": "Maximum 3000",
-      "loadFailed": "Failed to load character."
+      "loadFailed": "Failed to load character.",
+      "intInvalid": "Enter a valid integer.",
+      "intMinZero": "Minimum value is 0.",
+      "skillMin": "Minimum value is 10.",
+      "skillMax": "Maximum value is 200."
     },
     "errors": {
       "loadFailed": "Failed to load character.",
@@ -379,9 +383,10 @@
     "privateTitle": "Private hunt",
     "privateDescription": "This hunt is private and cannot be viewed.",
     "date": "Date",
+    "xpGain": "XP Gain",
     "rawXp": "Total Raw XP",
     "rawXpPerHour": "Raw XP/h",
-    "xpTotal": "Total EXP"
+    "profit": "Profit"
   },
   "statistics": {
     "title": "Statistics",
