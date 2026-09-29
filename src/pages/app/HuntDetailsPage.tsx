@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/Badge/Badge'
 import { Button } from '@/components/ui/Button/Button'
 import { useToast } from '@/components/feedback/Toast/ToastProvider'
 import { ApiError } from '@/lib/api/errors'
-import { formatDate, formatDuration, formatNumber } from '@/lib/format'
+import { formatDate, formatDuration, formatNumber, formatSignedNumber, profitToneClass } from '@/lib/format'
 import { ROUTES } from '@/config/routes'
 
 import './HuntDetailsPage.css'
@@ -109,7 +109,7 @@ export default function HuntDetailsPage() {
           <span className="value">{formatDuration(hunt.duration_seconds)}</span>
         </div>
         <div className="hunt-details-page__stat">
-          <span className="label">{t('hunts.xpTotal')}</span>
+          <span className="label">{t('hunts.xpGain')}</span>
           <span className="value">{formatNumber(hunt.xp)}</span>
         </div>
         <div className="hunt-details-page__stat">
@@ -129,8 +129,10 @@ export default function HuntDetailsPage() {
           <span className="value">{formatNumber(hunt.supplies_value)} gp</span>
         </div>
         <div className="hunt-details-page__stat">
-          <span className="label">{t('hunts.balance')}</span>
-          <span className="value">{formatNumber(hunt.balance)} gp</span>
+          <span className="label">{t('hunts.profit')}</span>
+          <span className={`value ${profitToneClass(hunt.balance)}`}>
+            {formatSignedNumber(hunt.balance)} gp
+          </span>
         </div>
       </section>
 

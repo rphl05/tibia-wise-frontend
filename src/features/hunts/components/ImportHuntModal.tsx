@@ -27,7 +27,13 @@ export function ImportHuntModal({ open, onClose }: ImportHuntModalProps) {
       onClose={onClose}
       title={t('hunts.import.title')}
     >
-      {open && <HuntImportForm key={String(open)} onSuccess={handleSuccess} />}
+      {open && (
+        <HuntImportForm
+          key={String(open)}
+          onSuccess={handleSuccess}
+          onClose={onClose}
+        />
+      )}
     </Modal>
   )
 }

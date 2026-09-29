@@ -21,10 +21,13 @@ import type { Character } from '@/types/api'
 import './HuntImportForm.css'
 
 interface HuntImportFormProps {
+  /** Disparado quando a importação é concluída com sucesso (invalidate/toast). */
   onSuccess?: () => void
+  /** Mesmo handler do X do modal — usado pelo botão "Fechar" da tela de sucesso. */
+  onClose?: () => void
 }
 
-export function HuntImportForm({ onSuccess }: HuntImportFormProps) {
+export function HuntImportForm({ onSuccess, onClose }: HuntImportFormProps) {
   const { t } = useTranslation()
   const schema = useImportHuntSchema()
   const [step, setStep] = useState<'character' | 'content' | 'success'>('character')
@@ -126,7 +129,7 @@ export function HuntImportForm({ onSuccess }: HuntImportFormProps) {
         <Button onClick={() => { reset(); setStep('character'); setSelectedCharacter(null); setImportError(null) }}>
           {t('hunts.import.newImport')}
         </Button>
-        {onSuccess && <Button variant="ghost" onClick={onSuccess}>{t('hunts.import.close')}</Button>}
+        {onClose && <Button variant="ghost" onClick={onClose}>{t('hunts.import.close')}</Button>}
       </div>
     )
   }
