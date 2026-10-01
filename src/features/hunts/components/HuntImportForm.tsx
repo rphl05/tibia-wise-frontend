@@ -66,7 +66,6 @@ export function HuntImportForm({ onSuccess, onClose }: HuntImportFormProps) {
           name: data.name || undefined,
           notes: data.notes || undefined,
           is_fast_respawn: data.is_fast_respawn ?? false,
-          visibility: data.is_public ? 'PUBLIC' : 'PRIVATE',
         })
         setStep('success')
         onSuccess?.()
@@ -184,10 +183,6 @@ export function HuntImportForm({ onSuccess, onClose }: HuntImportFormProps) {
 
       <div className="hunt-import-form__options">
         <Checkbox {...register('is_fast_respawn')} label={t('hunts.import.fastRespawn')} />
-        <Checkbox
-          {...register('is_public')}
-          label={t('hunts.import.makePublic')}
-        />
       </div>
 
       <div className="hunt-import-form__actions">

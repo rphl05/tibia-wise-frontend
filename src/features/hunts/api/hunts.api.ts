@@ -16,7 +16,6 @@ export interface CreateHuntDto {
   hunting_place_id?: number
   name?: string
   notes?: string
-  visibility?: 'PUBLIC' | 'PRIVATE'
   is_fast_respawn?: boolean
 }
 

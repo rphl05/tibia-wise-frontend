@@ -14,8 +14,6 @@ export function useImportHuntSchema() {
     name: z.string().max(120).optional(),
     notes: z.string().max(1000).optional(),
     is_fast_respawn: z.boolean().optional(),
-    /** Checkbox "Tornar esta Hunt pública" — mapeado para visibility no submit. */
-    is_public: z.boolean().optional(),
   })
 }
 
